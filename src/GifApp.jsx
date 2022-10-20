@@ -1,6 +1,5 @@
 import { Fragment, React, useState } from 'react'
-import { MainInputSeach } from "./components/MainInputSeach";
-import { GridItemList } from './components/GridItemList'
+import { MainInputSeach, GridItemList } from "./components";
 
 export const GifApp = () => {
     const [ searchTerm, setSearchTerm] = useState([])
@@ -9,11 +8,13 @@ export const GifApp = () => {
         if (searchTerm.includes( newSearchTerm.toLowerCase())) return;
         setSearchTerm([newSearchTerm])
     }
+  
   return (
     <Fragment>
       <h1 className='text-gray-700 font-mono text-5xl font-bold mb-12 '>giftApp</h1>
       
-      <MainInputSeach onNewSearchTerm={ onSearchTerm } />
+      <MainInputSeach onNewSearchTerm={onSearchTerm} />
+      {/* TODO:created a sort by gifs and stickers in addition a pagination */}
       {/* <button
         className='
             mt-3 my-3 inline-flex w-full justify-center 
@@ -26,14 +27,11 @@ export const GifApp = () => {
         >
         Add Category
       </button> */}
-
-
-      {
-      
-          <GridItemList
-            key={searchTerm}
-            searchTerm={ searchTerm}
-          />              
+      { 
+        <GridItemList
+          key={searchTerm}
+          searchTerm={ searchTerm}
+        />              
       }
     </Fragment>      
     

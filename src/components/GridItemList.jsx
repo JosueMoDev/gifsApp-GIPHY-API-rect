@@ -1,25 +1,20 @@
-import { Fragment, React, useEffect, useState } from 'react';
-import { getItemList } from '../helpers/getItemList.helper';
+import { Fragment, React } from 'react';
+import { useItemList } from "../hooks";
 export const GridItemList = ({ searchTerm }) => {
 
-    const [itemList, setItemList] = useState([]);
-    
-    useEffect(() => { 
-        getItemList(searchTerm).
-        then(newItemList => setItemList(newItemList))
-    }, [])
+    const { itemList } = useItemList(searchTerm)
 
     return (
       <Fragment>
-        { 
+        {   itemList.length>0 && (
             <div className="bg-gray-100 rounded-md shadow-lg capitalize ">
                 <div className="mx-auto max-w-2xl py-16 px-4 sm:py-15 sm:px-6 lg:max-w-7xl lg:px-8">
-                        <h2 className="text-2xl font-medium tracking-tight text-gray-900">
+                        <h2 className="text-2xl font-medium tracking-tight text-gray-900 flex items-center">
                             Searching by
-                            <span className="ml-2 font-bold rounded-full text-gray-100
-                             bg-green-900  px-5 py-0.5">
+                            <p className="ml-2 font-bold rounded-full text-gray-100
+                             bg-green-900 w-max px-5 py-0.5">
                             {searchTerm}
-                            </span>
+                            </p>
                         </h2>
 
                     <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 capitalize">
@@ -44,7 +39,8 @@ export const GridItemList = ({ searchTerm }) => {
                     ))}
                     </div>
                 </div>
-            </div>
+                </div>
+            )
         }               
       </Fragment>
   )
