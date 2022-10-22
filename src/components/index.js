@@ -1,3 +1,6 @@
 export * from './GridItemList'
 export * from './MainInputSeach'
 export * from './NavBarComponent'
+export * from './GifsItemList'
+export * from './StickersItemList'
+export * from './NoSearchRosultFound'
