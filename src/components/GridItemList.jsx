@@ -12,7 +12,7 @@ export const GridItemList = ({ searchTerm }) => {
                         <h2 className="text-2xl font-medium tracking-tight text-gray-900 flex items-center">
                             Searching by
                             <p className="ml-2 font-bold rounded-full text-gray-100
-                             bg-green-900 w-max px-5 py-0.5">
+                             bg-gray-700 w-max px-5 py-0.5">
                             {searchTerm}
                             </p>
                         </h2>

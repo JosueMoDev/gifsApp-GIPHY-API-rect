@@ -23,8 +23,8 @@ export const MainInputSeach = ({ onNewSearchTerm }) => {
             onSubmit={onSubmit}        
             >
             <div className="relative w-auto">
-                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-					<svg className="w- h-6 text-gray-900 " fill="currentColor" viewBox="0 0 20 20"
+                <div className="absolute inset-y-0 right-0 outline-none rounded-md bg-gray-700 flex  justify-center items-center w-14  pointer-events-none">
+					<svg className="w-auto h-8 text-gray-100 justily-center" fill="currentColor" viewBox="0 0 20 20"
 						xmlns="http://www.w3.org/2000/svg">
 						<path 
                             d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 
@@ -36,14 +36,14 @@ export const MainInputSeach = ({ onNewSearchTerm }) => {
                 <input
                     type="text"
                     className="
-                     rounded-lg border bg-gray-100
-                     placeholder-gray-600 
+                     rounded-md border bg-gray-100
+                     placeholder-gray-500 
                      border-gray-400 px-3 py-3 text-gray-900
-                     focus:z-10 focus:border-green-900 
+                     focus:z-10
                         focus:outline-none sm:text-xl 
                         block w-full  pl-10 p-2.5
                     "
-                    placeholder="Search"
+                    placeholder="Search all the GIFs and Stickers"
                     value={inputValue}
                     onChange={ onInputChange }
                 />

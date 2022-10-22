@@ -1,5 +1,5 @@
 import { Fragment, React, useState } from 'react'
-import { MainInputSeach, GridItemList } from "./components";
+import { MainInputSeach, GridItemList, NavBarComponent } from "./components";
 
 export const GifApp = () => {
     const [ searchTerm, setSearchTerm] = useState([])
@@ -11,8 +11,8 @@ export const GifApp = () => {
   
   return (
     <Fragment>
-      <h1 className='text-gray-700 font-mono text-5xl font-bold mb-12 '>giftApp</h1>
-      
+   
+      <NavBarComponent/>
       <MainInputSeach onNewSearchTerm={onSearchTerm} />
       {/* TODO:created a sort by gifs and stickers in addition a pagination */}
       {/* <button
