@@ -24,18 +24,17 @@ export const MainInputSeach = ({ onNewSearchTerm }) => {
             onSubmit={onSubmit}        
             >
             <div className="relative w-auto">
-                <div className="absolute inset-y-0 right-0 outline-none rounded-md bg-gray-700 flex  justify-center items-center w-14  pointer-events-none">
-                <FontAwesomeIcon className='text-gray-50 text-xl' icon={faSearch}/>
+                <div className=" absolute inset-y-0 right-0 outline-none rounded-md bg-gray-700 flex  justify-center items-center w-8 md:w-14  pointer-events-none">
+                <FontAwesomeIcon className='text-gray-50  md:text-lg lg:text-2xl text-xs' icon={faSearch}/>
 				</div>      
                 <input
                     type="text"
                     className="
                      rounded-md border bg-gray-100
-                     placeholder-gray-500 
-                     border-gray-400 px-3 py-3 text-gray-900
-                     focus:z-10
-                        focus:outline-none sm:text-xl 
-                        block w-full  pl-10 p-2.5
+                     placeholder-gray-500 placeholder
+                     border-gray-400 px-3 py-1 md:py-3 text-gray-900
+                     focus:z-10 focus:outline-none text-xs md:text-xl 
+                        block w-full md:pl-5 p-2.5 
                     "
                     placeholder="Search all the GIFs and Stickers"
                     value={inputValue}

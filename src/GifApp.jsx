@@ -19,7 +19,7 @@ export const GifApp = () => {
           key={searchTerm}
           searchTerm={ searchTerm}
         />              
-      }
+    }
     </Fragment>      
     
   )

@@ -1,20 +1,20 @@
 
 import React, { Fragment } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+import { faEllipsisVertical, faBars } from '@fortawesome/free-solid-svg-icons'
 export const NavBarComponent = () => {
     return (
         <Fragment>
-                <nav className="bg-none mb-10 ">
+                <nav className="bg-none mb-10">
                     <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8"/>
                         <div className="relative flex items-center justify-between h-16 align-middle">
                         <div className="flex items-center justify-start flex-1 align-middle sm:items-stretch sm:justify-start ">
-                            <div className="flex items-center flex-shrink-0 text-gray-700 font-mono">
-                            <img className="block w-auto h-10 lg:hidden" src="/src/assets/logo.svg" alt="logo"/>
-                            <img className="hidden w-auto h-10 lg:block" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black text-5xl">GIPHY</span>
+                        <div className="flex items-center flex-shrink-0 text-gray-700 font-mono">
+                            <img className="block w-auto sm:h-7 h-5  lg:hidden" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black sm:text-3xl text-xl block lg:hidden">GIPHY</span>
+                            <img className="hidden  w-auto h-10 lg:block" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black text-5xl hidden lg:block">GIPHY</span>
                             </div>
                             <div className="flex space-x-4 py-7">
-                            <div className="hidden sm:ml-6 sm:flex space-x-5  text-gray-700 font-mono text-xl ">
+                            <div className="hidden md:ml-6 md:flex xl:space-x-8 lg:space-x-4 space-x-3 lg:text-2xl text-gray-700 font-mono text-lg ">
 
                                 <div className='w-max '>
                                     <a href="#" className="px-3 py-1  font-medium  hover:bg-gray-700 hover:text-gray-100" aria-current="page">Reactions</a>
@@ -47,35 +47,30 @@ export const NavBarComponent = () => {
                         <div className="absolute inset-y-0 right-0 flex items-center justify-end space-x-0 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
                
 
-                            <div className="flex items-center justify-end sm:hidden">
+                        <div className="flex items-center justify-end space-x-1 md:hidden">
+                            <button className="min-w-auto w-8 h-8   bg-gray-100 text-gray-700 hover:bg-gray-500 hover:text-gray-100  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                            
 
-                            <button type="button" className="inline-flex items-center justify-center p-2 rounded-full text-gray-50 hover:bg-gray-600 hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                                <span className="sr-only">Open main menu</span>
-  
-                                <svg className="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                                </svg>
-                  
-                                <svg className="hidden w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" width="1.5" stroke="currentColor" aria-hidden="true">
-                                <path d="M6 18L18 6M6 6l12 12" />
-                                </svg>
+                            <button className="min-w-auto w-8 h-8  bg-gray-600 text-gray-50 hover:bg-gray-500 hover:text-gray-200  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
+                            <FontAwesomeIcon icon={ faBars }/>
                             </button>
                             </div>
                         </div>
                     </div>
               
-                    <div className="sm:hidden" id="mobile-menu">
+                    <div className="md:hidden bg-gray-100 shadow-md rounded-md"  id="mobile-menu">
                         <div className="px-2 pt-2 pb-3 space-y-1">
-                        <a href="#" className="block px-3 py-2 text-base font-medium bg-gray-600 rounded-md text-gray-50" aria-current="page">Reactions</a>
+                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700  hover:bg-gray-600 hover:text-gray-100 focus:bg-gray-700 focus:text-gray-100" aria-current="page">Reactions</a>
 
-                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-50 hover:bg-gray-600 hover:text-gray-200">Entretaiment</a>
+                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:bg-gray-600 hover:text-gray-100  focus:bg-gray-700 focus:text-gray-100">Entretaiment</a>
 
-                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-50 hover:bg-gray-600 hover:text-gray-200">Sports</a>
+                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:bg-gray-600 hover:text-gray-100  focus:bg-gray-700 focus:text-gray-100">Sports</a>
 
-                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-50 hover:bg-gray-600 hover:text-gray-200">Stickers</a>
-                        <hr/>
-                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-50 hover:bg-gray-600 hover:text-gray-200">Artists</a>
-
+                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:bg-gray-600 hover:text-gray-100  focus:bg-gray-700 focus:text-gray-100">Stickers</a>
+                        
+                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:bg-gray-600 hover:text-gray-100  focus:bg-gray-700 focus:text-gray-100">Artists</a>
                         </div>
                  </div>
             </nav>
