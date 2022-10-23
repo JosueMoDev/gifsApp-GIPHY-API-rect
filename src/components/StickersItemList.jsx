@@ -13,7 +13,7 @@ export const StickersItemList = ({ searchTerm }) => {
                               {searchTerm}
                               <p className="ml-1 text-lg font-medium
                                text-gray-700">
-                                  { gifsList.length } Stickers
+                                  { stickersList.length } Stickers
                               </p>
                           </h2>
   

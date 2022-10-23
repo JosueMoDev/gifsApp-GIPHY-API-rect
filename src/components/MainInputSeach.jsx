@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 export const MainInputSeach = ({ onNewSearchTerm }) => {
-    const [inputValue, setInputValue] = useState('')
+    const [inputValue, setInputValue] = useState('');
     
     const onInputChange = ({ target }) => setInputValue(target.value);
     const onSubmit = (event) => {
