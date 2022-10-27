@@ -3,7 +3,7 @@ export const getItemList = async (searchTerm) => {
     const BaseUrl = "https://api.giphy.com/v1"
     const ApiKEy = "J9Y4XtJfVVNaoadCwYwAofFqkoaGjG8W";
     const gifsUrl = `${BaseUrl}/gifs/search?api_key=${ApiKEy}&q=${searchTerm}`
-    const stickersUrl = `${BaseUrl}/stickers/search?api_key=${ApiKEy}&q=${searchTerm}&limit=all`
+    const stickersUrl = `${BaseUrl}/stickers/search?api_key=${ApiKEy}&q=${searchTerm}`
 
 
     const gifs = await fetch(gifsUrl);
