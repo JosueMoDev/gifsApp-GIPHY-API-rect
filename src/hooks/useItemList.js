@@ -3,7 +3,7 @@ import { getItemList } from "../helpers";
 
 export const useItemList = (searchTerm) => {
     const [gifsList, setGifsList] = useState([]);
-    const [stickersList, setStickersList] = useState([])
+    const [stickersList, setStickersList] = useState([]);
     useEffect(() => { 
         getItemList(searchTerm).
             then(({ gifsList, stickersList }) => {
@@ -18,3 +18,5 @@ export const useItemList = (searchTerm) => {
         stickersList
     }
 }
+
+

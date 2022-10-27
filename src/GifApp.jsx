@@ -1,5 +1,5 @@
 import { Fragment, React, useState } from 'react'
-import { MainInputSeach, GridItemList, NavBarComponent } from "./components";
+import { MainInputSeach, GridComponent, NavBarComponent } from "./components";
 
 export const GifApp = () => {
     const [ searchTerm, setSearchTerm] = useState([])
@@ -15,7 +15,7 @@ export const GifApp = () => {
       <NavBarComponent/>
       <MainInputSeach onNewSearchTerm={onSearchTerm} />       
       { 
-        <GridItemList
+        <GridComponent
           key={searchTerm}
           searchTerm={ searchTerm}
         />              

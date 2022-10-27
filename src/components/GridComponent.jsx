@@ -1,11 +1,11 @@
 import { Fragment, React, useState } from 'react';
-import { GifsItemList, StickersItemList } from "../components";
+import { GifsItemList, StickersItemList, MediaContainer } from ".";
 import { Gif } from '@mui/icons-material';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
-import { DefautlGifs } from "./DefaultGitfsComponent";
 
-export const GridItemList = ({ searchTerm }) => {
+
+export const GridComponent= ({ searchTerm }) => {
     const [by, setBy] = useState('gifs');
     const onButtonClick = ({ target }) => setBy(target.value);
     return (
@@ -40,7 +40,7 @@ export const GridItemList = ({ searchTerm }) => {
           
         </div>
         { by==='stickers'? <StickersItemList searchTerm={searchTerm}/> : <GifsItemList searchTerm={searchTerm}/> }
-       </>): <DefautlGifs/>
+       </>): <MediaContainer />
      
         } 
         </Fragment>

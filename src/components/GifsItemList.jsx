@@ -3,7 +3,7 @@ import { useItemList } from "../hooks";
 import { NoSearchRosultFound } from "./NoSearchRosultFound";
 
 export const GifsItemList = ({searchTerm }) => {
-    const { gifsList } = useItemList(searchTerm)
+    const { gifsList } = useItemList(searchTerm);
   return (
       
     <Fragment>
