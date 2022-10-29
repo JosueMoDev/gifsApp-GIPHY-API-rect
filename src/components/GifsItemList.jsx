@@ -9,20 +9,20 @@ export const GifsItemList = ({searchTerm }) => {
     <Fragment>
          
         {gifsList.length>0 ? (
-            <div className="bg-gray-100 rounded-md shadow-lg capitalize ">
+            <div className="bg-trasparent  capitalize ">
                 <div className="mx-auto max-w-2xl py-16 px-4 sm:py-15 sm:px-6 lg:max-w-7xl lg:px-8">
-                        <h2 className="text-4xl font-bold tracking-tight text-gray-700 flex items-end ">
+                        <h2 className="text-4xl font-bold tracking-tight text-gray-50 flex items-end ">
                             {searchTerm}
-                            <p className="ml-1 text-lg font-medium
-                             text-gray-700">
+                            <p className="ml-2 mb-1 text-sm font-semibold
+                             text-gray-50">
                                 { gifsList.length} Gifs
                             </p>
                         </h2>
 
-                    <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8 capitalize">
+                    <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-4 capitalize">
                     {gifsList.map(({ id, title, url }) => (
                         <div key={id} className="group relative">
-                        <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80">
+                        <div className="min-h-60 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-60">
                             <img
                             src={url}
                             alt={title}

@@ -18,13 +18,13 @@ export const MainInputSeach = ({ onNewSearchTerm }) => {
 
     return (
         <Fragment>
-        <div className=" flex my-3">
+        <div className=" flex  mx-5">
             <form
             className='w-full'        
             onSubmit={onSubmit}        
             >
             <div className="relative w-auto">
-                <div className=" absolute inset-y-0 right-0 outline-none rounded-md bg-gray-700 flex  justify-center items-center w-8 md:w-14  pointer-events-none">
+                <div className="absolute inset-y-0 right-0 outline-none rounded-md bg-gradient-to-l from-pink-500 via-red-400 to-red-500 flex  justify-center items-center w-8 md:w-14  pointer-events-none">
                 <FontAwesomeIcon className='text-gray-50  md:text-lg lg:text-2xl text-xs' icon={faSearch}/>
 				</div>      
                 <input

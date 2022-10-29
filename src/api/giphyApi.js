@@ -5,10 +5,17 @@ const DEFAUL_PARAMS = {
     api_key: REACT_APP_GIPHY_API_KEY,
   
 }
-export const fetchTendringResponse = (category) => {
-    return api.get(category, {
+export const fetchTendringResponse = () => {
+    return api.get("trending", {
         basaUrl: GIPHY_BASE_URL,
         params: { ...DEFAUL_PARAMS, limit:7 }
+    });
+};
+
+export const fetchAnArtist = () => {
+    return api.get("trending", {
+        basaUrl: GIPHY_BASE_URL,
+        params: { ...DEFAUL_PARAMS, limit:10 }
     });
 };
 export const fetchByArtisResponse = (q) => {
