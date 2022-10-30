@@ -1,15 +1,21 @@
 import { Fragment, React, useState } from 'react';
-import { GifsItemList, StickersItemList, MediaContainer } from ".";
+import { useItemList} from "../hooks";
+import { GifsItemList, StickersItemList, MediaContainer, TagRelatedComponent } from ".";
 
-export const GridComponent= ({ searchTerm }) => {
+export const GridComponent = ({ searchTerm }) => {
+    const { gifsList, stickersList, tagsList } = useItemList(searchTerm);
+    const { gifs, total_gifs } = gifsList
+    const { stickers, total_stickers } = stickersList
+
     const [by, setBy] = useState('gifs');
     const onButtonClick = ({ target }) => setBy(target.value);
     return (
         <Fragment>
         {searchTerm.length>0 ? (
-         <>       
-         <div className="flex bg-transparent p-2 w-min  space-x-0">
-            <button className="min-w-28 w-28 h-10 text-500 rounded-full p-2 font-semibold
+         <>  
+         <TagRelatedComponent  data={ [total_gifs, total_stickers, by, searchTerm, tagsList]} />  
+         <div className="flex bg-transparent p-2 w-min mx-3 space-x-0">
+            <button className="min-w-28 w-24 h-8 text-sm rounded-full  font-semibold
              text-gray-50  bg-gradient-to-l from-blue-700 via-violet-600 to-indigo-700
              focus:bg-indigo-500 focus:text-white
              
@@ -18,10 +24,10 @@ export const GridComponent= ({ searchTerm }) => {
             value={'gifs'}
             onClick={onButtonClick}
             >
-            Gifs                
+            GIFs                
             </button>
                         
-            <button className="min-w-28 w-28 h-10 text-500 rounded-full  p-2 font-semibold
+            <button className="min-w-28 w-24 h-8 text-sm rounded-full  font-semibold
              text-gray-500  bg-transparent 
              active:text-white active:bg-gradient-to-l from-blue-700 via-violet-600 to-indigo-700
            
@@ -34,7 +40,7 @@ export const GridComponent= ({ searchTerm }) => {
             
           
         </div>
-        { by==='stickers'? <StickersItemList searchTerm={searchTerm}/> : <GifsItemList searchTerm={searchTerm}/> }
+                    {by === 'stickers' ? <StickersItemList stickersData={[stickers, searchTerm]} /> : <GifsItemList data={ [gifs, searchTerm] } /> }
        </>): <MediaContainer />
      
         } 

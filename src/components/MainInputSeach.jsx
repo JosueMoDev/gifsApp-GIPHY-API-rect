@@ -18,7 +18,7 @@ export const MainInputSeach = ({ onNewSearchTerm }) => {
 
     return (
         <Fragment>
-        <div className=" flex  mx-5">
+        <div className="flex mx-5">
             <form
             className='w-full'        
             onSubmit={onSubmit}        
