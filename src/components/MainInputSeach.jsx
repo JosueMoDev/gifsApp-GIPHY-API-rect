@@ -1,21 +1,17 @@
-import { React, Fragment } from 'react'
-import { useState } from 'react'
+import { React, Fragment, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 export const MainInputSeach = ({ onNewSearchTerm }) => {
-    const [inputValue, setInputValue] = useState('');
-    
+    const [inputValue, setInputValue] = useState(''); 
     const onInputChange = ({ target }) => setInputValue(target.value);
     const onSubmit = (event) => {
         event.preventDefault();
         const input = inputValue.trim().toLowerCase();
-
         if (input.length <= 1) return;
 
         onNewSearchTerm(input)
         setInputValue('');
     }
-
     return (
         <Fragment>
         <div className="flex mx-5">
@@ -40,8 +36,7 @@ export const MainInputSeach = ({ onNewSearchTerm }) => {
                     value={inputValue}
                     onChange={ onInputChange }
                 />
-            </div>
-                    
+            </div>     
             </form>
         </div>
     </Fragment>  

@@ -6,7 +6,14 @@ export const GifApp = () => {
     const onSearchTerm = (newSearchTerm) => { 
   
         if (searchTerm.includes( newSearchTerm.toLowerCase())) return;
-        setSearchTerm([newSearchTerm])
+        setSearchTerm(newSearchTerm)
+    }
+  // FIXME:Sobreescriber el componente genera un warning debemos refactorizar condigo para que esto funcione correctamente 
+  const onNewSearchTerm = (searchTerm) => { 
+    if (searchTerm) {
+        setSearchTerm(searchTerm)
+         
+       }
     }
   
   return (
@@ -17,7 +24,7 @@ export const GifApp = () => {
       { 
         <GridComponent
           key={searchTerm}
-          searchTerm={ searchTerm}
+          data={ [searchTerm, onNewSearchTerm]}
         />              
     }
     </Fragment>      

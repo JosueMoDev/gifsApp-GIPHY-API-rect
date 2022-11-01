@@ -7,8 +7,8 @@ export const StickersItemList = ({ stickersData }) => {
         <Fragment>
         {(!stickers)
             ? null
-                :stickers.length > 0 ? (  
-                    <div className="bg-trasparent  capitalize ">
+            : stickers.length > 0
+                ? (  <div className="bg-trasparent  capitalize ">
                         <div className="mx-auto max-w-2xl sm:py-15 sm:px-5 lg:max-w-7xl lg:px-5">
                             <div className="grid grid-cols-1 gap-y-10 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-4 capitalize">
                             {stickers.map(({ id, title, url }) => (
@@ -33,9 +33,9 @@ export const StickersItemList = ({ stickersData }) => {
                             </div>
                         </div>
                     </div>
-                ) : stickers.length===0 && searchTerm.length>0 ? <NoSearchRosultFound searchTerm={searchTerm} /> : null
+                )
+                : stickers.length === 0 && searchTerm.length > 0 ? <NoSearchRosultFound searchTerm={searchTerm} /> : null
             }
     </Fragment>
     )
 }
-

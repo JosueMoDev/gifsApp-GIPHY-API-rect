@@ -4,7 +4,7 @@ import { randomizeData } from "../helpers";
 
 export const useGetGifsByArtist = () => { 
   const [artist, setArtist] = useState([])
-// FIXME: some artis has any gifs on their profies, becase of that in artiscomponent we could shown any gif
+// FIXME: some artis has any gifs on their profies, becase of that in artiscomponent we could shown any gif, And make a request twice generate a warning at module url
   const getGifsByArtist = async () => { 
     const artistsAPIresponse = await fetchAnArtist();
     const artistList = artistsAPIresponse.data.data.map(({ user }) => user);

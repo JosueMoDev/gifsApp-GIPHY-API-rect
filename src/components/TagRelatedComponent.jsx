@@ -1,11 +1,10 @@
 import { Fragment, useState} from 'react'
 
-export const TagRelatedComponent = ({data}) => {
-    const [total_gifs, total_stickers, by, searchTerm, tagsList] = data
+export const TagRelatedComponent = ({ data }) => {
+    const [total_gifs, total_stickers, by, searchTerm, tagsList, onNewSearchTerm] = data
     const [searchByTag, setSearchByTag] = useState();
     const onButtonClick = ({ target }) => setSearchByTag(target.value);
-
-    //TODO: send searchByTag 
+    onNewSearchTerm(searchByTag)
     return (
       <Fragment>
         <div className='flex items-center justify-between'>    
@@ -23,7 +22,6 @@ export const TagRelatedComponent = ({data}) => {
                     <button key={name} className="min-w-fit min-h-fit px-3 h-7 text-sm rounded-full italic font-base
                         text-white hover:text-emerald-500  bg-gray-800 text-center"
                           value={name}
-                        //TODO: future => must search tag   
                         onClick={onButtonClick}
                       >
                         #{name}
