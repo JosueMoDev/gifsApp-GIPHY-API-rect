@@ -1,10 +1,9 @@
 import { Fragment, useState} from 'react'
 
 export const TagRelatedComponent = ({ data }) => {
-    const [total_gifs, total_stickers, by, searchTerm, tagsList, onNewSearchTerm] = data
-    const [searchByTag, setSearchByTag] = useState();
-    const onButtonClick = ({ target }) => setSearchByTag(target.value);
-    onNewSearchTerm(searchByTag)
+    const [total_gifs, total_stickers, by, searchTerm, tagsList, onSearchTerm] = data
+    const onButtonClick = ({ target }) => onSearchTerm(target.value);
+    
     return (
       <Fragment>
         <div className='flex items-center justify-between'>    

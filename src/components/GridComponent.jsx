@@ -3,7 +3,7 @@ import { useItemList} from "../hooks";
 import { GifsItemList, StickersItemList, MediaContainer, TagRelatedComponent } from ".";
 
 export const GridComponent = ({ data }) => {
-    const [searchTerm, onNewSearchTerm] = data
+    const [searchTerm, onSearchTerm] = data
     
     const { gifsList, stickersList, tagsList } = useItemList(searchTerm);
     const { gifs, total_gifs } = gifsList
@@ -16,7 +16,7 @@ export const GridComponent = ({ data }) => {
         <Fragment>
         {searchTerm.length>0 ? (
          <>  
-         <TagRelatedComponent data={ [total_gifs, total_stickers, by, searchTerm, tagsList, onNewSearchTerm]} />  
+         <TagRelatedComponent data={ [total_gifs, total_stickers, by, searchTerm, tagsList, onSearchTerm]} />  
          <div className="flex bg-transparent p-2 w-min mx-3 space-x-0">
             <button className="min-w-28 w-24 h-8 text-sm rounded-full  font-semibold
              text-gray-50  bg-gradient-to-l from-blue-700 via-violet-600 to-indigo-700

@@ -1,5 +1,3 @@
-import { data } from "autoprefixer";
-
 export const getItemList = async (searchTerm) => { 
     const BaseUrl = "https://api.giphy.com/v1"
     const ApiKEy = "J9Y4XtJfVVNaoadCwYwAofFqkoaGjG8W";
