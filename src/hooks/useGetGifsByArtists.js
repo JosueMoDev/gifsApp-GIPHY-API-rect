@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchAnArtist, fetchByArtisResponse } from "../api";
+import { fetchAnArtist, fetchByArtisResponse, fetchGetStickers } from "../api";
 import { randomizeData } from "../helpers";
 
 export const useGetGifsByArtist = () => { 
@@ -22,7 +22,7 @@ export const useGetGifsByArtist = () => {
   }
   
   useEffect(() => {
-      getGifsByArtist();
-    }, [])
+    getGifsByArtist();
+  }, [])
   return { artist }
 }

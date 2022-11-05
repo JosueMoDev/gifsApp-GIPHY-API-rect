@@ -4,7 +4,7 @@ import axios from "axios";
 const axiosParams = {
   // Set different base URL based on the environment
   baseURL:
-    process.env.NODE_ENV === "development" ? "https://api.giphy.com/v1/gifs" : "/",
+    process.env.NODE_ENV === "development" ? "https://api.giphy.com/v1" : "/",
   // Alternative if you have more environments
   // baseURL: process.env.VUE_APP_API_BASE_URL
 };

@@ -1,14 +1,13 @@
 import { Fragment, React, useState } from 'react';
-import { useItemList } from "../hooks";
+import { useGetResposeBySearchTerm } from "../hooks";
 import { GifsItemContainer, StickersItemContainer, MediaContainer, TagRelatedComponent,ButtonSwichGifsAndStickers } from ".";
 
 export const GridComponent = ({ data }) => {
     const [searchTerm, onSearchTerm] = data
     
-    const { gifsList, stickersList, tagsList } = useItemList(searchTerm);
+    const { gifsList, stickersList, tagsList } = useGetResposeBySearchTerm(searchTerm);
     const { gifs, total_gifs } = gifsList
     const { stickers, total_stickers } = stickersList
-    
    
     const [by, setBy] = useState('gifs');
     const onButtonClick = ({ target }) => setBy(target.value);    
