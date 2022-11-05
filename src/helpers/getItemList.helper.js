@@ -11,7 +11,8 @@ export const getItemList = async (searchTerm) => {
     const gifs = gifsData.data.map(item => ({
         id: item.id,
         title: item.title,
-        url: item.images.original.url
+        url: item.images.original.url,
+        type: item.type
     }));
     const   gifsList = { gifs:gifs, total_gifs: gifsData.pagination.total_count}
     
@@ -21,7 +22,8 @@ export const getItemList = async (searchTerm) => {
     const  stickers = stickersData.data.map(item => ({
         id: item.id,
         title: item.title,
-        url: item.images.original.url
+        url: item.images.original.url,
+        type:item.type
     }));
     const   stickersList = { stickers:stickers, total_stickers: stickersData.pagination.total_count}
 

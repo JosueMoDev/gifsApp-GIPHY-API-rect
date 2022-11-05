@@ -24,3 +24,6 @@ export const fetchByArtisResponse = (q) => {
         params: { ...DEFAUL_PARAMS, q, limit:3 }
     });
 };
+export const fetchAddToFavorites = (q) => {
+
+};

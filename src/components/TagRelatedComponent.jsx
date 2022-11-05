@@ -1,4 +1,4 @@
-import { Fragment, useState} from 'react'
+import { Fragment} from 'react'
 
 export const TagRelatedComponent = ({ data }) => {
     const [total_gifs, total_stickers, by, searchTerm, tagsList, onSearchTerm] = data
@@ -11,7 +11,7 @@ export const TagRelatedComponent = ({ data }) => {
                 <h2 className="text-4xl font-bold tracking-tight text-gray-50 flex items-end capitalize ">
                     {searchTerm}
                     <p className="ml-2 mb-1 text-sm font-semibold
-                    text-gray-50">
+                    text-gray-400">
                         { (by==='gifs')? (total_gifs+' GIFs'): (total_stickers+' Stickers') }
                     </p>
                 </h2>
