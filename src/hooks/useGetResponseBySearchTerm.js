@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react";
 import { fetchGetStickers, fetchGetGifs, fetchGetTagsRelated } from "../api";
 
-
 export const useGetResposeBySearchTerm = (searchTerm) => {
     const [gifsList, setGifsList] = useState([]);
     const [stickersList, setStickersList] = useState([]);
     const [tagsList, setTagsList] = useState([]);
-
 
     const getGifs = async () => { 
         const { data } = await fetchGetGifs(searchTerm);
@@ -14,7 +12,9 @@ export const useGetResposeBySearchTerm = (searchTerm) => {
             id: gif.id,
             title: gif.title,
             url: gif.images.original.url,
-            type: gif.type
+            type: gif.type,
+            isFavorite: false
+
         }));
         const gifsList = { gifs: gifs, total_gifs: data.pagination.total_count }
         setGifsList(gifsList);
@@ -25,7 +25,8 @@ export const useGetResposeBySearchTerm = (searchTerm) => {
             id: sticker.id,
             title: sticker.title,
             url: sticker.images.original.url,
-            type: sticker.type
+            type: sticker.type,
+            isFavorite: false
         }));
         const stickerList = { stickers: stickers, total_stickers: data.pagination.total_count }
         setStickersList(stickerList);
@@ -36,22 +37,12 @@ export const useGetResposeBySearchTerm = (searchTerm) => {
             name: tag.name
         }));
         setTagsList(tagsList);
-        
     }
-
-
     useEffect(() => { 
         getStickers();
         getGifs();
         getTags();
-
     }, [])
 
-    return {
-        gifsList,
-        stickersList,
-        tagsList
-    }
+    return { gifsList, stickersList, tagsList }
 }
-
-

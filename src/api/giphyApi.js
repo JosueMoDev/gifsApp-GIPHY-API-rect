@@ -36,16 +36,11 @@ export const fetchTendringResponse = () => {
     });
 };
 
-export const fetchAnArtist = () => {
+
+export const fetchByArtisResponse = () => {
     return api.get("gifs/trending", {
-        baseUrl: GIPHY_BASE_URL,
-        params: { ...DEFAUL_PARAMS, limit:10 }
-    });
-};
-export const fetchByArtisResponse = (q) => {
-    return api.get("gifs/search", {
         baseUrl:GIPHY_BASE_URL,
-        params: { ...DEFAUL_PARAMS, q, limit:3 }
+        params: { ...DEFAUL_PARAMS, limit:3, offset:100 }
     });
 };
 export const fetchAddToFavorites = (q) => {

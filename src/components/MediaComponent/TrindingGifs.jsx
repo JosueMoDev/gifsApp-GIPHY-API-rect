@@ -14,7 +14,7 @@ export const TrindingGifs = () => {
                             src={url}
                             alt={title}
                             className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                />
+                            />
                         </div>
                     ))
                 }

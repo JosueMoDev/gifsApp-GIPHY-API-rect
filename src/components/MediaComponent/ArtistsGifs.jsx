@@ -3,10 +3,11 @@ import { useGetGifsByArtist } from '../../hooks';
 import Carousel from 'react-material-ui-carousel'
 
 export const ArtistsGifs = () => {
-    const { artist } = useGetGifsByArtist(); 
+  const { artist } = useGetGifsByArtist(); 
+  console.log(artist)
   return (
     <Fragment>
-        <Carousel className=''>
+        <Carousel>
               <div className="flex flex-cols-1 gap-y-0 gap-x-1 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-1 capitalize">
                 {   
                     artist.map(({ id, title, url }) => (

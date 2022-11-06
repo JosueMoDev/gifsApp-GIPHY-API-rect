@@ -1,6 +1,6 @@
 import { AddToFavorite } from '.';
 export const GifsItemList = ({ gifs }) => {
- 
+  console.log(gifs)
   return (
     <>
         <div className="bg-trasparent  capitalize ">
