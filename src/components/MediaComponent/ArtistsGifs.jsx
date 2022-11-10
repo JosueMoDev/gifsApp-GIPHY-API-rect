@@ -4,7 +4,6 @@ import Carousel from 'react-material-ui-carousel'
 
 export const ArtistsGifs = () => {
   const { artist } = useGetGifsByArtist(); 
-  console.log(artist)
   return (
     <Fragment>
         <Carousel>

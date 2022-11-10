@@ -9,6 +9,7 @@ export const MediaContainer = () => {
      <Fragment>
         {
         <div className="bg-transparent capitalize ">
+          
           <div className='mx-5 mt-10'>
             <div className='flex items-center content-center pt-5'>
                 <FontAwesomeIcon className='text-blue-600  text-2xl pr-2' icon={faArrowTrendUp} />
@@ -18,6 +19,7 @@ export const MediaContainer = () => {
             </div>
             <TrindingGifs/>  
           </div>
+
           <div className='mx-5 mt-15'>
             <div className='flex items-center content-center lg:pt-10'>
                 <FontAwesomeIcon className='text-pink-600 font-bold text-2xl pr-2' icon={faBoltLightning}/>
@@ -27,6 +29,7 @@ export const MediaContainer = () => {
             </div>
             <ArtistsGifs/>  
           </div>
+
           <div className='mx-5 mt-15'>
             <div className='flex items-center content-center lg:pt-10'>
               <WebStoriesIcon sx={{ color: '#6d28d9' }}  />
@@ -36,6 +39,7 @@ export const MediaContainer = () => {
             </div>
             <StoriesContainer/>  
           </div>
+
         </div>
         }
      </Fragment>

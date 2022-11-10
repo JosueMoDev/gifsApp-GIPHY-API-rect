@@ -8,15 +8,17 @@ export const useGetResposeBySearchTerm = (searchTerm) => {
 
     const getGifs = async () => { 
         const { data } = await fetchGetGifs(searchTerm);
+        const allFavorites = localStorage.getItem('allFavorites');
+
         const gifs = data.data.map(gif => ({
             id: gif.id,
             title: gif.title,
             url: gif.images.original.url,
             type: gif.type,
-            isFavorite: false
+            isFavorite:(allFavorites.includes(gif.id)) ? true : false
 
         }));
-        const gifsList = { gifs: gifs, total_gifs: data.pagination.total_count }
+        const gifsList = { gifs:gifs, total_gifs: data.pagination.total_count }
         setGifsList(gifsList);
     }
     const getStickers = async () => { 
