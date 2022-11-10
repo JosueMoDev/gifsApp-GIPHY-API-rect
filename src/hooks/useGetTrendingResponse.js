@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { fetchTendringResponse } from "../api";
-import { randomizeData } from "../helpers";
 
 export const useGetTrendingResponse = () => { 
   const [trending, setTrending] = useState([]);  
@@ -13,7 +12,7 @@ export const useGetTrendingResponse = () => {
         url: item.images.downsized.url,
       }));
       
-      setTrending(randomizeData(trending));
+      setTrending(trending);
     };
 
     useEffect(() => {
