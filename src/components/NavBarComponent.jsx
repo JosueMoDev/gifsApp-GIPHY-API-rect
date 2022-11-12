@@ -1,7 +1,8 @@
 
 import React, { Fragment } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEllipsisVertical, faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { FlyOutButtonToggle } from './FlyOutButtonToggle'
 export const NavBarComponent = () => {
     return (
         <Fragment>
@@ -37,8 +38,7 @@ export const NavBarComponent = () => {
                                     <p className='bg-gradient-to-l from-teal-600 via-blue-600 to-cyan-700 h-1'></p>
                                 </div>
                                 <div className='w-max'>
-                                    <a href="#" className="px-3 py-2  font-bold  text-white hover:bg-gradient-to-l from-cyan-600 via-sky-500 to-sky-600"><FontAwesomeIcon icon={faEllipsisVertical}/></a>
-                                    <p className='bg-gradient-to-l from-teal-700 via-blue-700 to-cyan-800 h-1'></p>
+                                    <FlyOutButtonToggle/>
                                 </div>
 
                             </div>
@@ -46,16 +46,15 @@ export const NavBarComponent = () => {
                         </div>
                         <div className="absolute inset-y-0 right-0 flex items-center justify-end space-x-0 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
                
+                            <div className="flex items-center justify-end space-x-1 md:hidden">
+                                <button className="min-w-auto w-8 h-8   bg-gray-100 text-gray-700 hover:bg-gray-500 hover:text-gray-100  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
+                                icon missing
+                                </button>
+                                
 
-                        <div className="flex items-center justify-end space-x-1 md:hidden">
-                            <button className="min-w-auto w-8 h-8   bg-gray-100 text-gray-700 hover:bg-gray-500 hover:text-gray-100  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                            </button>
-                            
-
-                            <button className="min-w-auto w-8 h-8  bg-gray-600 text-gray-50 hover:bg-gray-500 hover:text-gray-200  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
-                            <FontAwesomeIcon icon={ faBars }/>
-                            </button>
+                                <button className="min-w-auto w-8 h-8  bg-gray-600 text-gray-50 hover:bg-gray-500 hover:text-gray-200  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
+                                <FontAwesomeIcon icon={ faBars }/>
+                                </button>
                             </div>
                         </div>
                     </div>
