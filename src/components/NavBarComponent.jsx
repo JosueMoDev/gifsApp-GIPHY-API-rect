@@ -1,7 +1,7 @@
 
 import React, { Fragment } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import { FlyOutButtonToggle } from './FlyOutButtonToggle'
 export const NavBarComponent = () => {
     return (
@@ -48,7 +48,7 @@ export const NavBarComponent = () => {
                
                             <div className="flex items-center justify-end space-x-1 md:hidden">
                                 <button className="min-w-auto w-8 h-8   bg-gray-100 text-gray-700 hover:bg-gray-500 hover:text-gray-100  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
-                                icon missing
+                                    <FontAwesomeIcon icon={ faEllipsisVertical }/> 
                                 </button>
                                 
 
