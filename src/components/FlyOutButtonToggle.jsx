@@ -24,7 +24,7 @@ export const FlyOutButtonToggle = () => {
               onMouseEnter={() => onHover(open, "onMouseEnter")}
               onMouseLeave={() => onHover(open, "onMouseLeave")}
             >
-              <Popover.Button className="border-none ring-0" ref={buttonRef}>
+              <Popover.Button className=" focus:outline-none" ref={buttonRef}>
                 <a onClick={() => handleClick(open)} className="px-3 py-2  font-bold  text-white hover:bg-gradient-to-l from-cyan-600 via-sky-500 to-sky-600">
                 <FontAwesomeIcon className="text-white" icon={ faEllipsisVertical }/>
                 </a>
