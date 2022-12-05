@@ -6,7 +6,6 @@ const init = () => {
 export const useAllFavorites = () => {
  
     const [ allFavorites, dispatch ] = useReducer( allFavoritesReducer, [], init );
-    console.log(allFavorites);
     useEffect(() => {
       localStorage.setItem('allFavorites', JSON.stringify( allFavorites ) );
     }, [allFavorites])

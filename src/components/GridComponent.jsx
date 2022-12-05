@@ -1,29 +1,23 @@
-import { Fragment, React, useState } from 'react';
+
 import { useGetResposeBySearchTerm } from "../hooks";
 import { GifsItemContainer, StickersItemContainer, MediaContainer, TagRelatedComponent,ButtonSwichGifsAndStickers } from ".";
+import { useSelector } from 'react-redux';
 
-export const GridComponent = ({ data }) => {
-    const [searchTerm, onSearchTerm] = data
-    
-    const { gifsList, stickersList, tagsList } = useGetResposeBySearchTerm(searchTerm);
-    const { gifs, total_gifs } = gifsList
-    const { stickers, total_stickers } = stickersList
-   
-    const [by, setBy] = useState('gifs');
-    const onButtonClick = ({ target }) => setBy(target.value);    
+export const GridComponent = () => {
+    const { isSearchingByGifs, searchTerm } = useGetResposeBySearchTerm();    
     return (
-        <Fragment>
-            {searchTerm.length > 0
-                ?   (<>  
-                        <TagRelatedComponent data={ [total_gifs, total_stickers, by, searchTerm, tagsList, onSearchTerm]} />  
-                        <ButtonSwichGifsAndStickers onButtonClick={onButtonClick} />
-                        {by === 'stickers'
-                            ?<StickersItemContainer stickersData={[stickers, searchTerm]} />
-                            : <GifsItemContainer data={[gifs, searchTerm]} />
+        <>
+            {(searchTerm)
+                ? (<>  
+                        <TagRelatedComponent />  
+                        <ButtonSwichGifsAndStickers />
+                        {   (isSearchingByGifs)
+                            ? <GifsItemContainer />
+                            :<StickersItemContainer />
                         }
                     </>)
                 :<MediaContainer />
             } 
-        </Fragment>
+        </>
   )
 }

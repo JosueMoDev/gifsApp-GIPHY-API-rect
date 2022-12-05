@@ -1,21 +1,29 @@
-import { React, Fragment, useState } from 'react'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { useGetResposeBySearchTerm } from '../hooks'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
-export const MainInputSeach = ({ onNewSearchTerm }) => {
-    const [inputValue, setInputValue] = useState(''); 
-    const onInputChange = ({ target }) => setInputValue(target.value);
+export const MainInputSeach = () => {
+    const { startSearching, searchTerm } = useGetResposeBySearchTerm();
     
+    const [inputValue, setInputValue] = useState();
+
+    useEffect(() => {
+        setInputValue(searchTerm)
+    }, [searchTerm])
+    
+    const onInputChange = ({ target }) => setInputValue(target.value);
     const onSubmit = (event) => {
         event.preventDefault();
         const input = inputValue.trim().toLowerCase();
         if (input.length <= 1) return;
-
-        onNewSearchTerm(input)
-        setInputValue('');
+        if (searchTerm === inputValue.toLowerCase()) return;
+        startSearching(input)
     }
     return (
-        <Fragment>
+        <>
             <div className="flex mx-5">
                 <form className='w-full' onSubmit={onSubmit} >
                     <div className="relative w-auto">
@@ -39,6 +47,6 @@ export const MainInputSeach = ({ onNewSearchTerm }) => {
                     </div>     
                 </form>
             </div>
-        </Fragment>  
+        </>  
   )
 }
