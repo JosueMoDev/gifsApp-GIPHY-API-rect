@@ -5,17 +5,17 @@ import { useAllFavorites } from '../hooks';
 
 export const AddToFavorite = ({ itemData }) => {
 
-    const { handleAddToFavorites, handleDeleteToFavorites } = useAllFavorites()
+    const { startingToAddFavorite, startingToDeleteFavorite } = useAllFavorites()
     
     return (
         <>
-            <div className='absolute top-0 left-12 m-1  hover:opacity-80 hover:animate-ping'>
+            <div className='absolute top-0 right-2 m-1  hover:opacity-80 hover:animate-ping '>
                 {(!itemData.isFavorite)
-                    ?<IconButton onClick={() => handleAddToFavorites(itemData)}>
+                    ?<IconButton onClick={() => startingToAddFavorite(itemData)}>
                         <FavoriteIcon sx={{ color:'white' }} />
                     </IconButton>
                     :
-                    <IconButton onClick={() => handleDeleteToFavorites(itemData.id)}>
+                    <IconButton onClick={() => startingToDeleteFavorite(itemData.id)}>
                         <FavoriteIcon sx={{ color: pink[400] }} />
                     </IconButton>
                 } 

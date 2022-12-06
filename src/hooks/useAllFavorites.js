@@ -1,38 +1,47 @@
 import { useEffect, useReducer } from 'react';
-import { allFavoritesReducer } from '../pages/allFavoritesReducer';
-const init = () => {
-    return JSON.parse(localStorage.getItem('allFavorites')) || [];
-}
+import { useDispatch, useSelector } from 'react-redux';
+import { onAddToFavorites, onProccessGifs, onProccessStickers, onDeleteToFavoties } from '../store';
+
 export const useAllFavorites = () => {
- 
-    const [ allFavorites, dispatch ] = useReducer( allFavoritesReducer, [], init );
+
+    const dispatch = useDispatch();
+    const { gifsProccessed, stickersProccessed, allFavorites} = useSelector(state => state.favorites);
+    const { gifs, stickers } = useSelector(state => state.search);
+    
     useEffect(() => {
-      localStorage.setItem('allFavorites', JSON.stringify( allFavorites ) );
+        dispatch(onProccessGifs(gifs))
+        dispatch(onProccessStickers(stickers))
     }, [allFavorites])
+
+    useEffect(() => {
+        dispatch(onProccessGifs(gifs))
+    }, [gifs])
+
+    useEffect(() => {
+        dispatch(onProccessStickers(stickers))
+    }, [stickers])
+
+    
+    
     
 
-    const handleAddToFavorites = (newFavorite) => {
-        console.log("el favorite",newFavorite)
-        const action = {
-            type: '[FAVORITES] Add Favorite',
-            payload: newFavorite
-        }
 
-        dispatch( action );
+    const startingToAddFavorite = (item) => { 
+        dispatch(onAddToFavorites(item));
     }
-
-    const handleDeleteToFavorites = ( id ) => {
-        dispatch({
-            type: '[FAVORITES] Remove Favorite',
-            payload: id
-        });
+    const startingToDeleteFavorite = (item) => { 
+        dispatch(onDeleteToFavoties(item));
     }
-
 
     return {
-        allFavorites,
-        handleAddToFavorites,
-        handleDeleteToFavorites
+        // * PROPERTIES
+        gifsProccessed,
+        stickersProccessed,
+     
+        // * METHODS
+        startingToAddFavorite,
+        startingToDeleteFavorite
+
     }
   
 }

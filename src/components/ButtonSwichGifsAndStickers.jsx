@@ -1,4 +1,3 @@
-import React from 'react'
 import { useGetResposeBySearchTerm } from '../hooks'
 import 'animate.css';
 

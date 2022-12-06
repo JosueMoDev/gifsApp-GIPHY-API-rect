@@ -5,7 +5,9 @@ export const searchSlice = createSlice({
         isSearching: false,
         searchTerm:'',
         gifs: [],
+        total_gifs: null,
         stickers: [],
+        total_stickers:null,
         tags: [],
         favorites: [],
         isSearchingByGifs: true,
@@ -16,13 +18,16 @@ export const searchSlice = createSlice({
             state.searchTerm = payload;
         },
         onSetGifsData: (state, { payload }) => { 
-            state.gifs = payload;
+            state.gifs = [...payload.gifs];
+            state.total_gifs = payload.total_gifs;
         },
         onSetStickerDate: (state, { payload }) => { 
-            state.stickers = payload;
+            state.stickers = [...payload.stickers];
+            state.total_stickers = payload.total_stickers;
         },
         onSetTagsRelated: (state, { payload }) => { 
-            state.tags = payload;
+            state.tags = [...payload];
+            state.isSearching = false;
         },
         onChangeView: (state) => {
             state.isSearchingByGifs = !state.isSearchingByGifs;

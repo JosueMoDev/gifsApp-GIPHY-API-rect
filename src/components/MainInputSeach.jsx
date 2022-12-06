@@ -8,7 +8,7 @@ import { useEffect } from 'react'
 export const MainInputSeach = () => {
     const { startSearching, searchTerm } = useGetResposeBySearchTerm();
     
-    const [inputValue, setInputValue] = useState();
+    const [inputValue, setInputValue] = useState(searchTerm);
 
     useEffect(() => {
         setInputValue(searchTerm)

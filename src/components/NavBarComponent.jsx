@@ -11,7 +11,7 @@ export const NavBarComponent = () => {
                         <div className="relative flex items-center justify-between h-16 align-middle">
                         <div className="flex items-center justify-start flex-1 align-middle sm:items-stretch sm:justify-start ">
                         <div className="flex items-center flex-shrink-0 text-white font-mono">
-                            <img className="block w-auto sm:h-7 h-5  lg:hidden" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black sm:text-3xl text-xl block lg:hidden">GIPHY</span>
+                            <img className="block w-auto sm:h-7 h-5  lg:hidden" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black sm:text-3xl  text-xl block lg:hidden">GIPHY</span>
                             <img className="hidden  w-auto h-8 lg:block" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black text-3xl hidden lg:block">GIPHY</span>
                             </div>
                             <div className="flex space-x-4 py-7">

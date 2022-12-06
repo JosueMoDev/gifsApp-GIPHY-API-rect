@@ -1,10 +1,9 @@
 import { useGetResposeBySearchTerm } from '../hooks';
 
-
 export const TagRelatedComponent = () => {
 
-  const { gifs, stickers, tags, searchTerm, startSearching } = useGetResposeBySearchTerm();
-     const onButtonClick = ({ target }) => startSearching(target.value);
+  const { tags, searchTerm, startSearching, total_gifs, total_stickers, isSearchingByGifs } = useGetResposeBySearchTerm();
+  const onButtonClick = ({ target }) => startSearching(target.value);
   return (
       <>
         <div className='flex items-center justify-between'>    
@@ -13,7 +12,7 @@ export const TagRelatedComponent = () => {
                     {searchTerm}
                     <p className="ml-2 mb-1 text-sm font-semibold
                     text-gray-400">
-                        {gifs.total_gifs+' GIFs'}
+                        { isSearchingByGifs ? total_gifs +' GIFs' : total_stickers+' Stickers'}
                     </p>
                 </h2>
             </div>

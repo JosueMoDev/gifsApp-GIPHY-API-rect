@@ -7,7 +7,7 @@ export const useGetResposeBySearchTerm = () => {
 
     const dispatch = useDispatch();
 
-    const { searchTerm, gifs, stickers, tags, isSearchingByGifs } = useSelector( state => state.search)
+    const { searchTerm, gifs, stickers, tags, isSearchingByGifs, total_gifs, total_stickers } = useSelector( state => state.search)
 
     const startSearching = ( searchTerm ) => { 
         dispatch(onSearching(searchTerm));
@@ -19,15 +19,13 @@ export const useGetResposeBySearchTerm = () => {
 
     const getGifs = async () => { 
         const { data } = await fetchGetGifs(searchTerm);
-        const allFavorites = localStorage.getItem('allFavorites');
 
         const gifs = data.data.map(gif => ({
             id: gif.id,
             title: gif.title,
             url: gif.images.original.url,
             type: gif.type,
-            // TODO: make suro to muttate array on favorite-slice
-            isFavorite:(allFavorites.includes(gif.id)) ? true : false
+            
 
         }));
         const gifsList = { gifs:gifs, total_gifs: data.pagination.total_count }
@@ -44,6 +42,7 @@ export const useGetResposeBySearchTerm = () => {
         }));
         const stickerList = { stickers: stickers, total_stickers: data.pagination.total_count }
         dispatch(onSetStickerDate(stickerList));
+        
     }
     const getTags = async () => { 
         const { data } = await fetchGetTagsRelated(searchTerm);
@@ -60,7 +59,7 @@ export const useGetResposeBySearchTerm = () => {
 
     return {
         // ? PROPERTIES
-        gifs, stickers, tags, searchTerm, isSearchingByGifs,
+        gifs, stickers, tags, searchTerm, isSearchingByGifs, total_gifs, total_stickers,
 
         // ? METHODS
         startSearching,
