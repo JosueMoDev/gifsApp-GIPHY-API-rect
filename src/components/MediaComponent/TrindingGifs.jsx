@@ -17,9 +17,9 @@ export const TrindingGifs = () => {
                             alt={title}
                             className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                             />
-                            <div className='absolute top-0'>
+                            {/* <div className='absolute top-0'>
                                 <AddToFavorite itemData={{id, url}}/>
-                            </div>
+                            </div> */}
                         </div>
                     ))
                 }

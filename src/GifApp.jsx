@@ -1,4 +1,7 @@
-import { MainInputSeach, GridComponent, NavBarComponent } from "./components";
+import { MainInputSeach, NavBarComponent } from "./components";
+import { AppRouter } from "./router/AppRouter";
+
+
 
 export const GifApp = () => {
 
@@ -6,7 +9,7 @@ export const GifApp = () => {
     <>
       <NavBarComponent/>
       <MainInputSeach  />       
-      <GridComponent/>              
+      <AppRouter />              
     </>      
     
   )

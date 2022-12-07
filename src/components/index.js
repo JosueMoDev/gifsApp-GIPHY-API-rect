@@ -1,10 +1,9 @@
 import { faP } from '@fortawesome/free-solid-svg-icons'
 
-export * from './GridComponent'
 export * from './MainInputSeach'
 export * from './NavBarComponent'
 export * from './NoSearchRosultFound'
-export * from './MediaContainer'
+export * from '../pages/HomeComponent'
 export * from './TagRelatedComponent'
 export * from './AddToFavorite'
 export * from './ButtonSwichGifsAndStickers'

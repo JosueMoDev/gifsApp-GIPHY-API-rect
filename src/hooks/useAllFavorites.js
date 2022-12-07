@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react';
+import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onAddToFavorites, onProccessGifs, onProccessStickers, onDeleteToFavoties } from '../store';
 
@@ -22,9 +22,6 @@ export const useAllFavorites = () => {
     }, [stickers])
 
     
-    
-    
-
 
     const startingToAddFavorite = (item) => { 
         dispatch(onAddToFavorites(item));

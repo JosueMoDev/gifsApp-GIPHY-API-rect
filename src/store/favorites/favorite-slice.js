@@ -16,17 +16,19 @@ export const favoritesSlice = createSlice({
            
         },
         onProccessGifs: (state, { payload }) => { 
-            state.gifsProccessed = payload.map(gif => ({
+           const gifs = payload.map(gif => ({
                 ...gif,
                 isFavorite: state.allFavorites.some( item => (item.id === gif.id ? true : false ))
 
-            }))
+           }))
+           state.gifsProccessed = gifs
         },
         onProccessStickers: (state, { payload }) => { 
-            state.stickersProccessed = payload.map(sticker => ({
+             const stickers = payload.map(sticker => ({
                 ...sticker,
                 isFavorite: state.allFavorites.some( item => (item.id === sticker.id ? true : false ))
-            }));
+             }));
+            state.stickersProccessed = stickers;
         },
         onDeleteToFavoties: (state, { payload }) => { 
             

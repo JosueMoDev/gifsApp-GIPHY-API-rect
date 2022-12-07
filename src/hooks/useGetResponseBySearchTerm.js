@@ -1,7 +1,7 @@
 import {  useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetStickers, fetchGetGifs, fetchGetTagsRelated } from "../api";
-import { onSearching, onSetGifsData, onSetStickerDate, onSetTagsRelated, onChangeView } from "../store";
+import { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView } from "../store";
 
 export const useGetResposeBySearchTerm = () => {
 
@@ -41,7 +41,7 @@ export const useGetResposeBySearchTerm = () => {
             isFavorite: false
         }));
         const stickerList = { stickers: stickers, total_stickers: data.pagination.total_count }
-        dispatch(onSetStickerDate(stickerList));
+        dispatch(onSetStickerData(stickerList));
         
     }
     const getTags = async () => { 

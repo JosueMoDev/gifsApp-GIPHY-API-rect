@@ -1,10 +1,10 @@
 import { Fragment } from 'react'
-import { TrindingGifs, ArtistsGifs, StoriesContainer } from './MediaComponent';
+import { TrindingGifs, ArtistsGifs, StoriesContainer } from '../components/MediaComponent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowTrendUp, faBoltLightning} from '@fortawesome/free-solid-svg-icons'
 import WebStoriesIcon from '@mui/icons-material/WebStories';
 
-export const MediaContainer = () => {  
+export const HomeComponent = () => {  
   return (
      <Fragment>
         {

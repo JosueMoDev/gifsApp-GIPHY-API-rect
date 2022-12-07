@@ -4,12 +4,15 @@ import { Provider } from 'react-redux'
 import { GifApp } from './GifApp'
 import { store } from './store'
 import './index.css'
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 
-  <React.StrictMode>
+  // <React.StrictMode>
+  // </React.StrictMode>
     <Provider store={store}>
-      <GifApp/>
+      <BrowserRouter>
+        <GifApp/>
+      </BrowserRouter>
     </Provider>
-  </React.StrictMode>
 )

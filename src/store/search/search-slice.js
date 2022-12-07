@@ -18,10 +18,10 @@ export const searchSlice = createSlice({
             state.searchTerm = payload;
         },
         onSetGifsData: (state, { payload }) => { 
-            state.gifs = [...payload.gifs];
+            state.gifs = payload.gifs;
             state.total_gifs = payload.total_gifs;
         },
-        onSetStickerDate: (state, { payload }) => { 
+        onSetStickerData: (state, { payload }) => { 
             state.stickers = [...payload.stickers];
             state.total_stickers = payload.total_stickers;
         },
@@ -35,4 +35,4 @@ export const searchSlice = createSlice({
 
    }
 });
-export const { onSearching, onSetGifsData, onSetStickerDate, onSetTagsRelated, onChangeView} = searchSlice.actions;
+export const { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView} = searchSlice.actions;
