@@ -1,18 +1,31 @@
+import { useNavigate } from 'react-router-dom'
+import { useGetResposeBySearchTerm } from '../hooks'
 
-import React, { Fragment } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { FlyOutButtonToggle } from './FlyOutButtonToggle'
+
 export const NavBarComponent = () => {
+    const { startCleaningSearch } = useGetResposeBySearchTerm();
+    const navigate = useNavigate();
     return (
-        <Fragment>
+        <>
                 <nav className="bg-none  mx-5">
                     <div className="px-2 mx-auto max-w-7xl sm:px-6 lg:px-8"/>
                         <div className="relative flex items-center justify-between h-16 align-middle">
                         <div className="flex items-center justify-start flex-1 align-middle sm:items-stretch sm:justify-start ">
                         <div className="flex items-center flex-shrink-0 text-white font-mono">
-                            <img className="block w-auto sm:h-7 h-5  lg:hidden" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black sm:text-3xl  text-xl block lg:hidden">GIPHY</span>
-                            <img className="hidden  w-auto h-8 lg:block" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black text-3xl hidden lg:block">GIPHY</span>
+                                <img className="block w-auto sm:h-7 h-5  lg:hidden" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black sm:text-3xl  text-xl block lg:hidden">GIPHY</span>
+                            <a className='cursor-pointer no-underline text-white flex'
+                                onClick={() => {  
+                                    startCleaningSearch();
+                                    navigate('/')}
+                                }
+                                    
+                            >
+                                <img className="hidden  w-auto h-8 lg:block" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black text-3xl hidden lg:block">GIPHY</span>
+                            </a>
                             </div>
                             <div className="flex space-x-4 py-7">
                             <div className="hidden md:ml-6 md:flex xl:space-x-2 lg:space-x-4 space-x-2 lg:text-sm text-gray-700 font-mono text-sm ">
@@ -40,6 +53,18 @@ export const NavBarComponent = () => {
                                 <div className='w-max'>
                                     <FlyOutButtonToggle/>
                                 </div>
+                                <div className='w-max'>
+                                <a 
+                                    className='px-3 py-2 font-bold cursor-pointer text-red-400 hover:text-white hover:bg-gradient-to-l from-cyan-600 via-sky-500 to-sky-600'
+                                    onClick={() => {  
+                                        startCleaningSearch();
+                                        navigate('/pages/favorites')}
+                                    }
+                                >
+                                    <FavoriteIcon sx={{ fontSize:18 }} />
+                                    </a>
+                                    <p className='bg-gradient-to-l from-teal-600 via-blue-600 to-cyan-700 h-1'></p>
+                                </div>
 
                             </div>
                             </div>
@@ -56,6 +81,8 @@ export const NavBarComponent = () => {
                                 <FontAwesomeIcon icon={ faBars }/>
                                 </button>
                             </div>
+                            
+                            
                         </div>
                     </div>
               
@@ -73,7 +100,7 @@ export const NavBarComponent = () => {
                         </div>
                  </div>
             </nav>
-        </Fragment>
+        </>
       
     )
 }

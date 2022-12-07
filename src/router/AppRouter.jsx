@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { useGetResposeBySearchTerm } from "../hooks";
-import { SearchComponent, HomeComponent } from "../pages"
+import { SearchComponent, HomeComponent, CategoriesComponent, FavoritesComponent } from "../pages"
 
 export const AppRouter = () => {
     const { searchTerm, isSearchingByGifs } = useGetResposeBySearchTerm();
@@ -15,7 +15,11 @@ export const AppRouter = () => {
                 </>)
             :(<>
                 <Route path='/' element={<HomeComponent />} />
+                <Route path='/pages/categories/*' element={<CategoriesComponent />} />
+                <Route path='/pages/favorites' element={<FavoritesComponent />} />
+                            
                 <Route path='/*' element={ <Navigate to='/' />} />
+                
                 </>)
             }
         </Routes>

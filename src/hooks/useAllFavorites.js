@@ -34,6 +34,7 @@ export const useAllFavorites = () => {
         // * PROPERTIES
         gifsProccessed,
         stickersProccessed,
+        allFavorites,
      
         // * METHODS
         startingToAddFavorite,

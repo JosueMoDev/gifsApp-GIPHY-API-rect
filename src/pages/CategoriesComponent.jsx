@@ -2,6 +2,10 @@ import React from 'react'
 
 export const CategoriesComponent = () => {
   return (
-    <div>CategoriesComponent</div>
+    <>
+      <h1 className='text-white'>
+        Hola
+      </h1>
+    </>
   )
 }

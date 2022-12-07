@@ -1,7 +1,7 @@
 import {  useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetStickers, fetchGetGifs, fetchGetTagsRelated } from "../api";
-import { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView } from "../store";
+import { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView, onClearSearch } from "../store";
 
 export const useGetResposeBySearchTerm = () => {
 
@@ -15,6 +15,9 @@ export const useGetResposeBySearchTerm = () => {
 
     const startSwitchingButton = () => {
         dispatch(onChangeView());
+    }
+    const startCleaningSearch = () => { 
+        dispatch(onClearSearch());
     }
 
     const getGifs = async () => { 
@@ -63,7 +66,8 @@ export const useGetResposeBySearchTerm = () => {
 
         // ? METHODS
         startSearching,
-        startSwitchingButton
+        startSwitchingButton,
+        startCleaningSearch
 
     }
 }

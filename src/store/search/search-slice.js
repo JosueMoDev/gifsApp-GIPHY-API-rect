@@ -31,8 +31,11 @@ export const searchSlice = createSlice({
         },
         onChangeView: (state) => {
             state.isSearchingByGifs = !state.isSearchingByGifs;
+        },
+        onClearSearch: (state) => { 
+            state.searchTerm = '';
         }
 
    }
 });
-export const { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView} = searchSlice.actions;
+export const { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView, onClearSearch} = searchSlice.actions;
