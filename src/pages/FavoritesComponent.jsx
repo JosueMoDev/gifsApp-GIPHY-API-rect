@@ -1,10 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import { AddToFavorite, NoSearchRosultFound } from '../components';
-import { useAllFavorites } from '../hooks'
+import { useAllFavorites, useGetItemById } from '../hooks'
 
 export const FavoritesComponent = () => {
   const { allFavorites } = useAllFavorites();
+  const { startShowingitem } = useGetItemById();
+  const navigate = useNavigate();
   return (
-    <>
+    <>    
        {(allFavorites.length>0)
                 ?   <>
                     <h1 className='text-3xl text-white text-center mt-5' > All Favorites Added</h1>
@@ -13,8 +16,13 @@ export const FavoritesComponent = () => {
                         <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-4 capitalize">
                             {allFavorites.map( item => (
                               <div key={item.id} className="group relative">
-                                <div className="min-h-60 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-60">
+                                <div className="min-h-full cursor-pointer w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none h-full ">
                                     <img
+                                    onClick={() => {
+                                      startShowingitem(item.id)
+                                      navigate(`/${item.type}/${item.slug}`);
+                                    }
+                                    }
                                     src={item.url}
                                     alt={item.title}
                                     className="h-full w-full object-cover object-center lg:h-full lg:w-full"
@@ -22,7 +30,7 @@ export const FavoritesComponent = () => {
                                 </div>
                         
                                 <div className=''>
-                                <AddToFavorite itemData={item}/>
+                                  <AddToFavorite itemData={item}/>
                                 </div>
                             </div>
                             ))}

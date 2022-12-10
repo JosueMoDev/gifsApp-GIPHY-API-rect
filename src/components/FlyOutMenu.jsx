@@ -15,29 +15,110 @@ export const FlyOutMenu = () => {
               <div className="flex">
                 <div className="absolute inset-x-0 top-full text-lg text-white">
                   <div className="relative p-4 bg-gradient-to-l from-violet-500 via-fuchsia-500 to-fuchsia-500">
-                    <div className="mx-auto max-w-7xl px-10">
-                      <div className="grid grid-cols-1 gap-y-1 gap-x-20 py-8">
-                        <div className=" grid grid-cols-3  space-x-20 gap-x-20  text-md">
+                    <div className="mx-10  max-w-fit px-8 ">
+                      <div className="grid  gap-y-1  py-8">
+                        <div className=" flex flex-cols-4 space-x-20 row-span-4  text-md">
                           <div>
                             <a className="font-bold text-2xl cursor-pointer divide-slate-50 text-gray-50"
                                 onClick={() => {  
                                   startCleaningSearch();
-                                  navigate('/pages/categories')}
-                              }
+                                  navigate('/categories')}
+                                }
                             >Categories</a>
-                            <div  className="border-b border-gray-50 pt-2 w-40"/>
-                            <div className='row-start-1 grid grid-cols-2 text-md' >
-                                <div className='row-start-2 text-md'>
-                                    <ul role="list" aria-labelledby="Clothing-heading" className="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                            <div  className="border-b border-gray-50 pt-2 w-63"/>
+                            <div className='flex flex-cols-2 space-x-10  text-md' >
+                                <div>
+                                    <ul role="list"  className="mt-6 cursor-pointer space-y-6 sm:mt-4 sm:space-y-4">
                                         <li className="flex">
-                                            <a  className="hover:text-gray-200">Tops</a>
+                                            <a  className="hover:text-gray-200 cursor-pointer">GYPHY Studios</a>
                                         </li>
                                         
                                         <li className="flex">
-                                            <a  className="hover:text-gray-200">Pants</a>
+                                          <a className="hover:text-gray-200 cursor-pointer"
+                                            onClick={() => {  
+                                              startCleaningSearch();
+                                              navigate('/categories/animal')}
+                                            }
+                                          >Animal</a>
+                                        </li>
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200 cursor-pointer"
+                                              onClick={() => {  
+                                                startCleaningSearch();
+                                                navigate('/categories/actions')}
+                                              }
+                                            >Actions</a>
+                                        </li>
+                                        
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200 cursor-pointer"
+                                              onClick={() => {  
+                                                startCleaningSearch();
+                                                navigate('categories/anime')}
+                                              }
+                                            >Anime</a>
+                                        </li>
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200 cursor-pointer"
+                                              onClick={() => {  
+                                                startCleaningSearch();
+                                                navigate('/categories/cartoons')}
+                                              }
+                                            >Cartoons</a>
+                                        </li>
+                                        
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200 cursor-pointer "
+                                              onClick={() => {  
+                                                startCleaningSearch();
+                                                navigate('/categories/emotions')}
+                                              }
+                                            >Emotions</a>
                                         </li>
                                     </ul>
                                 </div>
+                                <div >
+                                    <ul role="list" className="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200 cursor-pointer "
+                                              onClick={() => {  
+                                                startCleaningSearch();
+                                                navigate('/categories/food-drink')}
+                                              }
+                                            >Food/Drinks</a>
+                                        </li>
+                                        
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200 cursor-pointer "
+                                              onClick={() => {  
+                                                startCleaningSearch();
+                                                navigate('/categories/gaming')}
+                                              }
+                                            >Gaming</a>
+                                        </li>
+
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200 cursor-pointer"
+                                              onClick={() => {  
+                                                startCleaningSearch();
+                                                navigate('/categories/greatting')}
+                                              }
+                                            >Holiday/Grettings </a>
+                                        </li>
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200 cursor-pointer"
+                                              onClick={() => {  
+                                                startCleaningSearch();
+                                                navigate('/categories/memes')}
+                                              }
+                                            >Memes</a>
+                                        </li>
+
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Clips</a>
+                                        </li>
+                                    </ul>
+                                </div>                
                             </div>                        
               
                           </div>
@@ -47,14 +128,42 @@ export const FlyOutMenu = () => {
                               
                             >
                               Stickers</a>
-                            <div  className="border-b border-gray-50 pt-2 w-40"/>
-                            <ul role="list" aria-labelledby="Accessories-heading" className="mt-6 space-y-6 sm:mt-4 sm:space-y-4 ">
+                            <div  className="border-b border-gray-50 pt-2 w-28"/>
+                            <ul role="list"  className="mt-6 space-y-6 sm:mt-4 sm:space-y-4 ">
                               <li className="flex">
-                                <a href="#" className="hover:text-gray-200">Watches</a>
+                                <a  className="hover:text-gray-200">Originals</a>
                               </li>
 
                               <li className="flex">
-                                <a href="#" className="hover:text-gray-200">Wallets</a>
+                                <a  className="hover:text-gray-200">Trending</a>
+                              </li>
+                              <li className="flex">
+                                <a  className="hover:text-gray-200">Reactions</a>
+                              </li>
+
+                              <li className="flex">
+                                <a  className="hover:text-gray-200">Packs</a>
+                              </li>
+
+                            </ul>
+                          </div>
+                          <div>
+                            <a className="font-bold text-2xl cursor-pointer divide-slate-50 text-gray-50"
+                              
+                            >
+                              Apps</a>
+                            <div  className="border-b border-gray-50 pt-2 w-28"/>
+                            <ul role="list"  className="mt-6 space-y-6 sm:mt-4 sm:space-y-4 ">
+                              <li className="flex">
+                                <a  className="hover:text-gray-200">GIPHY</a>
+                              </li>
+
+                              <li className="flex">
+                                <a  className="hover:text-gray-200">GIPHY World</a>
+                              </li>
+
+                              <li className="flex">
+                                <a  className="hover:text-gray-200">GIPHY Capture</a>
                               </li>
 
                             </ul>
@@ -62,22 +171,60 @@ export const FlyOutMenu = () => {
 
                           <div>
                             <a className="font-bold text-2xl cursor-pointer divide-slate-50 text-gray-50"
-                            onClick={() => {
-                              startCleaningSearch();
-                              navigate('/pages/favorites')
-                            }
-                            }
-                            >Favorites</a>
-                            <div  className="border-b border-gray-50 pt-2"/>
-                            <ul role="list" aria-labelledby="Brands-heading" className="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
-                              <li className="flex">
-                                <a href="#" className="hover:text-gray-200">Re-Arranged</a>
-                              </li>
+                            >About</a>
+                            <div  className="border-b border-gray-50 pt-2 w-63"/>
+                            <div className='row-start-1 flex flex-cols-2 space-x-10  text-md' >
+                                <div>
+                                    <ul  className="mt-6 space-y-6 sm:mt-4 sm:space-y-4 w-fit">
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Team</a>
+                                        </li>
+                                        
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Engneering blog</a>
+                                        </li>
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">GYPHY arts</a>
+                                        </li>
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Studio</a>
+                                        </li>
+                                        
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Developers</a>
+                                        </li>
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Labs</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul role="list" aria-labelledby="Clothing-heading" className="mt-6 space-y-6 sm:mt-4 sm:space-y-4">
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">FAQ</a>
+                                        </li>
 
-                              <li className="flex">
-                                <a href="#" className="hover:text-gray-200">Counterfeit</a>
-                              </li>
-                            </ul>
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Support</a>
+                                        </li>
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Jobs</a>
+                                        </li>
+
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">DCMA</a>
+                                        </li>
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Guidelines</a>
+                                        </li>
+
+                                        <li className="flex">
+                                            <a  className="hover:text-gray-200">Transparency</a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>                
+                            </div> 
                           </div>
                         </div>
                       </div>

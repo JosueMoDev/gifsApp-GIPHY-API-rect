@@ -1,11 +1,14 @@
 import { NoSearchRosultFound } from "./NoSearchRosultFound";
 import { AddToFavorite } from "./";
-import { useAllFavorites, useGetResposeBySearchTerm } from '../hooks';
+import { useAllFavorites, useGetItemById, useGetResposeBySearchTerm } from '../hooks';
+import { useNavigate } from "react-router-dom";
 
 export const GifsItemContainer = () => {
     const { searchTerm } = useGetResposeBySearchTerm();
     const { gifsProccessed } = useAllFavorites();
-    
+    const { startShowingitem } = useGetItemById();
+    const navigate = useNavigate();
+
     return (
         <>
             {(gifsProccessed.length > 0 ) ? 
@@ -17,6 +20,10 @@ export const GifsItemContainer = () => {
                                     <div className="group relative hover:opacity-80  cursor-pointer">
                                         <div className="min-h-60 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200  lg:aspect-none lg:h-80">
                                             <img
+                                                onClick={() => {
+                                                    startShowingitem(gif.id)
+                                                    navigate(`/gifs/${gif.slug}`);
+                                                }}
                                             src={gif.url}
                                             alt={gif.title}
                                             className="h-full w-full object-cover object-center lg:h-full lg:w-full"

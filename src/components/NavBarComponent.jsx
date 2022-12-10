@@ -58,7 +58,7 @@ export const NavBarComponent = () => {
                                     className='px-3 py-2 font-bold cursor-pointer text-red-400 hover:text-white hover:bg-gradient-to-l from-cyan-600 via-sky-500 to-sky-600'
                                     onClick={() => {  
                                         startCleaningSearch();
-                                        navigate('/pages/favorites')}
+                                        navigate('/favorites')}
                                     }
                                 >
                                     <FavoriteIcon sx={{ fontSize:18 }} />

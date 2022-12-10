@@ -11,6 +11,9 @@ export const searchSlice = createSlice({
         tags: [],
         favorites: [],
         isSearchingByGifs: true,
+        item: {},
+        item_id:null,
+        isLoadingItem: false,
     },
     reducers: {
         onSearching: (state, { payload }) => { 
@@ -27,15 +30,31 @@ export const searchSlice = createSlice({
         },
         onSetTagsRelated: (state, { payload }) => { 
             state.tags = [...payload];
-            state.isSearching = false;
         },
         onChangeView: (state) => {
             state.isSearchingByGifs = !state.isSearchingByGifs;
         },
         onClearSearch: (state) => { 
             state.searchTerm = '';
+        },
+        onSearchingItemById: (state, { payload }) => { 
+            state.item_id = payload;
+            state.searchTerm = '';
+         state.gifs = [];
+        },
+        onSetItemTags: (state, { payload }) => { 
+            state.itemTags = payload;
+        },
+        onShowItem: (state, { payload }) => { 
+            state.item = payload;
         }
 
    }
 });
-export const { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView, onClearSearch} = searchSlice.actions;
+export const {
+    onSearching, onSetGifsData,
+    onSetStickerData, onSetTagsRelated,
+    onChangeView, onClearSearch,
+    onShowItem, onSearchingItemById,
+    onSetItemTags
+} = searchSlice.actions;

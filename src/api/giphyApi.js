@@ -5,6 +5,13 @@ const DEFAUL_PARAMS = {
     api_key: REACT_APP_GIPHY_API_KEY
   
 }
+//Get Item By ID
+export const fetchGetItemById = (id) => {
+    return api.get(`gifs/${id}`,{
+        baseUrl: GIPHY_BASE_URL,
+        params: { ...DEFAUL_PARAMS }
+    });
+};
 
 //Get Gifs By Search term
 export const fetchGetGifs = (q) => {
@@ -13,6 +20,8 @@ export const fetchGetGifs = (q) => {
         params: { ...DEFAUL_PARAMS, q, limit:50, offset:1 }
     });
 };
+
+
 
 //Get Stickers By Search term
 export const fetchGetStickers = (q) => {
@@ -43,6 +52,4 @@ export const fetchByArtisResponse = () => {
         params: { ...DEFAUL_PARAMS, limit:3, offset:100 }
     });
 };
-export const fetchAddToFavorites = (q) => {
 
-};
