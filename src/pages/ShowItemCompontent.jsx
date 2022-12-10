@@ -1,9 +1,12 @@
+
 import { AddToFavorite } from "../components";
 import { useGetItemById } from "../hooks";
+
+
 export const ShowItemCompontent = () => {
   const { item } = useGetItemById();
   return (
-    <>
+    <>  
         <div className="flex flex-cols-1 sm:flex-cols-1 lg:flex-cols-3 justify-around xl:gap-x-4 capitalize mt-5">
             <div>
               <h1 className="text-white">hola</h1>
@@ -19,8 +22,8 @@ export const ShowItemCompontent = () => {
                 </div>
         
             </div>
-                <div className='relative top-0'>
-                <AddToFavorite itemData={item}/>
+                <div className='relative top-0 '>
+                 <AddToFavorite itemData={item}/>  
                 </div>
         </div>    
     </>

@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+const searchTerm = JSON.parse(localStorage.getItem('searchTerm'));
 export const searchSlice = createSlice({
     name: 'search',
     initialState: {
         isSearching: false,
-        searchTerm:'',
+        searchTerm:searchTerm||'',
         gifs: [],
         total_gifs: null,
         stickers: [],
@@ -19,6 +20,8 @@ export const searchSlice = createSlice({
         onSearching: (state, { payload }) => { 
             state.isSearching = true;
             state.searchTerm = payload;
+            localStorage.setItem('searchTerm', JSON.stringify(state.searchTerm));
+    
         },
         onSetGifsData: (state, { payload }) => { 
             state.gifs = payload.gifs;

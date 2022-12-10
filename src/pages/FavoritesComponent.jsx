@@ -7,7 +7,7 @@ export const FavoritesComponent = () => {
   const { startShowingitem } = useGetItemById();
   const navigate = useNavigate();
   return (
-    <>    
+    <>   
        {(allFavorites.length>0)
                 ?   <>
                     <h1 className='text-3xl text-white text-center mt-5' > All Favorites Added</h1>

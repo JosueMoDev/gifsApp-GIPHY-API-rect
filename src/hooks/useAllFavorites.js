@@ -5,7 +5,7 @@ import { onAddToFavorites, onProccessGifs, onProccessStickers, onDeleteToFavotie
 export const useAllFavorites = () => {
 
     const dispatch = useDispatch();
-    const { gifsProccessed, stickersProccessed, allFavorites} = useSelector(state => state.favorites);
+    const { gifsProccessed, stickersProccessed, allFavorites } = useSelector(state => state.favorites);
     const { gifs, stickers } = useSelector(state => state.search);
     
     useEffect(() => {
@@ -30,16 +30,18 @@ export const useAllFavorites = () => {
         dispatch(onDeleteToFavoties(item));
     }
 
+
     return {
         // * PROPERTIES
         gifsProccessed,
         stickersProccessed,
         allFavorites,
+   
      
         // * METHODS
         startingToAddFavorite,
-        startingToDeleteFavorite
-
+        startingToDeleteFavorite,
+ 
     }
   
 }

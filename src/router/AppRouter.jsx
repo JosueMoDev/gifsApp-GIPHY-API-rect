@@ -1,17 +1,19 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
-import { useGetResposeBySearchTerm } from "../hooks";
+import {  useGetResposeBySearchTerm } from "../hooks";
 import { SearchComponent, HomeComponent, CategoriesComponent, FavoritesComponent, ShowItemCompontent } from "../pages"
 
 export const AppRouter = () => {
     const { searchTerm } = useGetResposeBySearchTerm();
+    
     const navigate = useNavigate();
     useEffect(() => {
         if(searchTerm.length>0)navigate(`search/${searchTerm}`)
     }, [searchTerm])
     
     return (
-      <>  
+        <>
+      
         <Routes>
             {
                 ( searchTerm.length > 0)

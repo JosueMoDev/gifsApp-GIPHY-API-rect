@@ -6,14 +6,16 @@ export const favoritesSlice = createSlice({
     initialState: {
         allFavorites: allFavorites ||[],
         gifsProccessed:[],
-        stickersProccessed:[]
+        stickersProccessed: []
     },
     
     reducers: {
         onAddToFavorites: (state, { payload }) => { 
-            state.allFavorites = [...state.allFavorites, { ...payload, isFavorite:true }]
-            localStorage.setItem('allFavorites', JSON.stringify(state.allFavorites));
-           
+            if (payload.id) { 
+                console.log('lo imprimi')
+                state.allFavorites = [...state.allFavorites, { ...payload, isFavorite:true }]
+                localStorage.setItem('allFavorites', JSON.stringify(state.allFavorites));
+            }
         },
         onProccessGifs: (state, { payload }) => { 
            const gifs = payload.map(gif => ({
@@ -38,4 +40,4 @@ export const favoritesSlice = createSlice({
         }
    }
 });
-export const { onAddToFavorites, onProccessGifs, onProccessStickers, onDeleteToFavoties } = favoritesSlice.actions;
+export const { onAddToFavorites, onProccessGifs, onProccessStickers, onDeleteToFavoties} = favoritesSlice.actions;
