@@ -18,7 +18,7 @@ export const TagRelatedComponent = () => {
             </div>
             <div className="bg-transparent p-2 w-min mx-3 space-x-2 flex items-center truncate">
                 {tags.map(({ name }) => (
-                    <button key={name} className="min-w-fit min-h-fit px-3 h-7 text-sm rounded-full italic font-base
+                    <button key={name} className="min-w-fit min-h-fit px-3 h-10 text-sm rounded-full italic font-base
                         text-white hover:text-emerald-500  bg-gray-800 text-center"
                           value={name}
                         onClick={onButtonClick}

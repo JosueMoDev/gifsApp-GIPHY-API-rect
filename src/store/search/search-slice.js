@@ -21,17 +21,21 @@ export const searchSlice = createSlice({
             sessionStorage.setItem('searchTerm', JSON.stringify(state.searchTerm));
     
         },
-        onSetGifsData: (state, { payload }) => { 
-            state.gifs = payload.gifs;
-            state.total_gifs = payload.total_gifs;
+        onSetData: (state, { payload }) => {
+            
+            const { gifsList, stickerList, tagsList } = payload
+            // * here set gifs data    
+            state.gifs = gifsList.gifs;
+            state.total_gifs = gifsList.total_gifs;
+
+            // * here set stickers data    
+            state.stickers = stickerList.stickers;
+            state.total_stickers = stickerList.total_stickers;
+
+            // * here set tags data   
+            state.tags = tagsList;
         },
-        onSetStickerData: (state, { payload }) => { 
-            state.stickers = [...payload.stickers];
-            state.total_stickers = payload.total_stickers;
-        },
-        onSetTagsRelated: (state, { payload }) => { 
-            state.tags = [...payload];
-        },
+        
         onChangeView: (state) => {
             state.isSearchingByGifs = !state.isSearchingByGifs;
         },
@@ -50,4 +54,4 @@ export const searchSlice = createSlice({
 
    }
 });
-export const { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView, onClearSearch } = searchSlice.actions;
+export const { onSearching, onSetData, onChangeView, onClearSearch } = searchSlice.actions;

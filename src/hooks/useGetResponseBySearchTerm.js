@@ -1,7 +1,7 @@
 import {  useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetStickers, fetchGetGifs, fetchGetTagsRelated } from "../api";
-import { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView, onClearSearch } from "../store";
+import { onSearching, onSetData, onChangeView, onClearSearch } from "../store";
 
 export const useGetResposeBySearchTerm = () => {
 
@@ -20,10 +20,10 @@ export const useGetResposeBySearchTerm = () => {
         dispatch(onClearSearch());
     }
 
-    const getGifs = async () => { 
-        const { data } = await fetchGetGifs(searchTerm);
-
-        const gifs = data.data.map(gif => ({
+    const getDataBySearchTerm = async () => { 
+        // ? here get Gifs
+        const gifsResponse = await fetchGetGifs(searchTerm);
+        const gifs = gifsResponse.data.data.map(gif => ({
             id: gif.id,
             title: gif.title,
             url: gif.images.original.url,
@@ -32,36 +32,34 @@ export const useGetResposeBySearchTerm = () => {
             
 
         }));
-        const gifsList = { gifs:gifs, total_gifs: data.pagination.total_count }
-        dispatch(onSetGifsData(gifsList));
-    }
-    const getStickers = async () => { 
-        const { data } = await fetchGetStickers(searchTerm);
-        const stickers = data.data.map(sticker => ({
+        const gifsList = { gifs: gifs, total_gifs: gifsResponse.data.pagination.total_count }
+        
+        // ? here get Stickers
+
+        const stickerResponse = await fetchGetStickers(searchTerm);
+        const stickers = stickerResponse.data.data.map(sticker => ({
             id: sticker.id,
             title: sticker.title,
             url: sticker.images.original.url,
             type: sticker.type,
             slug: sticker.slug
         }));
-        const stickerList = { stickers: stickers, total_stickers: data.pagination.total_count }
-        dispatch(onSetStickerData(stickerList));
-        
-    }
-    const getTags = async () => { 
-        const { data } = await fetchGetTagsRelated(searchTerm, 3);
-        const tagsList = data.data.map(tag => ({
+        const stickerList = { stickers: stickers, total_stickers: stickerResponse.data.pagination.total_count }
+
+        //  ? here get tags
+        const  tags  = await fetchGetTagsRelated(searchTerm, 3);
+        const tagsList = tags.data.data.map(tag => ({
             name: tag.name
         }));
-        dispatch(onSetTagsRelated(tagsList));
+
+        dispatch(onSetData({gifsList, stickerList, tagsList}));
     }
+
     useEffect(() => { 
         if (searchTerm !== '') { 
-            getStickers();
-            getGifs();
-            getTags();
+            getDataBySearchTerm();
         }
-        }, [searchTerm])
+    }, [searchTerm])
 
     return {
         // ? PROPERTIES

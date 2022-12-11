@@ -19,18 +19,22 @@ export const favoritesSlice = createSlice({
             }
         },
         onProccessGifs: (state, { payload }) => { 
-           const gifs = payload.map(gif => ({
+     
+        },
+        onProccessData: (state, { payload }) => { 
+         
+            const gifs = payload.gifs.map(gif => ({
                 ...gif,
                 isFavorite: state.allFavorites.some( item => (item.id === gif.id ? true : false ))
 
-           }))
-           state.gifsProccessed = gifs
-        },
-        onProccessStickers: (state, { payload }) => { 
-             const stickers = payload.map(sticker => ({
+            }))
+            
+            const stickers = payload.stickers.map(sticker => ({
                 ...sticker,
                 isFavorite: state.allFavorites.some( item => (item.id === sticker.id ? true : false ))
-             }));
+            }));
+
+            state.gifsProccessed = gifs
             state.stickersProccessed = stickers;
         },
         onDeleteToFavoties: (state, { payload }) => { 
@@ -41,4 +45,4 @@ export const favoritesSlice = createSlice({
         }
    }
 });
-export const { onAddToFavorites, onProccessGifs, onProccessStickers, onDeleteToFavoties} = favoritesSlice.actions;
+export const { onAddToFavorites, onProccessData, onDeleteToFavoties} = favoritesSlice.actions;
