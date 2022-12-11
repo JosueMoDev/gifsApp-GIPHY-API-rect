@@ -19,7 +19,7 @@ export const FavoritesComponent = () => {
                                 <div className="min-h-full cursor-pointer w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none h-full ">
                                     <img
                                     onClick={() => {
-                                      startShowingitem(item.id)
+                                      startShowingitem({ id:item.id, name: item.title })
                                       navigate(`/${item.type}/${item.slug}`);
                                     }
                                     }

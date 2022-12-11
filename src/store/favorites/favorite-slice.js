@@ -6,7 +6,8 @@ export const favoritesSlice = createSlice({
     initialState: {
         allFavorites: allFavorites ||[],
         gifsProccessed:[],
-        stickersProccessed: []
+        stickersProccessed: [],
+     
     },
     
     reducers: {

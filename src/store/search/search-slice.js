@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-const searchTerm = JSON.parse(localStorage.getItem('searchTerm'));
+const searchTerm = JSON.parse(sessionStorage.getItem('searchTerm'));
 export const searchSlice = createSlice({
     name: 'search',
     initialState: {
@@ -12,15 +12,13 @@ export const searchSlice = createSlice({
         tags: [],
         favorites: [],
         isSearchingByGifs: true,
-        item: {},
-        item_id:null,
-        isLoadingItem: false,
+
     },
     reducers: {
         onSearching: (state, { payload }) => { 
             state.isSearching = true;
             state.searchTerm = payload;
-            localStorage.setItem('searchTerm', JSON.stringify(state.searchTerm));
+            sessionStorage.setItem('searchTerm', JSON.stringify(state.searchTerm));
     
         },
         onSetGifsData: (state, { payload }) => { 
@@ -38,26 +36,18 @@ export const searchSlice = createSlice({
             state.isSearchingByGifs = !state.isSearchingByGifs;
         },
         onClearSearch: (state) => { 
+        
             state.searchTerm = '';
-        },
-        onSearchingItemById: (state, { payload }) => { 
-            state.item_id = payload;
-            state.searchTerm = '';
-         state.gifs = [];
-        },
-        onSetItemTags: (state, { payload }) => { 
-            state.itemTags = payload;
-        },
-        onShowItem: (state, { payload }) => { 
-            state.item = payload;
+            state.isSearching = false;
+            state.gifs = [];
+            state.total_gifs = null;
+            state.stickers = [];
+            state.total_stickers = null;
+            state.tags = [];
+           
         }
+
 
    }
 });
-export const {
-    onSearching, onSetGifsData,
-    onSetStickerData, onSetTagsRelated,
-    onChangeView, onClearSearch,
-    onShowItem, onSearchingItemById,
-    onSetItemTags
-} = searchSlice.actions;
+export const { onSearching, onSetGifsData, onSetStickerData, onSetTagsRelated, onChangeView, onClearSearch } = searchSlice.actions;

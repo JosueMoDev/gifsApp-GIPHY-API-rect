@@ -23,7 +23,7 @@ export const StickersItemContainer = () => {
                                 <div className="min-h-full  w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none h-full">
                                     <img
                                     onClick={() => { 
-                                        startShowingitem(sticker.id) 
+                                        startShowingitem({ id:sticker.id, name: sticker.title }) 
                                         navigate(`/stickers/${sticker.slug}`)
                                     }}        
                                     src={sticker.url}

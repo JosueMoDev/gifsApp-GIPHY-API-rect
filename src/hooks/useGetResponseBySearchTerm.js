@@ -8,7 +8,7 @@ export const useGetResposeBySearchTerm = () => {
     const dispatch = useDispatch();
 
     const { searchTerm, gifs, stickers, tags, isSearchingByGifs, total_gifs, total_stickers } = useSelector( state => state.search)
-
+   
     const startSearching = ( searchTerm ) => { 
         dispatch(onSearching(searchTerm));
     }
@@ -49,17 +49,19 @@ export const useGetResposeBySearchTerm = () => {
         
     }
     const getTags = async () => { 
-        const { data } = await fetchGetTagsRelated(searchTerm);
+        const { data } = await fetchGetTagsRelated(searchTerm, 3);
         const tagsList = data.data.map(tag => ({
             name: tag.name
         }));
         dispatch(onSetTagsRelated(tagsList));
     }
     useEffect(() => { 
-        getStickers();
-        getGifs();
-        getTags();
-    }, [searchTerm])
+        if (searchTerm !== '') { 
+            getStickers();
+            getGifs();
+            getTags();
+        }
+        }, [searchTerm])
 
     return {
         // ? PROPERTIES

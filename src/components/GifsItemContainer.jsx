@@ -21,7 +21,7 @@ export const GifsItemContainer = () => {
                                         <div className="min-h-60 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200  lg:aspect-none lg:h-80">
                                             <img
                                                 onClick={() => {
-                                                    startShowingitem(gif.id)
+                                                    startShowingitem({ id:gif.id, name: gif.title })
                                                     navigate(`/gifs/${gif.slug}`);
                                                 }}
                                             src={gif.url}

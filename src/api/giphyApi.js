@@ -30,11 +30,12 @@ export const fetchGetStickers = (q) => {
         params: { ...DEFAUL_PARAMS, q }
     });
 };
+
 //Get Tags Related By Search term
-export const fetchGetTagsRelated = (q) => {
-    return api.get("gifs/search/tags",{
+export const fetchGetTagsRelated = (q, limit) => {
+    return api.get(`tags/related/${q}`,{
         baseUrl: GIPHY_BASE_URL,
-        params: { ...DEFAUL_PARAMS, q }
+        params: { ...DEFAUL_PARAMS, limit }
     });
 };
 
