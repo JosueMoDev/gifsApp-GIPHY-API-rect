@@ -1,5 +1,5 @@
 import { NoSearchRosultFound } from "./NoSearchRosultFound";
-import { AddToFavorite } from "./";
+import { AddToFavorite, CopyToClipBoardButton } from "./";
 import { useAllFavorites, useGetItemById, useGetResposeBySearchTerm } from '../hooks';
 import { useNavigate } from "react-router-dom";
 
@@ -21,7 +21,7 @@ export const GifsItemContainer = () => {
                                         <div className="min-h-60 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200  lg:aspect-none lg:h-80">
                                             <img
                                                 onClick={() => {
-                                                    startShowingitem({ id:gif.id, name: gif.title })
+                                                    startShowingitem({ id:gif.id, name: gif.title, user:gif.user })
                                                     navigate(`/gifs/${gif.slug}`);
                                                 }}
                                             src={gif.url}
@@ -29,7 +29,10 @@ export const GifsItemContainer = () => {
                                             className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                                             />
                                         </div>
-                                        <AddToFavorite itemData={gif}/>
+                                        <div className='absolute top-0 right-2  flex'>
+                                            <CopyToClipBoardButton itemData={{ item:gif, size: 1}}/>
+                                            <AddToFavorite itemData={{ item:gif, size:1.1 }}/>
+                                        </div>
                                     </div>
                                 </div>
                             ))}

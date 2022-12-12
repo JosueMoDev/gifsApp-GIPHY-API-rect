@@ -10,4 +10,7 @@ export * from './ButtonSwichGifsAndStickers'
 export * from './GifsItemContainer'
 export * from './StickersItemContainer'
 export * from './CopyAlertComponent'
+export * from './CopyToClipBoardButton'
+export * from './ShareButton'
+
 

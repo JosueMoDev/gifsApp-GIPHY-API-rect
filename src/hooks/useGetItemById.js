@@ -11,7 +11,8 @@ export const useGetItemById = () => {
     
     const { allFavorites } = useAllFavorites(); 
 
-    const { item, item_id, itemTags, tagsTerms } = useSelector(state => state.showItem);
+    const { item, item_id, itemTags, tagsTerms, user } = useSelector(state => state.showItem);
+ 
     
     const startShowingitem = (item) => { 
         dispatch(onSearchingItemById(item));
@@ -24,7 +25,7 @@ export const useGetItemById = () => {
         const { id, images, title, slug, type } = data.data;
         const { url }=images.downsized
         dispatch(onShowItem({
-            id, url, title, slug, type,
+            id, url, title, slug, type, user,
             isFavorite: allFavorites.some(item => (item.id === id ? true : false))
         }));
 
@@ -36,7 +37,7 @@ export const useGetItemById = () => {
         }));
         dispatch(onSetItemTags(tagsRelated));
     }
-
+    
     useEffect(() => {
         if (item_id){  
             getItemById();
@@ -44,7 +45,13 @@ export const useGetItemById = () => {
         }
     }, [item_id])
 
-
+    useEffect(() => {
+       const  isItemFavorite = {
+            ...item,
+            isFavorite: allFavorites.some( favorite => (favorite.id === item.id ? true : false ))
+        } 
+        dispatch(onShowItem(isItemFavorite));
+    }, [allFavorites])
 
     return {
         // ? PROPERTIES

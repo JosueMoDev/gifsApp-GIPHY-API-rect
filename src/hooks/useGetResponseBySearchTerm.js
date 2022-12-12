@@ -28,7 +28,8 @@ export const useGetResposeBySearchTerm = () => {
             title: gif.title,
             url: gif.images.original.url,
             type: gif.type,
-            slug: gif.slug
+            slug: gif.slug,
+            user: gif.user
             
 
         }));
@@ -42,7 +43,8 @@ export const useGetResposeBySearchTerm = () => {
             title: sticker.title,
             url: sticker.images.original.url,
             type: sticker.type,
-            slug: sticker.slug
+            slug: sticker.slug,
+            user:sticker.user
         }));
         const stickerList = { stickers: stickers, total_stickers: stickerResponse.data.pagination.total_count }
 

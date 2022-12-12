@@ -13,14 +13,12 @@ export const favoritesSlice = createSlice({
     reducers: {
         onAddToFavorites: (state, { payload }) => { 
             if (payload.id) { 
-                console.log('lo imprimi')
+                
                 state.allFavorites = [...state.allFavorites, { ...payload, isFavorite:true }]
                 localStorage.setItem('allFavorites', JSON.stringify(state.allFavorites));
             }
         },
-        onProccessGifs: (state, { payload }) => { 
      
-        },
         onProccessData: (state, { payload }) => { 
          
             const gifs = payload.gifs.map(gif => ({

@@ -13,9 +13,6 @@ export const useAllFavorites = () => {
         dispatch(onProccessData({gifs, stickers}))
     }, [gifs, stickers, allFavorites])
 
-    // useEffect(() => {
-    // }, [stickers])
-
     
 
     const startingToAddFavorite = (item) => { 
