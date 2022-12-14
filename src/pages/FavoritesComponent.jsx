@@ -30,8 +30,8 @@ export const FavoritesComponent = () => {
                                 </div>
                         
                                 <div className='absolute top-0 right-2  flex'>
-                                  <CopyToClipBoardButton itemData={{ item, size: 1}}/>
-                                  <AddToFavorite itemData={{ item, size:1.1 }}/>
+                                  <CopyToClipBoardButton itemData={ item }/>
+                                  <AddToFavorite itemData={{ item:item, size: 1.1}}/>
                                 </div>
                               </div>
                             ))}

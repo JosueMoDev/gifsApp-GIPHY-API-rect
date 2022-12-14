@@ -16,7 +16,15 @@ export const NavBarComponent = () => {
                         <div className="relative flex items-center justify-between h-16 align-middle">
                         <div className="flex items-center justify-start flex-1 align-middle sm:items-stretch sm:justify-start ">
                         <div className="flex items-center flex-shrink-0 text-white font-mono">
+                            <a className='cursor-pointer no-underline text-white flex'
+                                onClick={() => {  
+                                    startCleaningSearch();
+                                    navigate('/')}
+                                }
+                                    
+                            >
                                 <img className="block w-auto sm:h-7 h-5  lg:hidden" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black sm:text-3xl  text-xl block lg:hidden">GIPHY</span>
+                            </a>
                             <a className='cursor-pointer no-underline text-white flex'
                                 onClick={() => {  
                                     startCleaningSearch();

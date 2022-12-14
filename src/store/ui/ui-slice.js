@@ -4,6 +4,7 @@ export const uiSlice = createSlice({
     initialState: {
         isLinkCopid: false,
         isAlertOpen: false,
+        isSharingItem: false,
     },
     reducers: {
         onCopyLink:(state)=> {
@@ -15,7 +16,16 @@ export const uiSlice = createSlice({
         onCloseAlert: (state) => {
             state.isAlertOpen = false;
             state.isLinkCopid = false;
-        } 
+        },
+        onShareItem: (state) => {
+            state.isSharingItem = true;
+        },
+        onCloseSharingWindow: ( state ) => { 
+            state.isSharingItem = false
+        }
    }
 });
-export const { onCopyLink, onShowAlert, onCloseAlert  } = uiSlice.actions;
+export const {
+    onCopyLink, onShowAlert, onCloseAlert,
+    onShareItem, onCloseSharingWindow
+} = uiSlice.actions;

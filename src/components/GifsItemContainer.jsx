@@ -30,8 +30,8 @@ export const GifsItemContainer = () => {
                                             />
                                         </div>
                                         <div className='absolute top-0 right-2  flex'>
-                                            <CopyToClipBoardButton itemData={{ item:gif, size: 1}}/>
-                                            <AddToFavorite itemData={{ item:gif, size:1.1 }}/>
+                                            <CopyToClipBoardButton itemData={ gif }/>
+                                            <AddToFavorite itemData={{ item: gif, size: 1.1}}/>
                                         </div>
                                     </div>
                                 </div>

@@ -5,14 +5,16 @@ import { useSetUi } from '../hooks';
 import { IconButton } from '@mui/material';
 
 export const CopyToClipBoardButton = ({ itemData }) => {
-    const { startCopyLink, isLinkCopid } = useSetUi();
+
+  const { startCopyLink, isLinkCopid} = useSetUi();
+  
   return (
-    <div>   
-        <CopyToClipboard text={`https://media.giphy.com/media/${itemData.item.id}/giphy.gif`}
-            onCopy={() => (!isLinkCopid)&&startCopyLink() }>
-            <IconButton>
-                <FontAwesomeIcon className="text-white" fontSize={`${itemData.size}rem`} icon={ faLink }/>
-            </IconButton>
+    <div>  
+        <CopyToClipboard text={`https://media.giphy.com/media/${itemData.id}/giphy.gif`}
+          onCopy={() => (!isLinkCopid)&&startCopyLink() }>
+              <IconButton>
+                  <FontAwesomeIcon className="text-white" fontSize={'1rem'} icon={ faLink }/>
+              </IconButton>
         </CopyToClipboard>
     </div>
   )

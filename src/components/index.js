@@ -12,5 +12,7 @@ export * from './StickersItemContainer'
 export * from './CopyAlertComponent'
 export * from './CopyToClipBoardButton'
 export * from './ShareButton'
+export * from './ShareComponent'
+export * from './CopyEmbedButton'
 
 

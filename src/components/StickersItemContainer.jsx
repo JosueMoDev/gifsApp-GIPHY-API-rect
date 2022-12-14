@@ -35,8 +35,8 @@ export const StickersItemContainer = () => {
                             
                                     <div key={sticker.name} className='absolute top-0 right-2  flex'>
                                         
-                                        <CopyToClipBoardButton itemData={{ item: sticker, size: 1}}/>
-                                        <AddToFavorite itemData={{ item:sticker, size:1.1 }}/>
+                                        <CopyToClipBoardButton itemData={sticker}/>
+                                        <AddToFavorite itemData={{ item: sticker, size: 1.1} }/>
                                     </div>
                                 </div>
                             ))}
