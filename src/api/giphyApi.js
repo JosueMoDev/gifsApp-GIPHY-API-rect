@@ -1,4 +1,5 @@
 import api from './axios';
+
 const GIPHY_BASE_URL = "https://api.giphy.com/v1";
 const REACT_APP_GIPHY_API_KEY = "J9Y4XtJfVVNaoadCwYwAofFqkoaGjG8W";
 const DEFAUL_PARAMS = {
@@ -54,3 +55,20 @@ export const fetchByArtisResponse = () => {
     });
 };
 
+
+
+//Get Categories
+export const fetchGetCategories = () => {
+    return api.get("gifs/categories",{
+        baseUrl: GIPHY_BASE_URL,
+        params: { ...DEFAUL_PARAMS }
+    });
+};
+
+//Get a single gif by subcategory
+export const fetchGetASingleGifForSubCategory = (q) => {
+    return api.get("gifs/search",{
+        baseUrl: GIPHY_BASE_URL,
+        params: { ...DEFAUL_PARAMS, q, limit:1 }
+    });
+};
