@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-// const categories = JSON.parse(sessionStorage.getItem('categories'));
+const categories = JSON.parse(localStorage.getItem('categories'));
 export const categoriesSlice = createSlice({
     name: 'categories',
     initialState: {
-        categories:  [],
-        subCategories: [],
-        subCategorySelected: null
+        categories: categories || [],
+        subcategories: [],
+        subcategorySelected: null
         
     },
     reducers: {
@@ -13,10 +13,10 @@ export const categoriesSlice = createSlice({
             state.categories = payload;
         },
         onSelectCategory: (state, { payload }) => { 
-            state.subCategorySelected = payload; 
-            state.categories.map(category => (category.name === payload ? state.subCategories =[...category.subcategories ]  : []));
-        }
-        
+            state.subcategorySelected = payload.categy;
+            state.subcategories = payload.subcategories
+            
+        } 
    }
 });
 export const { onLoadCategories, onSelectCategory } = categoriesSlice.actions;
