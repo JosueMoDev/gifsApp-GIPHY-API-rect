@@ -13,7 +13,7 @@ export const categoriesSlice = createSlice({
             state.categories = payload;
         },
         onSelectCategory: (state, { payload }) => { 
-            state.subcategorySelected = payload.categy;
+            state.subcategorySelected = payload.subcategory;
             state.subcategories = payload.subcategories
             
         } 

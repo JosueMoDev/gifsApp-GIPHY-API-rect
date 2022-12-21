@@ -3,7 +3,7 @@ import { useGetItemById, useGetResposeBySearchTerm, useSetUi } from "../hooks";
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
-export const ShowItemCompontent = () => {
+export const ShowItemPage = () => {
   const { startSearching } = useGetResposeBySearchTerm();
   const { item, itemTags } = useGetItemById();
   

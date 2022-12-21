@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { AddToFavorite, CopyToClipBoardButton, NoSearchRosultFound } from '../components';
 import { useAllFavorites, useGetItemById } from '../hooks'
 
-export const FavoritesComponent = () => {
+export const FavoritesPage = () => {
   const { allFavorites } = useAllFavorites();
   const { startShowingitem } = useGetItemById();
   const navigate = useNavigate();

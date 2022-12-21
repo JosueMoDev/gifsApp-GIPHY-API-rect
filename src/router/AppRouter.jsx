@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import {  useGetResposeBySearchTerm } from "../hooks";
-import { SearchComponent, HomeComponent, CategoriesComponent, FavoritesComponent, ShowItemCompontent } from "../pages"
+import { SearchPage, HomePage, CategoriesPage, FavoritesPage, ShowItemPage } from "../pages"
 
 export const AppRouter = () => {
     const { searchTerm } = useGetResposeBySearchTerm();
@@ -18,14 +18,14 @@ export const AppRouter = () => {
             {
                 ( searchTerm.length > 0)
             ? (<>
-                    <Route path='/search/*' element={<SearchComponent />} />
+                    <Route path='/search/*' element={<SearchPage />} />
                     <Route path='/*' element={<Navigate to={`/search/${searchTerm}`} />} />
                 </>)
             :(<>
-                <Route path='/' element={<HomeComponent />} />
-                <Route path='/categories/*' element={<CategoriesComponent />} />
-                <Route path='/*' element={<ShowItemCompontent />} />
-                <Route path='/favorites' element={<FavoritesComponent />} />             
+                <Route path='/' element={<HomePage />} />
+                <Route path='/categories/*' element={<CategoriesPage />} />
+                <Route path='/*' element={<ShowItemPage />} />
+                <Route path='/favorites' element={<FavoritesPage />} />             
                 <Route path='/*' element={ <Navigate to='/' />} />
                 
                 </>)

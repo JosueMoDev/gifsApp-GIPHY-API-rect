@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowTrendUp, faBoltLightning} from '@fortawesome/free-solid-svg-icons'
 import WebStoriesIcon from '@mui/icons-material/WebStories';
 
-export const HomeComponent = () => {  
+export const HomePage = () => {  
   return (
      <Fragment>
         {

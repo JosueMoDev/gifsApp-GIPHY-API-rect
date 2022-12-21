@@ -7,7 +7,7 @@ import { onLoadCategories, onSelectCategory } from "../store";
 export const useGetCategories = () => {
     const dispatch = useDispatch();
 
-    const { categories, subCategories } = useSelector(state => state.categories);
+    const { categories, subcategories, subcategorySelected } = useSelector(state => state.categories);
     
     const startSettingSubCategory = (subcategory) => { 
         categories.some( category => { 
@@ -29,7 +29,7 @@ export const useGetCategories = () => {
 
         }));
 
-        // ! this code works to get the gifs missing at the category request but it was't include cuz the perf
+        // ! this code works to get the gifs missing at the category request but it was't included cuz the perf
         const categories = await Promise.all( resp.map(async ({ subcategories, name, gif }) => { 
             const new_subcategories = [];
             for (const subcategory of subcategories) {
@@ -57,7 +57,8 @@ export const useGetCategories = () => {
     return {
         // ? PROPERTIES
         categories,
-        subCategories,
+        subcategories,
+        subcategorySelected,
 
         // ? METHODS
        startSettingSubCategory

@@ -2,7 +2,7 @@
 import { useGetResposeBySearchTerm } from "../hooks";
 import { GifsItemContainer, StickersItemContainer, TagRelatedComponent,ButtonSwichGifsAndStickers } from "../components";
 
-export const SearchComponent = () => {
+export const SearchPage = () => {
     const { isSearchingByGifs, total_gifs, total_stickers } = useGetResposeBySearchTerm();    
     return (
         <>
