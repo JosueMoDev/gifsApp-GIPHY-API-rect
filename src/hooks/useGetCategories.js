@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {  fetchGetASingleGifForSubCategory, fetchGetCategories } from "../api";
 import { onLoadCategories, onSelectCategory } from "../store";
+import { setSubcategories } from "./helpers/setSubcategories.helper";
 
 export const useGetCategories = () => {
     const dispatch = useDispatch();
@@ -29,19 +30,8 @@ export const useGetCategories = () => {
 
         }));
 
-        // ! this code works to get the gifs missing at the category request but it was't included cuz the perf
-        const categories = await Promise.all( resp.map(async ({ subcategories, name, gif }) => { 
-            const new_subcategories = [];
-            for (const subcategory of subcategories) {
-              
-                const { data } = await fetchGetASingleGifForSubCategory(subcategory.name)
-                const [url] = data.data.map( gif => gif.images.original.url)
-                new_subcategories.push({ name: subcategory.name, gif:url});
-               
-            }
-            const category = { name, subcategories:  new_subcategories , gif }
-            return category
-        }));
+        // ? this code works to get the gifs missing at the category request and the resoult it will be save on local storage
+        const categories = await setSubcategories(resp)
         localStorage.setItem('categories', JSON.stringify(categories));
         dispatch(onLoadCategories(categories));
     }

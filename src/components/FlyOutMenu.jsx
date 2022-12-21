@@ -1,9 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useGetResposeBySearchTerm } from '../hooks';
+import { useGetCategories, useGetResposeBySearchTerm } from '../hooks';
 
 export const FlyOutMenu = () => {
   const { startCleaningSearch } = useGetResposeBySearchTerm();
+  const { startSettingSubCategory } = useGetCategories();
   const navigate = useNavigate();
   return (
     <>
@@ -37,6 +38,7 @@ export const FlyOutMenu = () => {
                                           <a className="hover:text-gray-200 cursor-pointer"
                                             onClick={() => {  
                                               startCleaningSearch();
+                                              startSettingSubCategory("animals")
                                               navigate('/categories/animal')}
                                             }
                                           >Animal</a>
@@ -45,6 +47,7 @@ export const FlyOutMenu = () => {
                                             <a  className="hover:text-gray-200 cursor-pointer"
                                               onClick={() => {  
                                                 startCleaningSearch();
+                                                startSettingSubCategory("actions")
                                                 navigate('/categories/actions')}
                                               }
                                             >Actions</a>
@@ -54,6 +57,7 @@ export const FlyOutMenu = () => {
                                             <a  className="hover:text-gray-200 cursor-pointer"
                                               onClick={() => {  
                                                 startCleaningSearch();
+                                                startSettingSubCategory("anime")
                                                 navigate('categories/anime')}
                                               }
                                             >Anime</a>
@@ -62,6 +66,7 @@ export const FlyOutMenu = () => {
                                             <a  className="hover:text-gray-200 cursor-pointer"
                                               onClick={() => {  
                                                 startCleaningSearch();
+                                                startSettingSubCategory("cartoons & comics")
                                                 navigate('/categories/cartoons')}
                                               }
                                             >Cartoons</a>
@@ -71,6 +76,7 @@ export const FlyOutMenu = () => {
                                             <a  className="hover:text-gray-200 cursor-pointer "
                                               onClick={() => {  
                                                 startCleaningSearch();
+                                                startSettingSubCategory("emotions")
                                                 navigate('/categories/emotions')}
                                               }
                                             >Emotions</a>
@@ -83,6 +89,7 @@ export const FlyOutMenu = () => {
                                             <a  className="hover:text-gray-200 cursor-pointer "
                                               onClick={() => {  
                                                 startCleaningSearch();
+                                                startSettingSubCategory("food & drink")
                                                 navigate('/categories/food-drink')}
                                               }
                                             >Food/Drinks</a>
@@ -92,6 +99,7 @@ export const FlyOutMenu = () => {
                                             <a  className="hover:text-gray-200 cursor-pointer "
                                               onClick={() => {  
                                                 startCleaningSearch();
+                                                startSettingSubCategory("gaming")
                                                 navigate('/categories/gaming')}
                                               }
                                             >Gaming</a>
@@ -101,7 +109,8 @@ export const FlyOutMenu = () => {
                                             <a  className="hover:text-gray-200 cursor-pointer"
                                               onClick={() => {  
                                                 startCleaningSearch();
-                                                navigate('/categories/greatting')}
+                                                startSettingSubCategory("greetings")
+                                                navigate('/categories/greetings')}
                                               }
                                             >Holiday/Grettings </a>
                                         </li>
@@ -109,6 +118,7 @@ export const FlyOutMenu = () => {
                                             <a  className="hover:text-gray-200 cursor-pointer"
                                               onClick={() => {  
                                                 startCleaningSearch();
+                                                startSettingSubCategory("memes")
                                                 navigate('/categories/memes')}
                                               }
                                             >Memes</a>

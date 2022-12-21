@@ -5,7 +5,7 @@ import { CategoriesComponent, SubcategoriesComponent } from './';
 
 export const CategoriesPage = () => {
   const navigate = useNavigate();
-        const { categories,  startSettingSubCategory, subcategorySelected } = useGetCategories();
+  const { categories,  startSettingSubCategory, subcategorySelected } = useGetCategories();
   return (
     <>
       <div className='flex w-12/12 h-96 my-5 mx-5 space-x-5'>
