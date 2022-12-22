@@ -9,9 +9,9 @@ export const CategoriesPage = () => {
   return (
     <>
       <div className='flex w-12/12 h-96 my-5 mx-5 space-x-5'>
-        <div className=' p-5 w-4/12 h-48'>
-          <p className='text-white text-md px-5 my-5 font-semibold'> Categories</p>
-          <ol className='text-white text-md px-5 '>
+        <div className=' pt-5 w-4/12 h-48'>
+          <p className='text-white text-md  my-5 font-semibold'> Categories</p>
+          <ol className='text-white text-md  '>
             {
               categories.map(category => (                
                 <a className='grid cursor-pointer py-1 text-white hover:text-cyan-500'

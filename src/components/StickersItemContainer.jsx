@@ -2,6 +2,7 @@ import { NoSearchRosultFound } from "./NoSearchRosultFound";
 import { AddToFavorite, CopyToClipBoardButton } from './';
 import { useAllFavorites, useGetItemById, useGetResposeBySearchTerm } from "../hooks";
 import { useNavigate } from "react-router-dom";
+import { ImageList, ImageListItem } from "@mui/material";
 
 
 
@@ -16,33 +17,39 @@ export const StickersItemContainer = () => {
         <>
         {(stickersProccessed.length>0)
                 ?
-                    <div className="bg-trasparent  capitalize ">
-                        <div className="mx-auto max-w-2xl sm:py-15 sm:px-5 lg:max-w-7xl lg:px-5">
-                        <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-4 capitalize">
-                            {stickersProccessed.map( sticker => (
-                                <div key={sticker.id} className="group relative">
-                                    <div className="min-h-full  w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none h-full">
-                                        <img
-                                        onClick={() => { 
-                                            startShowingitem({ id:sticker.id, name: sticker.title, user: sticker.user }) 
-                                            navigate(`/stickers/${sticker.slug}`)
-                                        }}        
-                                        src={sticker.url}
-                                        alt={sticker.title}
-                                        className="h-full w-full object-cover object-center lg:h-full lg:w-full cursor-pointer"
-                                        />
-                                    </div>
-                            
-                                    <div key={sticker.name} className='absolute top-0 right-2  flex'>
+                <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%'}}>
+                    {stickersProccessed.map(sticker => (
+                        <ImageListItem key={sticker.id}>
+                            <div>
+                                <img
+                                    src={`${sticker.url}?w=248&fit=crop&auto=format`}
+                                    alt={sticker.title}
+                                    loading="lazy"
+                                    onClick={() => {               
+                                        startShowingitem({ id:sticker.id, name: sticker.title, user:sticker.user })
+                                        navigate(`${sticker.slug}`);
+                                    }}
+                                    style={{
+                                        cursor: 'pointer',
+                                        borderBottomLeftRadius: 4,
+                                        borderBottomRightRadius: 4,
+                                        borderTopLeftRadius: 4,
+                                        borderTopRightRadius: 4,
+                                        display: 'block',
+                                        height: '100%',
+                                        width: '100%',
+                                        backgroundColor:'gray'
                                         
-                                        <CopyToClipBoardButton itemData={sticker}/>
-                                        <AddToFavorite itemData={{ item: sticker, size: 1.1} }/>
-                                    </div>
+                                    }}
+                                />
+                                <div className='absolute top-0 right-2 p-1 flex'>
+                                    <CopyToClipBoardButton itemData={ sticker }/>
+                                    <AddToFavorite itemData={{ item: sticker, size: 1.1}}/>
                                 </div>
-                            ))}
-                        </div>
-                        </div>
-                    </div>      
+                            </div>
+                        </ImageListItem>
+                    ))}
+                </ImageList>     
                 :< NoSearchRosultFound searchTerm={searchTerm} />
         }
     </>

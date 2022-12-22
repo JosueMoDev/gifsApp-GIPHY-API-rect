@@ -1,3 +1,4 @@
+import { ImageList, ImageListItem } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { AddToFavorite, CopyToClipBoardButton, NoSearchRosultFound } from '../components';
 import { useAllFavorites, useGetItemById } from '../hooks'
@@ -8,37 +9,39 @@ export const FavoritesPage = () => {
   const navigate = useNavigate();
   return (
     <>   
-       {(allFavorites.length>0)
-                ?   
-                <div className="bg-trasparent  capitalize py-5 ">
-                      <h1 className='text-3xl text-white text-center my-5' > All Favorites Added</h1>
-                        <div className="mx-auto max-w-2xl sm:py-15 sm:px-5 lg:max-w-7xl lg:px-5">
-                          <div className="grid grid-cols-1 gap-y-4 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-4 capitalize">
-                            {allFavorites.map( item => (
-                              <div key={ item.id} className="group relative">
-                                <div  className="min-h-full cursor-pointer w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none h-full ">
-                                  <img
-                                    onClick={() => {
-                                      startShowingitem({ id:item.id, name: item.title, user:item.user })
-                                      navigate(`/${item.type}/${item.slug}`);
-                                    }
-                                  }
-                                  src={item.url}
-                                  alt={item.title}
-                                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                  />
-                                </div>
-                        
-                                <div className='absolute top-0 right-2  flex'>
-                                  <CopyToClipBoardButton itemData={ item }/>
-                                  <AddToFavorite itemData={{ item:item, size: 1.1}}/>
-                                </div>
-                              </div>
-                            ))}
-                          </div>
+      {(allFavorites.length > 0) &&
+        <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%'}}>
+            {allFavorites.map(favorite => (
+                <ImageListItem key={favorite.id}>
+                    <div>
+                        <img
+                            src={`${favorite.url}?w=248&fit=crop&auto=format`}
+                            alt={favorite.title}
+                            loading="lazy"
+                            onClick={() => {               
+                                startShowingitem({ id:favorite.id, name: favorite.title, user:favorite.user })
+                                navigate(`${favorite.slug}`);
+                            }}
+                            style={{
+                                cursor: 'pointer',
+                                borderBottomLeftRadius: 4,
+                                borderBottomRightRadius: 4,
+                                borderTopLeftRadius: 4,
+                                borderTopRightRadius: 4,
+                                display: 'block',
+                                height: '100%',
+                                width:'100%'
+                                
+                            }}
+                        />
+                        <div className='absolute top-0 right-2 p-1 flex'>
+                            <CopyToClipBoardButton itemData={ favorite }/>
+                            <AddToFavorite itemData={{ item: favorite, size: 1.1}}/>
                         </div>
-                    </div>      
-                :< NoSearchRosultFound/>
+                    </div>
+                </ImageListItem>
+            ))}
+        </ImageList>
         }
     </>
   )

@@ -1,6 +1,7 @@
 import { AddToFavorite, CopyToClipBoardButton, NoSearchRosultFound } from "./";
 import { useAllFavorites, useGetItemById, useGetResposeBySearchTerm } from '../hooks';
 import { useNavigate } from "react-router-dom";
+import { ImageList, ImageListItem } from "@mui/material";
 
 export const GifsItemContainer = () => {
     const { searchTerm } = useGetResposeBySearchTerm();
@@ -10,34 +11,40 @@ export const GifsItemContainer = () => {
 
     return (
         <>
-            {(gifsProccessed.length > 0 ) ? 
-                    <div className="bg-trasparent  capitalize ">
-                    <div className="mx-auto max-w-2xl sm:py-15 sm:px-5 lg:max-w-7xl lg:px-5">
-                        <div className="grid grid-cols-1 gap-y-10 gap-x-4 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-4 capitalize">
-                            {gifsProccessed.map( gif => (
-                                <div key={gif.id}>            
-                                    <div className="group relative hover:opacity-80  cursor-pointer">
-                                        <div className="min-h-60 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200  lg:aspect-none lg:h-80">
-                                            <img
-                                                onClick={() => {
-                                                    startShowingitem({ id:gif.id, name: gif.title, user:gif.user })
-                                                    navigate(`/gifs/${gif.slug}`);
-                                                }}
-                                            src={gif.url}
-                                            alt={gif.title}
-                                            className="h-full w-full object-cover object-center lg:h-full lg:w-full"
-                                            />
-                                        </div>
-                                        <div className='absolute top-0 right-2  flex'>
-                                            <CopyToClipBoardButton itemData={ gif }/>
-                                            <AddToFavorite itemData={{ item: gif, size: 1.1}}/>
-                                        </div>
-                                    </div>
+            {(gifsProccessed.length > 0)
+                ? 
+                <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%'}}>
+                    {gifsProccessed.map(gif => (
+                        <ImageListItem key={gif.id}>
+                            <div>
+                                <img
+                                    src={`${gif.url}?w=248&fit=crop&auto=format`}
+                                    alt={gif.title}
+                                    loading="lazy"
+                                    onClick={() => {               
+                                        startShowingitem({ id:gif.id, name: gif.title, user:gif.user })
+                                        navigate(`${gif.slug}`);
+                                    }}
+                                    style={{
+                                        cursor: 'pointer',
+                                        borderBottomLeftRadius: 4,
+                                        borderBottomRightRadius: 4,
+                                        borderTopLeftRadius: 4,
+                                        borderTopRightRadius: 4,
+                                        display: 'block',
+                                        height: '100%',
+                                        width:'100%'
+                                        
+                                    }}
+                                />
+                                <div className='absolute top-0 right-2 p-1 flex'>
+                                    <CopyToClipBoardButton itemData={ gif }/>
+                                    <AddToFavorite itemData={{ item: gif, size: 1.1}}/>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
-                </div> 
+                            </div>
+                        </ImageListItem>
+                    ))}
+                </ImageList>
                 : <NoSearchRosultFound searchTerm={searchTerm} />
                         
             }
