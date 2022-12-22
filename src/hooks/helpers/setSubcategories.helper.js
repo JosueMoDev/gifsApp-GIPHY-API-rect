@@ -6,7 +6,7 @@ export const setSubcategories = async ( resp) => {
         const new_subcategories = [];
         let i = 0;
         for (const subcategory of subcategories ) {
-            console.log(i++)
+            i++
             if (i < 26) {
                 if (!new_subcategories.some(existets_subcategories => (
                     existets_subcategories.name === subcategory.name ? true : false)

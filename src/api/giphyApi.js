@@ -15,10 +15,10 @@ export const fetchGetItemById = (id) => {
 };
 
 //Get Gifs By Search term
-export const fetchGetGifs = (q) => {
+export const fetchGetGifs = (q, limit) => {
     return api.get("gifs/search",{
         baseUrl: GIPHY_BASE_URL,
-        params: { ...DEFAUL_PARAMS, q, limit:50, offset:1 }
+        params: { ...DEFAUL_PARAMS, q, limit, offset:1 }
     });
 };
 

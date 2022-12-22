@@ -2,6 +2,7 @@ import { AddToFavorite, CopyEmbedButton, ShareButton, ShareComponent } from "../
 import { useGetItemById, useGetResposeBySearchTerm, useSetUi } from "../hooks";
 import { IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { GifsRelated } from "./gifsRelated";
 
 export const ShowItemPage = () => {
   const { startSearching } = useGetResposeBySearchTerm();
@@ -96,7 +97,16 @@ export const ShowItemPage = () => {
               ))
             }
         </div>
+      </div>
+      <div className="grid justify-items-center" >
+        
         {/* //* Gifs related */}
+        <div className=" sm:12/12 w-8/12 grid justify-items-start   my-2">
+          <p className=" text-white text-sm font-mono font-semibold w-full ">Related Gifs</p>
+        </div>
+        <div className="w-8/12 sm:12/12 flex justify-center ">
+          <GifsRelated/>
+        </div>
       </div>
     </>
   )

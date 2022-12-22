@@ -33,7 +33,7 @@ export const useGetResposeBySearchTerm = () => {
             
 
         }));
-        const gifsList = { gifs: gifs, total_gifs: gifsResponse.data.pagination.total_count }
+        const gifsList = { gifs: gifs, total_gifs: gifsResponse.data.pagination?.total_count }
         
         // ? here get Stickers
 
@@ -46,7 +46,7 @@ export const useGetResposeBySearchTerm = () => {
             slug: sticker.slug,
             user:sticker.user
         }));
-        const stickerList = { stickers: stickers, total_stickers: stickerResponse.data.pagination.total_count }
+        const stickerList = { stickers: stickers, total_stickers: stickerResponse.data.pagination?.total_count }
 
         //  ? here get tags
         const  tags  = await fetchGetTagsRelated(searchTerm, 3);
