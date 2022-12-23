@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useGetCategories } from '../hooks'
+import { useGetCategories } from '../../hooks'
 
 export const CategoriesComponent = () => {
   const navigate = useNavigate();

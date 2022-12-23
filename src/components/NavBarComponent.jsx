@@ -5,16 +5,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { FlyOutButtonToggle } from './FlyOutButtonToggle'
+import { IconButton } from '@mui/material';
 
 export const NavBarComponent = () => {
     const { startCleaningSearch } = useGetResposeBySearchTerm();
     const navigate = useNavigate();
     return (
         <>
-                <nav className="bg-none">
-                    <div className="px-2 mx-auto max-w-7xl"/>
-                        <div className="relative flex items-center justify-between h-16 align-middle">
-                        <div className="flex items-center justify-start flex-1 align-middle sm:items-stretch sm:justify-start ">
+            <nav className="bg-none">
+                <div className="px-2 mx-auto max-w-7xl"/>
+                    <div className="relative flex items-center justify-between h-16 align-middle">
+                    <div className="flex items-center justify-start flex-1 align-middle sm:items-stretch sm:justify-start ">
                         <div className="flex items-center flex-shrink-0 text-white font-mono">
                             <a className='cursor-pointer no-underline text-white flex'
                                 onClick={() => {  
@@ -34,8 +35,8 @@ export const NavBarComponent = () => {
                             >
                                 <img className="hidden  w-auto h-8 lg:block" src="/src/assets/logo.svg" alt="logo"/><span className="ml-0 font-black text-3xl hidden lg:block">GIPHY</span>
                             </a>
-                            </div>
-                            <div className="flex space-x-4 py-7">
+                        </div>
+                        <div className="flex space-x-4 py-7">
                             <div className="hidden md:ml-6 md:flex xl:space-x-2 lg:space-x-4 space-x-2 lg:text-sm text-gray-700 font-mono text-sm ">
 
                                 <div className='w-max '>
@@ -75,26 +76,31 @@ export const NavBarComponent = () => {
                                 </div>
 
                             </div>
-                            </div>
-                        </div>
-                        <div className="absolute inset-y-0 right-0 flex items-center justify-end space-x-0 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
-               
-                            <div className="flex items-center justify-end space-x-1 md:hidden">
-                                <button className="min-w-auto w-8 h-8   bg-gray-100 text-gray-700 hover:bg-gray-500 hover:text-gray-100  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
-                                    <FontAwesomeIcon icon={ faEllipsisVertical }/> 
-                                </button>
-                                
-
-                                <button className="min-w-auto w-8 h-8  bg-gray-600 text-gray-50 hover:bg-gray-500 hover:text-gray-200  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
-                                <FontAwesomeIcon icon={ faBars }/>
-                                </button>
-                            </div>
-                            
-                            
                         </div>
                     </div>
+                    <div className="absolute inset-y-0 right-0 flex items-center justify-end space-x-0 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
+            
+                        <div className="flex items-center justify-end space-x-1 md:hidden">
+                            <IconButton
+                                onClick={() => {  
+                                    startCleaningSearch();
+                                    navigate('/favorites')}
+                                }
+                            >
+                                <FavoriteIcon sx={{ fontSize:24, color:'red' }} />
+                            </IconButton>
+                            
+
+                            <button className="min-w-auto w-8 h-8  bg-gray-600 text-gray-50 hover:bg-gray-500 hover:text-gray-200  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
+                            <FontAwesomeIcon icon={ faBars }/>
+                            </button>
+                        </div>
+                        
+                        
+                    </div>
+                </div>
               
-                    <div className="md:hidden bg-gray-100 shadow-md rounded-md"  id="mobile-menu">
+                <div className="md:hidden bg-gray-100 shadow-md rounded-md"  id="mobile-menu">
                         <div className="px-2 pt-2 pb-3 space-y-1">
                         <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700  hover:bg-gray-600 hover:text-gray-100 focus:bg-gray-700 focus:text-gray-100" aria-current="page">Reactions</a>
 
@@ -106,7 +112,7 @@ export const NavBarComponent = () => {
                         
                         <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:bg-gray-600 hover:text-gray-100  focus:bg-gray-700 focus:text-gray-100">Artists</a>
                         </div>
-                 </div>
+                </div>
             </nav>
         </>
       

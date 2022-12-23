@@ -17,7 +17,7 @@ export const StickersItemContainer = () => {
         <>
         {(stickersProccessed.length>0)
                 ?
-                <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%', columnCount:{xs: '1 !important', sm: '2 !important', md: '3 !important', lg: '4 !important'}}}>
+                <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%', columnCount:{xs: '2 !important',  md: '3 !important', lg: '4 !important'}}}>
                     {stickersProccessed.map(sticker => (
                         <ImageListItem key={sticker.id}>
                             <div>
@@ -42,7 +42,7 @@ export const StickersItemContainer = () => {
                                         
                                     }}
                                 />
-                                <div className='absolute top-0 right-2 p-1 flex'>
+                                <div className='absolute top-0 right-0 sm:right-2 sm:p-1 flex'>
                                     <CopyToClipBoardButton itemData={ sticker }/>
                                     <AddToFavorite itemData={{ item: sticker, size: 1.1}}/>
                                 </div>

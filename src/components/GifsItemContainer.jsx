@@ -37,7 +37,7 @@ export const GifsItemContainer = () => {
                                         
                                     }}
                                 />
-                                <div className='absolute top-0 right-0 sm:right-2 p-1 flex'>
+                                <div className='absolute top-0 right-0 sm:right-2 sm:p-1 flex'>
                                     <CopyToClipBoardButton itemData={ gif }/>
                                     <AddToFavorite itemData={{ item: gif, size: 1.1}}/>
                                 </div>

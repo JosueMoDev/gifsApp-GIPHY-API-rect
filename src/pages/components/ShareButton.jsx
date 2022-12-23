@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import { IconButton } from '@mui/material';
-import { useSetUi } from '../hooks';
+import { useSetUi } from '../../hooks';
 
 export const ShareButton = () => {
   const { startSharingItem } = useSetUi();

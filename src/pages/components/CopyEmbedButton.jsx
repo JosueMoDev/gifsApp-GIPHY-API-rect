@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { faCode } from '@fortawesome/free-solid-svg-icons'
-import { useSetUi } from '../hooks';
+import { useSetUi } from '../../hooks';
 import { IconButton } from '@mui/material';
 
 export const CopyEmbedButton = ({ itemData }) => {

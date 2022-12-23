@@ -6,17 +6,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { faLink } from '@fortawesome/free-solid-svg-icons'
 import { Button } from '@mui/material';
-import { useSetUi } from '../hooks';
+import { useSetUi } from '../../hooks';
 
 export const ShareComponent = ({ itemData }) => {
     const { startCopyLink, isLinkCopid} = useSetUi();
   return (
-      <div className=' grid self-center justify-center space-y-2 w-full h-fit px-10 '>
+      <div className=' grid  sm:self-center justify-center space-y-2 w-full h-fit px-10 '>
           <div className='w-full flex justify-center space-x-2'>    
             <TwitterShareButton
                 url={`https://media.giphy.com/media/${itemData.id}/giphy.gif`}
                 >
-                <TwitterIcon size={40}/>
+                  <TwitterIcon size={40} />
             </TwitterShareButton>
 
             <WhatsappShareButton

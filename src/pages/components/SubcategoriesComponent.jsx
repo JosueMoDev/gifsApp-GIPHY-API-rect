@@ -1,4 +1,4 @@
-import { useGetCategories, useGetResposeBySearchTerm } from '../hooks'
+import { useGetCategories, useGetResposeBySearchTerm } from '../../hooks'
 
 export const SubcategoriesComponent = () => {
 

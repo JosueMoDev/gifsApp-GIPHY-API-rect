@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useGetCategories } from '../hooks'
-import { CategoriesComponent, SubcategoriesComponent } from './';
+import { CategoriesComponent, SubcategoriesComponent } from './components';
 
 
 export const CategoriesPage = () => {
