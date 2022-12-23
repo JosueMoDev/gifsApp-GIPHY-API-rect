@@ -13,7 +13,9 @@ export const GifsRelated = () => {
     return (
         <>
             {(itemGifsRelated.length > 0) && 
-                <ImageList variant="masonry" cols={3} gap={8}>
+                <ImageList variant="masonry" gap={8}
+                sx={{ columnCount:{sm: '2 !important', md: '3 !important', lg: '4 !important',}}}
+                >
                     {itemGifsRelated.map(gif => (
                         <ImageListItem key={gif.id}>
                             <div>

@@ -24,7 +24,7 @@ export const MainInputSeach = () => {
     }
     return (
         <>
-            <div className="flex mx-5">
+            <div className="flex">
                 <form className='w-full' onSubmit={onSubmit} >
                     <div className="relative w-auto">
                         <div className="absolute inset-y-0 right-0 outline-none rounded-md bg-gradient-to-l from-pink-500

@@ -10,7 +10,7 @@ export const ButtonSwichGifsAndStickers = () => {
     
     return (
     <>
-        <div className="flex bg-transparent p-2 w-min mx-3 space-x-4">
+        <div className="flex bg-transparent  w-fit  space-x-4">
             <button
                     className={isSearchingByGifs ? `${styleRight} animate__animated animate__shakeX animate__headShake` : "text-gray-500  bg-transparent "}
                 value={'gifs'}

@@ -17,7 +17,7 @@ export const StickersItemContainer = () => {
         <>
         {(stickersProccessed.length>0)
                 ?
-                <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%'}}>
+                <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%', columnCount:{xs: '1 !important', sm: '2 !important', md: '3 !important', lg: '4 !important'}}}>
                     {stickersProccessed.map(sticker => (
                         <ImageListItem key={sticker.id}>
                             <div>

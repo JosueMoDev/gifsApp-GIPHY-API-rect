@@ -10,7 +10,7 @@ export const FavoritesPage = () => {
   return (
     <>   
       {(allFavorites.length > 0) &&
-        <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%'}}>
+        <ImageList variant="masonry" gap={16} sx={{ pt:8, width:'98%', columnCount:{xs: '2 !important',  md: '3 !important', lg: '4 !important'}}}>
             {allFavorites.map(favorite => (
                 <ImageListItem key={favorite.id}>
                     <div>

@@ -13,7 +13,7 @@ export const GifsItemContainer = () => {
         <>
             {(gifsProccessed.length > 0)
                 ? 
-                <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%'}}>
+                <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:4, width:'100%', columnCount:{xs: '2 !important',  md: '3 !important', lg: '4 !important'}}}>
                     {gifsProccessed.map(gif => (
                         <ImageListItem key={gif.id}>
                             <div>
@@ -37,7 +37,7 @@ export const GifsItemContainer = () => {
                                         
                                     }}
                                 />
-                                <div className='absolute top-0 right-2 p-1 flex'>
+                                <div className='absolute top-0 right-0 sm:right-2 p-1 flex'>
                                     <CopyToClipBoardButton itemData={ gif }/>
                                     <AddToFavorite itemData={{ item: gif, size: 1.1}}/>
                                 </div>
