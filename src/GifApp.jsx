@@ -9,7 +9,7 @@ export const GifApp = () => {
     <>
       <CopyAlertComponent />
       <div
-        className="px-0 lg:px-24"
+        className="px-2 lg:px-24 w-12/12"
       >
       <NavBarComponent/>
       <MainInputSeach  />       
