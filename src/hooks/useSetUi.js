@@ -4,7 +4,7 @@ import {
     onCopyLink, onShowAlert,
     onCloseAlert, onCloseSharingWindow,
     onShareItem, onOpenFlyMenu, onCloseFlyMenu,
-    onClearItem, onClearCategories, onClearSearch, onClearFavorites
+    onClearItem, onClearCategories, onClearSearch
 } from '../store';
 
 export const useSetUi = () => {
@@ -38,7 +38,6 @@ export const useSetUi = () => {
     const startClear = () => {
         dispatch(onClearSearch());
         dispatch(onClearItem());
-        dispatch(onClearFavorites());
         dispatch(onClearCategories());
     }
     // * hay que trabajer abrir y cerrar flyout menu aqui, hay que mostrar spinner cuando se

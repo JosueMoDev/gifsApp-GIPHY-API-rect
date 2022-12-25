@@ -1,21 +1,24 @@
 import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { onAddToFavorites, onProccessData, onDeleteToFavoties } from '../store';
+import { onAddToFavorites,  onDeleteToFavoties } from '../store';
 
 export const useAllFavorites = () => {
 
     const dispatch = useDispatch();
-    const { gifsProccessed, stickersProccessed, allFavorites } = useSelector(state => state.favorites);
-    const { gifs, stickers } = useSelector(state => state.search);
+    const { allFavorites } = useSelector(state => state.favorites);
     
-    
-    
-    useEffect(() => {
-        dispatch(onProccessData({gifs, stickers}))
-    }, [gifs, stickers, allFavorites])
+   
+    // useEffect(() => {
+    //     console.log('estoy cambiamdo favoritos')
+    //     startProcessingData( gifs, stickers);
+    // }, [allFavorites])
 
-    
+    // useEffect(() => {
+    //     console.log('estoy cambiamdp')
+    //     startProcessingData( gifs, stickers);
+    // }, [gifs, stickers])
 
+       
     const startingToAddFavorite = (item) => { 
         dispatch(onAddToFavorites(item));
     }
@@ -26,8 +29,6 @@ export const useAllFavorites = () => {
 
     return {
         // * PROPERTIES
-        gifsProccessed,
-        stickersProccessed,
         allFavorites,
    
      

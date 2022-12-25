@@ -4,17 +4,16 @@ import { useNavigate } from "react-router-dom";
 import { ImageList, ImageListItem } from "@mui/material";
 
 export const GifsItemContainer = () => {
-    const { searchTerm } = useGetResposeBySearchTerm();
-    const { gifsProccessed } = useAllFavorites();
+    const { searchTerm, gifs } = useGetResposeBySearchTerm();
     const { startShowingitem } = useGetItemById();
     const navigate = useNavigate();
 
     return (
         <>
-            {(gifsProccessed.length > 0)
+            {(gifs.length > 0)
                 ? 
                 <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:4, width:'100%', columnCount:{xs: '2 !important',  md: '3 !important', lg: '4 !important'}}}>
-                    {gifsProccessed.map(gif => (
+                    {gifs.map(gif => (
                         <ImageListItem key={gif.id}>
                             <div>
                                 <img

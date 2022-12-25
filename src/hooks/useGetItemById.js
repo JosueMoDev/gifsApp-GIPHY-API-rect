@@ -62,16 +62,18 @@ export const useGetItemById = () => {
     }, [item_id])
 
     useEffect(() => {
-       const  isItemFavorite = {
-            ...item,
-            isFavorite: allFavorites.some( favorite => (favorite.id === item.id ? true : false ))
-        } 
-        dispatch(onShowItem(isItemFavorite));
+        if (item_id){  
+            const  isItemFavorite = {
+                ...item,
+                isFavorite: allFavorites.some( favorite => (favorite.id === item.id ? true : false ))
+            } 
+            dispatch(onShowItem(isItemFavorite));
+        }
      
     }, [allFavorites])
 
     useEffect(() => {
-        if (itemGifsRelated) { 
+        if (itemGifsRelated && item_id) { 
 
             const gifsRelated = itemGifsRelated.map(gif => ({
                 id: gif.id,

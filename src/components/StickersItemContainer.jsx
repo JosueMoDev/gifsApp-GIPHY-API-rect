@@ -1,24 +1,23 @@
 import { NoSearchRosultFound } from "./NoSearchRosultFound";
 import { AddToFavorite, CopyToClipBoardButton } from './';
-import { useAllFavorites, useGetItemById, useGetResposeBySearchTerm } from "../hooks";
+import { useGetItemById, useGetResposeBySearchTerm } from "../hooks";
 import { useNavigate } from "react-router-dom";
 import { ImageList, ImageListItem } from "@mui/material";
 
 
 
 export const StickersItemContainer = () => {
-    const { searchTerm } = useGetResposeBySearchTerm();
-    const { stickersProccessed } = useAllFavorites();
+    const { searchTerm, stickers } = useGetResposeBySearchTerm();
     const { startShowingitem } = useGetItemById();
     const navigate = useNavigate();
     
     
     return (
         <>
-        {(stickersProccessed.length>0)
+        {(stickers.length>0)
                 ?
                 <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%', columnCount:{xs: '2 !important',  md: '3 !important', lg: '4 !important'}}}>
-                    {stickersProccessed.map(sticker => (
+                    {stickers.map(sticker => (
                         <ImageListItem key={sticker.id}>
                             <div>
                                 <img

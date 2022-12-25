@@ -1,14 +1,15 @@
 import {  useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGetStickers, fetchGetGifs, fetchGetTagsRelated } from "../api";
-import { onSearching, onSetData, onChangeView, onClearSearch } from "../store";
+import { onSearching, onSetData, onChangeView, onClearSearch, onReloadData } from "../store";
+import { useAllFavorites } from "./";
 
 export const useGetResposeBySearchTerm = () => {
 
     const dispatch = useDispatch();
 
     const { searchTerm, gifs, stickers, tags, isSearchingByGifs, total_gifs, total_stickers } = useSelector( state => state.search)
-   
+    const { allFavorites } = useAllFavorites();
     const startSearching = ( searchTerm ) => { 
         dispatch(onSearching(searchTerm));
     }
@@ -46,7 +47,7 @@ export const useGetResposeBySearchTerm = () => {
             slug: sticker.slug,
             user:sticker.user
         }));
-        const stickerList = { stickers: stickers, total_stickers: stickerResponse.data.pagination?.total_count }
+        const stickersList = { stickers: stickers, total_stickers: stickerResponse.data.pagination?.total_count }
 
         //  ? here get tags
         const  tags  = await fetchGetTagsRelated(searchTerm, 3);
@@ -54,7 +55,26 @@ export const useGetResposeBySearchTerm = () => {
             name: tag.name
         }));
 
-        dispatch(onSetData({gifsList, stickerList, tagsList}));
+        startSettingData(gifsList, stickersList, tagsList)
+    }
+
+    const startSettingData = ( gifsList, stickersList, tagsList ) => {
+       
+
+        const gifs_list = gifsList.gifs.map(gif => ({
+            ...gif,
+            isFavorite: allFavorites.some( item => (item.id === gif.id ? true : false ))
+
+        }))
+        
+        const stickers_list = stickersList.stickers.map(sticker => ({
+            ...sticker,
+            isFavorite: allFavorites.some( item => (item.id === sticker.id ? true : false ))
+        }));
+        const total_gifs = gifsList.total_gifs;
+        const total_stickers = stickersList.total_stickers;
+
+        dispatch(onSetData({gifs_list, total_gifs, stickers_list, total_stickers, tagsList}));
     }
 
     useEffect(() => { 
@@ -62,6 +82,23 @@ export const useGetResposeBySearchTerm = () => {
             getDataBySearchTerm();
         }
     }, [searchTerm])
+
+    useEffect(() => { 
+        if ( gifs.length > 0 ) { 
+
+            const gifs_list = gifs.map(gif => ({
+                ...gif,
+                isFavorite: allFavorites.some( item => (item.id === gif.id ? true : false ))
+                
+            }))
+            
+            const stickers_list = stickers.map(sticker => ({
+                ...sticker,
+                isFavorite: allFavorites.some( item => (item.id === sticker.id ? true : false ))
+            }));
+            dispatch(onReloadData({ gifs_list, stickers_list }));
+        }
+    }, [allFavorites])
 
     return {
         // ? PROPERTIES

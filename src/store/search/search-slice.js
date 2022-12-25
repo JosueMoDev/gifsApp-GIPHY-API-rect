@@ -23,17 +23,22 @@ export const searchSlice = createSlice({
         },
         onSetData: (state, { payload }) => {
             
-            const { gifsList, stickerList, tagsList } = payload
+            const { gifs_list, total_gifs, stickers_list, total_stickers, tagsList } = payload
             // * here set gifs data    
-            state.gifs = gifsList.gifs;
-            state.total_gifs = gifsList.total_gifs;
+            state.gifs = gifs_list;
+            state.total_gifs = total_gifs;
 
             // * here set stickers data    
-            state.stickers = stickerList.stickers;
-            state.total_stickers = stickerList.total_stickers;
+            state.stickers = stickers_list;
+            state.total_stickers = total_stickers;
 
             // * here set tags data   
             state.tags = tagsList;
+        },
+        onReloadData: (state, { payload }) => { 
+            const { gifs_list, stickers_list } = payload
+            state.gifs = gifs_list;
+            state.stickers = stickers_list;
         },
         
         onChangeView: (state) => {
@@ -54,4 +59,4 @@ export const searchSlice = createSlice({
 
    }
 });
-export const { onSearching, onSetData, onChangeView, onClearSearch } = searchSlice.actions;
+export const { onSearching, onSetData, onChangeView, onClearSearch, onReloadData } = searchSlice.actions;
