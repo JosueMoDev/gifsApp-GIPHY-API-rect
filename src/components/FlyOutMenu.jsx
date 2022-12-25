@@ -10,16 +10,16 @@ export const FlyOutMenu = () => {
     <>
       <div className="bg-gradient-to-l from-violet-500 via-fuchsia-500 to-fuchsia-500">
         <div className="flex  items-center">
-                  <div className="hidden lg:ml-8 lg:block lg:self-stretch">
+                  <div className="hidden md:block md:ml-4 lg:ml-8  self-stretch">
                     <div className="flex h-full space-x-10">
                       <div className="flex">
                         <div className="absolute inset-x-0 top-full text-lg text-white">
                           <div className="relative p-4 bg-gradient-to-l from-violet-500 via-fuchsia-500 to-fuchsia-500">
-                            <div className="mx-10  max-w-fit px-8 ">
+                            <div className="lg:mx-5  max-w-fit lg:px-4 md:mx-2 md:px-1">
                               <div className="grid  gap-y-1  py-8">
-                                <div className=" flex flex-cols-4 space-x-20 row-span-4  text-md">
+                                <div className=" flex md:flex-cols-3 md:space-x-10 md:row-span-2 md:text-sm lg:flex-cols-4 lg:space-x-20 lg:row-span-4  lg:text-md">
                                   <div>
-                                    <a className="font-bold text-2xl cursor-pointer divide-slate-50 text-gray-50"
+                                    <a className="font-bold text-xl lg:text-2xl cursor-pointer divide-slate-50 text-gray-50"
                                         onClick={() => {  
                                           startCleaningSearch();
                                           navigate('/categories')}
@@ -133,7 +133,7 @@ export const FlyOutMenu = () => {
                                   </div>
 
                                   <div>
-                                    <a className="font-bold text-2xl cursor-pointer divide-slate-50 text-gray-50"
+                                    <a className="font-bold text-xl lg:text-2xl cursor-pointer divide-slate-50 text-gray-50"
                                       
                                     >
                                       Stickers</a>
@@ -157,7 +157,7 @@ export const FlyOutMenu = () => {
                                     </ul>
                                   </div>
                                   <div>
-                                    <a className="font-bold text-2xl cursor-pointer divide-slate-50 text-gray-50"
+                                    <a className="font-bold text-xl lg:text-2xl cursor-pointer divide-slate-50 text-gray-50"
                                       
                                     >
                                       Apps</a>
@@ -179,7 +179,7 @@ export const FlyOutMenu = () => {
                                   </div>
 
                                   <div>
-                                    <a className="font-bold text-2xl cursor-pointer divide-slate-50 text-gray-50"
+                                    <a className="font-bold text-xl lg:text-2xl cursor-pointer divide-slate-50 text-gray-50"
                                     >About</a>
                                     <div  className="border-b border-gray-50 pt-2 w-63"/>
                                     <div className='row-start-1 flex flex-cols-2 space-x-10  text-md' >

@@ -1,15 +1,17 @@
 
+import { useNavigate } from "react-router-dom";
 import { useGetItemById, useGetResposeBySearchTerm } from "../hooks";
 import { GifSelectedComponent, GifsRelated, ShowItemButtons, UserMakerGifComponent } from "./components";
 
 export const ShowItemPage = () => {
+  const navigate = useNavigate();
   const { startSearching } = useGetResposeBySearchTerm();
-  const { item, itemTags } = useGetItemById();
+  const { item, itemTags, item_id } = useGetItemById();
   
   const onButtonClick = ({ target }) => startSearching(target.value);
   
   return (
-    <>
+    <> {(item_id===null)&& navigate('/')}
       <div className="hidden  md:flex justify-start  md:w-full  gap-x-3 capitalize">
         <UserMakerGifComponent item={  item } />
         <GifSelectedComponent item={  item } />

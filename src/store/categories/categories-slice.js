@@ -16,7 +16,11 @@ export const categoriesSlice = createSlice({
             state.subcategorySelected = payload.subcategory;
             state.subcategories = payload.subcategories
             
-        } 
-   }
+        },
+        onClearCategories: ( state ) => {
+            state.subcategories = [];
+            state.subcategorySelected = null
+        }
+    }
 });
-export const { onLoadCategories, onSelectCategory } = categoriesSlice.actions;
+export const { onLoadCategories, onSelectCategory, onClearCategories } = categoriesSlice.actions;

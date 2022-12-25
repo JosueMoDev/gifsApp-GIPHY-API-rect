@@ -33,7 +33,21 @@ export const showItemSlice = createSlice({
         onSetGifsRelated: ( state, { payload }) => {
             state.itemGifsRelated = payload;
             sessionStorage.setItem('itemGifsRelated', JSON.stringify(state.itemGifsRelated));
+        }, 
+        onClearItem: (state) => {
+            sessionStorage.removeItem('itemSelected');
+            state.item = {};
+            
+            sessionStorage.removeItem('tagsItemSelected');
+            state.itemTags = []; 
+
+            sessionStorage.removeItem('itemGifsRelated');
+            state.itemGifsRelated = [];
+
+            state.item_id = null;
+            state.user = { };
+            state.tagsTerms = null
         }
    }
 });
-export const { onSearchingItemById, onShowItem, onSetItemTags, onSetGifsRelated } = showItemSlice.actions;
+export const { onSearchingItemById, onShowItem, onSetItemTags, onSetGifsRelated, onClearItem } = showItemSlice.actions;

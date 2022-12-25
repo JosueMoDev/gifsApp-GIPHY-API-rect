@@ -8,8 +8,8 @@ export const CategoriesPage = () => {
   const { categories,  startSettingSubCategory, subcategorySelected } = useGetCategories();
   return (
     <>
-      <div className='flex w-12/12 h-96 my-5 mx-5 space-x-5'>
-        <div className=' pt-5 w-4/12 h-48'>
+      <div className='flex w-12/12 h-96  md:my-5 md:mx-5 md:space-x-5'>
+        <div className='hidden md:block pt-2 md:pt-5 w-4/12 h-48'>
           <p className='text-white text-md  my-5 font-semibold'> Categories</p>
           <ol className='text-white text-md  '>
             {
@@ -26,7 +26,7 @@ export const CategoriesPage = () => {
             }
           </ol>
         </div>
-        <div className=' flex py-5 w-full h-48'>
+        <div className='flex md:py-5 w-full h-48'>
           
           { 
             ( subcategorySelected ? <SubcategoriesComponent /> : <CategoriesComponent />)

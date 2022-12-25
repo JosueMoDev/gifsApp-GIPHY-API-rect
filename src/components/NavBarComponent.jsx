@@ -1,14 +1,18 @@
 import { useNavigate } from 'react-router-dom'
-import { useGetResposeBySearchTerm } from '../hooks'
+import { useGetResposeBySearchTerm, useSetUi } from '../hooks'
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars, faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
-import FavoriteIcon from '@mui/icons-material/Favorite';
+
 import { FlyOutButtonToggle } from './FlyOutButtonToggle'
+import { FlyMenuMobileComponent } from './FlyMenuMobileComponent';
+
 import { IconButton } from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 export const NavBarComponent = () => {
     const { startCleaningSearch } = useGetResposeBySearchTerm();
+    const { isFlyMenuOpen, startOpenFlyMenu, startCloseFlyMenu, startClear } = useSetUi();
     const navigate = useNavigate();
     return (
         <>
@@ -19,7 +23,7 @@ export const NavBarComponent = () => {
                         <div className="flex items-center flex-shrink-0 text-white font-mono">
                             <a className='cursor-pointer no-underline text-white flex'
                                 onClick={() => {  
-                                    startCleaningSearch();
+                                    startClear();
                                     navigate('/')}
                                 }
                                     
@@ -28,7 +32,7 @@ export const NavBarComponent = () => {
                             </a>
                             <a className='cursor-pointer no-underline text-white flex'
                                 onClick={() => {  
-                                    startCleaningSearch();
+                                    startClear();
                                     navigate('/')}
                                 }
                                     
@@ -90,30 +94,44 @@ export const NavBarComponent = () => {
                                 <FavoriteIcon sx={{ fontSize:24, color:'red' }} />
                             </IconButton>
                             
-
-                            <button className="min-w-auto w-8 h-8  bg-gray-600 text-gray-50 hover:bg-gray-500 hover:text-gray-200  rounded-full transition-rotation duration-300 hover:-rotate-45 ease-in-out">
-                            <FontAwesomeIcon icon={ faBars }/>
-                            </button>
+{/* trabajar aqui */}
+                            
+                                {
+                                    (isFlyMenuOpen)
+                                    ?   <IconButton onClick={() => { startCloseFlyMenu(); }}>
+                                            <CloseIcon sx={{ fontSize: 24, color: 'white' }} />
+                                        </IconButton>
+                                    :   <IconButton onClick={() => { startOpenFlyMenu(); }}>
+                                            <MenuIcon sx={{ fontSize: 24, color: 'white' }} />
+                                        </IconButton>
+                                }
                         </div>
                         
                         
                     </div>
                 </div>
-              
-                <div className="md:hidden bg-gray-100 shadow-md rounded-md"  id="mobile-menu">
-                        <div className="px-2 pt-2 pb-3 space-y-1">
-                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700  hover:bg-gray-600 hover:text-gray-100 focus:bg-gray-700 focus:text-gray-100" aria-current="page">Reactions</a>
-
-                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:bg-gray-600 hover:text-gray-100  focus:bg-gray-700 focus:text-gray-100">Entretaiment</a>
-
-                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:bg-gray-600 hover:text-gray-100  focus:bg-gray-700 focus:text-gray-100">Sports</a>
-
-                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:bg-gray-600 hover:text-gray-100  focus:bg-gray-700 focus:text-gray-100">Stickers</a>
-                        
-                        <a href="#" className="block px-3 py-2 text-base font-medium rounded-md text-gray-700 hover:bg-gray-600 hover:text-gray-100  focus:bg-gray-700 focus:text-gray-100">Artists</a>
+              {/* Mobile menu */}
+                {/* <div className={` bg-gradient-to-l from-violet-500 via-fuchsia-500 to-fuchsia-500`}>
+                    <div className="items-center">
+                       
+                    </div>        
+                </div> */}
+                <div className={`bg-gradient-to-l md:hidden from-violet-500 via-fuchsia-500 to-fuchsia-500  ${(isFlyMenuOpen) ? '' : 'hidden'}`}>
+                    <div className=" h-full relative top-0 z-20 ">
+                        <div className="  block self-stretch">
+                            <div className="absolute inset-x-0 top-full text-sm text-white">
+                                    <div className="relative p-4 bg-gradient-to-l from-violet-500 via-fuchsia-500 to-fuchsia-500">
+                                        <div className="max-w-fit">
+                                            <div className="grid  gap-y-1  py-8">
+                                                <FlyMenuMobileComponent />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
+                    </div>        
                 </div>
-            </nav>
+        </nav>
         </>
       
     )

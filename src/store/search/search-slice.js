@@ -40,7 +40,7 @@ export const searchSlice = createSlice({
             state.isSearchingByGifs = !state.isSearchingByGifs;
         },
         onClearSearch: (state) => { 
-        
+            sessionStorage.removeItem('searchTerm');
             state.searchTerm = '';
             state.isSearching = false;
             state.gifs = [];

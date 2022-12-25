@@ -7,7 +7,7 @@ export const TagRelatedComponent = () => {
   const onButtonClick = ({ target }) => startSearching(target.value);
   return (
     <>
-      <div className=' hidden md:block'>
+      <div className=' hidden lg:block'>
         <div className=' flex items-center justify-between'>    
             <div className='py-5 items-start'>       
                 <h2 className="text-4xl font-bold tracking-tight text-gray-50 flex items-end capitalize ">
@@ -40,7 +40,7 @@ export const TagRelatedComponent = () => {
      
 
       {/* Mobile */}
-      <div className=' md:hidden '>
+      <div className=' lg:hidden '>
 
         <div className='flex mt-2'>       
           <h2 className="text-xl font-bold tracking-tight text-gray-50 flex items-end capitalize ">
@@ -53,7 +53,7 @@ export const TagRelatedComponent = () => {
         </div>
 
         <div className="flex flex-col m-auto p-auto ">
-          <div className="flex overflow-x-scroll  ">
+          <div className="flex overflow-x-scroll sm:overflow-x-hidden  ">
             <div className="flex flex-nowrap  sm:w-full ">
               <div className='w-full flex items-center justify-between divide-x divide-slate-500 sm:divide-none'>    
                 <div className=' py-5 items-start pr-5 sm:px-2'>

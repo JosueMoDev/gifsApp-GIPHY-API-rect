@@ -8,7 +8,8 @@ export const useAllFavorites = () => {
     const { gifsProccessed, stickersProccessed, allFavorites } = useSelector(state => state.favorites);
     const { gifs, stickers } = useSelector(state => state.search);
     
- 
+    
+    
     useEffect(() => {
         dispatch(onProccessData({gifs, stickers}))
     }, [gifs, stickers, allFavorites])

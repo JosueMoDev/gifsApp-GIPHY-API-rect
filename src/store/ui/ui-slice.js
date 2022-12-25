@@ -5,6 +5,7 @@ export const uiSlice = createSlice({
         isLinkCopid: false,
         isAlertOpen: false,
         isSharingItem: false,
+        isFlyMenuOpen: false
     },
     reducers: {
         onCopyLink:(state)=> {
@@ -22,10 +23,18 @@ export const uiSlice = createSlice({
         },
         onCloseSharingWindow: ( state ) => { 
             state.isSharingItem = false
+        },
+        onOpenFlyMenu: ( state ) => { 
+            state.isFlyMenuOpen = true; 
+        },
+        onCloseFlyMenu: ( state ) => { 
+            state.isFlyMenuOpen = false; 
         }
+
    }
 });
 export const {
     onCopyLink, onShowAlert, onCloseAlert,
-    onShareItem, onCloseSharingWindow
+    onShareItem, onCloseSharingWindow,
+    onOpenFlyMenu, onCloseFlyMenu
 } = uiSlice.actions;

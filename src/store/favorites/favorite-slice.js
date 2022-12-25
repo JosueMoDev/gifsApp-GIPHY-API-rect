@@ -40,7 +40,10 @@ export const favoritesSlice = createSlice({
             state.allFavorites = state.allFavorites.filter( item => item.id !== payload );
             localStorage.setItem('allFavorites', JSON.stringify( state.allFavorites ) );
 
+        }, onClearFavorites: ( state ) => { 
+            state.gifsProccessed = [];
+            state.stickersProccessed = []
         }
    }
-});
-export const { onAddToFavorites, onProccessData, onDeleteToFavoties} = favoritesSlice.actions;
+})
+export const { onAddToFavorites, onProccessData, onDeleteToFavoties, onClearFavorites} = favoritesSlice.actions;
