@@ -8,12 +8,13 @@ export const useGetResposeBySearchTerm = () => {
 
     const dispatch = useDispatch();
 
-    const { searchTerm, gifs, stickers, tags, isSearchingByGifs, total_gifs, total_stickers } = useSelector( state => state.search)
+    const { searchTerm, gifs, stickers, tags, isSearchingByGifs, total_gifs, total_stickers, isSearching } = useSelector( state => state.search)
     const { allFavorites } = useAllFavorites();
-    const startSearching = ( searchTerm ) => { 
+
+    const startSearching = (searchTerm) => { 
         dispatch(onSearching(searchTerm));
     }
-
+    
     const startSwitchingButton = () => {
         dispatch(onChangeView());
     }
@@ -22,8 +23,12 @@ export const useGetResposeBySearchTerm = () => {
     }
 
     const getDataBySearchTerm = async () => { 
+        
         // ? here get Gifs
         const gifsResponse = await fetchGetGifs(searchTerm);
+        const stickerResponse = await fetchGetStickers(searchTerm);
+        const  tags  = await fetchGetTagsRelated(searchTerm, 3);
+
         const gifs = gifsResponse.data.data.map(gif => ({
             id: gif.id,
             title: gif.title,
@@ -38,7 +43,6 @@ export const useGetResposeBySearchTerm = () => {
         
         // ? here get Stickers
 
-        const stickerResponse = await fetchGetStickers(searchTerm);
         const stickers = stickerResponse.data.data.map(sticker => ({
             id: sticker.id,
             title: sticker.title,
@@ -50,7 +54,6 @@ export const useGetResposeBySearchTerm = () => {
         const stickersList = { stickers: stickers, total_stickers: stickerResponse.data.pagination?.total_count }
 
         //  ? here get tags
-        const  tags  = await fetchGetTagsRelated(searchTerm, 3);
         const tagsList = tags.data.data.map(tag => ({
             name: tag.name
         }));
@@ -60,7 +63,6 @@ export const useGetResposeBySearchTerm = () => {
 
     const startSettingData = ( gifsList, stickersList, tagsList ) => {
        
-
         const gifs_list = gifsList.gifs.map(gif => ({
             ...gif,
             isFavorite: allFavorites.some( item => (item.id === gif.id ? true : false ))
@@ -71,6 +73,7 @@ export const useGetResposeBySearchTerm = () => {
             ...sticker,
             isFavorite: allFavorites.some( item => (item.id === sticker.id ? true : false ))
         }));
+
         const total_gifs = gifsList.total_gifs;
         const total_stickers = stickersList.total_stickers;
 
@@ -78,13 +81,13 @@ export const useGetResposeBySearchTerm = () => {
     }
 
     useEffect(() => { 
-        if (searchTerm !== '') { 
+        if ( isSearching === true ) { 
             getDataBySearchTerm();
         }
-    }, [searchTerm])
+    }, [isSearching])
 
     useEffect(() => { 
-        if ( gifs.length > 0 ) { 
+        if ( searchTerm !=='' && !isSearching ) { 
 
             const gifs_list = gifs.map(gif => ({
                 ...gif,
@@ -102,12 +105,14 @@ export const useGetResposeBySearchTerm = () => {
 
     return {
         // ? PROPERTIES
-        gifs, stickers, tags, searchTerm, isSearchingByGifs, total_gifs, total_stickers,
-
+        gifs, stickers, tags, searchTerm,
+        isSearchingByGifs, total_gifs, total_stickers, isSearching, 
+       
         // ? METHODS
         startSearching,
         startSwitchingButton,
-        startCleaningSearch
+        startCleaningSearch,
+       
 
     }
 }

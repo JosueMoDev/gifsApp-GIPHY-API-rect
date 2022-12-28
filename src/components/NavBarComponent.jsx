@@ -9,6 +9,7 @@ import { IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
+import { pink } from '@mui/material/colors';
 
 export const NavBarComponent = () => {
     const { startCleaningSearch } = useGetResposeBySearchTerm();
@@ -68,13 +69,13 @@ export const NavBarComponent = () => {
                                 </div>
                                 <div className='w-max'>
                                 <a 
-                                    className='px-3 py-2 font-bold cursor-pointer text-red-400 hover:text-white hover:bg-gradient-to-l from-cyan-600 via-sky-500 to-sky-600'
+                                    className='px-3 py-2 font-bold cursor-pointer   hover:bg-gradient-to-l from-cyan-600 via-sky-500 to-sky-600'
                                     onClick={() => {  
                                         startCleaningSearch();
                                         navigate('/favorites')}
                                     }
                                 >
-                                    <FavoriteIcon sx={{ fontSize:18 }} />
+                                        <FavoriteIcon sx={{ fontSize: 18, color: pink[400], ':hover': { color: 'white' } }} />
                                     </a>
                                     <p className='bg-gradient-to-l from-teal-600 via-blue-600 to-cyan-700 h-1'></p>
                                 </div>
@@ -91,7 +92,7 @@ export const NavBarComponent = () => {
                                     navigate('/favorites')}
                                 }
                             >
-                                <FavoriteIcon sx={{ fontSize:24, color:'red' }} />
+                                <FavoriteIcon sx={{ fontSize:24, color: pink[400] }} />
                             </IconButton>
                             
 {/* trabajar aqui */}

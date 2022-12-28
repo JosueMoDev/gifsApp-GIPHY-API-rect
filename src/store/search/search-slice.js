@@ -3,6 +3,7 @@ const searchTerm = JSON.parse(sessionStorage.getItem('searchTerm'));
 export const searchSlice = createSlice({
     name: 'search',
     initialState: {
+
         isSearching: false,
         searchTerm:searchTerm||'',
         gifs: [],
@@ -19,21 +20,29 @@ export const searchSlice = createSlice({
             state.isSearching = true;
             state.searchTerm = payload;
             sessionStorage.setItem('searchTerm', JSON.stringify(state.searchTerm));
+            state.gifs = [];
+            state.total_gifs = null;
+            state.stickers = [];
+            state.total_stickers = null;
+            state.tags = [];
     
         },
         onSetData: (state, { payload }) => {
-            
+        
             const { gifs_list, total_gifs, stickers_list, total_stickers, tagsList } = payload
             // * here set gifs data    
             state.gifs = gifs_list;
             state.total_gifs = total_gifs;
-
+            
             // * here set stickers data    
             state.stickers = stickers_list;
             state.total_stickers = total_stickers;
-
+            
             // * here set tags data   
             state.tags = tagsList;
+            
+            state.isSearching = false;
+            
         },
         onReloadData: (state, { payload }) => { 
             const { gifs_list, stickers_list } = payload

@@ -17,7 +17,7 @@ export const FlyOutMenu = () => {
                           <div className="relative p-4 bg-gradient-to-l from-violet-500 via-fuchsia-500 to-fuchsia-500">
                             <div className="lg:mx-5  max-w-fit lg:px-4 md:mx-2 md:px-1">
                               <div className="grid  gap-y-1  py-8">
-                                <div className=" flex md:flex-cols-3 md:space-x-10 md:row-span-2 md:text-sm lg:flex-cols-4 lg:space-x-20 lg:row-span-4  lg:text-md">
+                                <div className=" flex md:flex-cols-3 md:space-x-10 md:row-span-2 md:text-sm lg:flex-cols-4 lg:space-x-20 lg:row-span-4 lg:text-md">
                                   <div>
                                     <a className="font-bold text-xl lg:text-2xl cursor-pointer divide-slate-50 text-gray-50"
                                         onClick={() => {  

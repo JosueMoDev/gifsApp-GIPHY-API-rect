@@ -6,12 +6,15 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 
 export const MainInputSeach = () => {
-    const { startSearching, searchTerm } = useGetResposeBySearchTerm();
+    const { startSearching, searchTerm, isSearching } = useGetResposeBySearchTerm();
     
-    const [inputValue, setInputValue] = useState(searchTerm);
+    const [inputValue, setInputValue ] = useState(searchTerm);
 
     useEffect(() => {
         setInputValue(searchTerm)
+        if (searchTerm !== '' && !isSearching) {  
+            startSearching(searchTerm)  
+        }
     }, [searchTerm])
     
     const onInputChange = ({ target }) => setInputValue(target.value);

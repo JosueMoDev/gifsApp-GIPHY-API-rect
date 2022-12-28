@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { ImageList, ImageListItem } from "@mui/material";
 
 
-
 export const StickersItemContainer = () => {
     const { searchTerm, stickers } = useGetResposeBySearchTerm();
     const { startShowingitem } = useGetItemById();
@@ -19,7 +18,7 @@ export const StickersItemContainer = () => {
                 <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%', columnCount:{xs: '2 !important',  md: '3 !important', lg: '4 !important'}}}>
                     {stickers.map(sticker => (
                         <ImageListItem key={sticker.id}>
-                            <div>
+                            <div className="flex flex-wrap">
                                 <img
                                     src={`${sticker.url}?w=248&fit=crop&auto=format`}
                                     alt={sticker.title}
@@ -37,11 +36,15 @@ export const StickersItemContainer = () => {
                                         display: 'block',
                                         height: '100%',
                                         width: '100%',
-                                        backgroundColor:'gray'
+                                        backgroundColor: 'transparent',
+                                        opacity: 0.8,
+                                        backgroundImage:  'repeating-linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), repeating-linear-gradient(45deg, #000 25%, #111827 25%, #111827 75%, #000 75%, #000)',
+                                        backgroundPosition: '0 0, 35px 35px',
+                                        backgroundSize: '70px 70px'
                                         
                                     }}
                                 />
-                                <div className='absolute top-0 right-0 sm:right-2 sm:p-1 flex'>
+                                <div className='hidden absolute top-0 right-0 sm:right-2 sm:p-1 sm:flex '>
                                     <CopyToClipBoardButton itemData={ sticker }/>
                                     <AddToFavorite itemData={{ item: sticker, size: 1.1}}/>
                                 </div>
