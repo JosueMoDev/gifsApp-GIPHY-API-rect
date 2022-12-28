@@ -1,12 +1,13 @@
 
 import { useNavigate } from "react-router-dom";
+import { ListItemContainer } from "../components";
 import { useGetItemById, useGetResposeBySearchTerm } from "../hooks";
-import { GifSelectedComponent, GifsRelated, ShowItemButtons, UserMakerGifComponent } from "./components";
+import { GifSelectedComponent, ShowItemButtons, UserMakerGifComponent } from "./components";
 
 export const ShowItemPage = () => {
   const navigate = useNavigate();
   const { startSearching } = useGetResposeBySearchTerm();
-  const { item, itemTags, item_id } = useGetItemById();
+  const { item, itemTags, item_id, itemGifsRelated } = useGetItemById();
   
   const onButtonClick = ({ target }) => startSearching(target.value);
   
@@ -46,12 +47,17 @@ export const ShowItemPage = () => {
       <div className="grid justify-items-center" >
         
         {/* //* Gifs related */}
-        <div className=" w-full grid justify-items-start  my-2">
-          <p className=" text-white text-sm md:text-lg font-mono font-semibold w-full ">Related Gifs</p>
-        </div>
-        <div className="w-full xs:w-8/12 md:12/12 flex justify-center ">
-          <GifsRelated/>
-        </div>
+        {(itemGifsRelated.length > 0) ? 
+          <div>
+            <div className=" w-full grid justify-items-start mx-2">
+              <p className=" text-white text-sm md:text-lg font-mono font-semibold w-full ">Related Gifs</p>
+            </div>
+            <div className="w-full xs:w-8/12 md:12/12 flex justify-center ">
+              <ListItemContainer itemList={itemGifsRelated}/>
+            </div>
+          </div>
+        : null}
+        
       </div>
     </>
   )

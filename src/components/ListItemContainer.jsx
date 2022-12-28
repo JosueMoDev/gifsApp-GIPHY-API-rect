@@ -1,31 +1,30 @@
-import { NoSearchRosultFound } from "./NoSearchRosultFound";
-import { AddToFavorite, CopyToClipBoardButton } from './';
+import { AddToFavorite, CopyToClipBoardButton, NoSearchRosultFound} from './';
 import { useGetItemById, useGetResposeBySearchTerm } from "../hooks";
 import { useNavigate } from "react-router-dom";
 import { ImageList, ImageListItem } from "@mui/material";
 
 
-export const StickersItemContainer = () => {
-    const { searchTerm, stickers } = useGetResposeBySearchTerm();
+export const ListItemContainer = ({ itemList }) => {
+    const { searchTerm, isSearching } = useGetResposeBySearchTerm();
     const { startShowingitem } = useGetItemById();
     const navigate = useNavigate();
     
     
     return (
         <>
-        {(stickers.length>0)
+            {(itemList.length > 0)
                 ?
-                <ImageList variant="masonry" cols={4} gap={16} sx={{ pt:8, width:'98%', columnCount:{xs: '2 !important',  md: '3 !important', lg: '4 !important'}}}>
-                    {stickers.map(sticker => (
-                        <ImageListItem key={sticker.id}>
+                <ImageList variant="masonry" cols={4} gap={8} sx={{ pt:2, width:'100%', columnCount:{xs: '2 !important',  md: '3 !important', lg: '4 !important'}}}>
+                    {itemList.map(item => (
+                        <ImageListItem key={item.id}>
                             <div className="flex flex-wrap">
                                 <img
-                                    src={`${sticker.url}?w=248&fit=crop&auto=format`}
-                                    alt={sticker.title}
+                                    src={`${item.url}?w=248&fit=crop&auto=format`}
+                                    alt={item.title}
                                     loading="lazy"
                                     onClick={() => {               
-                                        startShowingitem({ id:sticker.id, name: sticker.title, user:sticker.user })
-                                        navigate(`${sticker.slug}`);
+                                        startShowingitem({ id:item.id, name: item.title, user:item.user })
+                                        navigate(`${item.slug}`);
                                     }}
                                     style={{
                                         cursor: 'pointer',
@@ -42,17 +41,19 @@ export const StickersItemContainer = () => {
                                         backgroundPosition: '0 0, 35px 35px',
                                         backgroundSize: '70px 70px'
                                         
+                                        
                                     }}
+                                
                                 />
                                 <div className='hidden absolute top-0 right-0 sm:right-2 sm:p-1 sm:flex '>
-                                    <CopyToClipBoardButton itemData={ sticker }/>
-                                    <AddToFavorite itemData={{ item: sticker, size: 1.1}}/>
+                                    <CopyToClipBoardButton itemData={ item }/>
+                                    <AddToFavorite itemData={{ item: item, size: 1.1}}/>
                                 </div>
                             </div>
                         </ImageListItem>
                     ))}
                 </ImageList>     
-                :< NoSearchRosultFound searchTerm={searchTerm} />
+                :(!isSearching)&&< NoSearchRosultFound searchTerm={searchTerm} />
         }
     </>
     )

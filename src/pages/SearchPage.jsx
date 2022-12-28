@@ -1,16 +1,16 @@
 
 import { useGetResposeBySearchTerm } from "../hooks";
-import { GifsItemContainer, StickersItemContainer, TagRelatedComponent } from "../components";
+import { ListItemContainer,  TagRelatedComponent } from "../components";
 
 export const SearchPage = () => {
-    const { isSearchingByGifs } = useGetResposeBySearchTerm();    
+    const { isSearchingByGifs, gifs, stickers } = useGetResposeBySearchTerm();    
     return (
         <>
             <TagRelatedComponent />  
             {
                 (isSearchingByGifs)
-                ? <GifsItemContainer />
-                :<StickersItemContainer />
+                ? <ListItemContainer itemList={gifs} />
+                : <ListItemContainer itemList={stickers} />
             }
         </>
   )

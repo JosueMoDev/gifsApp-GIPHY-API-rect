@@ -1,6 +1,5 @@
 export * from './CategoriesComponent';
 export * from './SubcategoriesComponent';
-export * from './GifsRelated.jsx';
 export * from './UserMakerGifComponent';
 export * from './GifSelectedComponent';
 export * from './ShowItemButtons';
