@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchGetStickers, fetchGetGifs, fetchGetTagsRelated } from "../api";
 import { onSearching, onSetData, onChangeView, onClearSearch, onReloadData } from "../store";
 import { useAllFavorites } from "./";
+import { checkIfItemIsFavorite } from "./helpers/checkIfItemIsFavorite";
 
 export const useGetResposeBySearchTerm = () => {
 
@@ -36,9 +37,8 @@ export const useGetResposeBySearchTerm = () => {
             type: gif.type,
             slug: gif.slug,
             user: gif.user
-            
-
         }));
+
         const gifsList = { gifs: gifs, total_gifs: gifsResponse.data.pagination?.total_count }
         
         // ? here get Stickers
@@ -63,56 +63,37 @@ export const useGetResposeBySearchTerm = () => {
 
     const startSettingData = ( gifsList, stickersList, tagsList ) => {
        
-        const gifs_list = gifsList.gifs.map(gif => ({
-            ...gif,
-            isFavorite: allFavorites.some( item => (item.id === gif.id ? true : false ))
-
-        }))
+        const gifs_list = checkIfItemIsFavorite(gifsList.gifs, allFavorites);
         
-        const stickers_list = stickersList.stickers.map(sticker => ({
-            ...sticker,
-            isFavorite: allFavorites.some( item => (item.id === sticker.id ? true : false ))
-        }));
+        const stickers_list = checkIfItemIsFavorite(stickersList.stickers, allFavorites);
 
         const total_gifs = gifsList.total_gifs;
+        
         const total_stickers = stickersList.total_stickers;
 
         dispatch(onSetData({gifs_list, total_gifs, stickers_list, total_stickers, tagsList}));
     }
 
     useEffect(() => { 
-        if ( isSearching === true ) { 
-            getDataBySearchTerm();
-        }
+        if ( isSearching === true ) { getDataBySearchTerm(); }
     }, [isSearching])
 
     useEffect(() => { 
         if ( searchTerm !=='' && !isSearching ) { 
 
-            const gifs_list = gifs.map(gif => ({
-                ...gif,
-                isFavorite: allFavorites.some( item => (item.id === gif.id ? true : false ))
-                
-            }))
+            const gifs_list = checkIfItemIsFavorite( gifs, allFavorites );
             
-            const stickers_list = stickers.map(sticker => ({
-                ...sticker,
-                isFavorite: allFavorites.some( item => (item.id === sticker.id ? true : false ))
-            }));
+            const stickers_list = checkIfItemIsFavorite(stickers, allFavorites);
+            
             dispatch(onReloadData({ gifs_list, stickers_list }));
         }
     }, [allFavorites])
 
     return {
         // ? PROPERTIES
-        gifs, stickers, tags, searchTerm,
-        isSearchingByGifs, total_gifs, total_stickers, isSearching, 
+        gifs, stickers, tags, searchTerm, isSearchingByGifs, total_gifs, total_stickers, isSearching, 
        
         // ? METHODS
-        startSearching,
-        startSwitchingButton,
-        startCleaningSearch,
-       
-
+        startSearching, startSwitchingButton, startCleaningSearch,
     }
 }
