@@ -5,7 +5,7 @@ import { useAllFavorites } from '../hooks';
 
 
 
-export const AddToFavorite = ({ itemData }) => {
+export const AddToFavoriteComponent = ({ itemData }) => {
 
     const { startingToAddFavorite, startingToDeleteFavorite } = useAllFavorites()
     

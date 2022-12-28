@@ -1,9 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useGetResposeBySearchTerm, useSetUi } from '../hooks'
 
-
-import { FlyOutButtonToggle } from './FlyOutButtonToggle'
-import { FlyMenuMobileComponent } from './FlyMenuMobileComponent';
+import { FlyButtonToggleComponent,  FlyMenuMobileComponent } from './'
 
 import { IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -65,7 +63,7 @@ export const NavBarComponent = () => {
                                     <p className='bg-gradient-to-l from-teal-600 via-blue-600 to-cyan-700 h-1'></p>
                                 </div>
                                 <div className='w-max'>
-                                    <FlyOutButtonToggle/>
+                                    <FlyButtonToggleComponent/>
                                 </div>
                                 <div className='w-max'>
                                 <a 

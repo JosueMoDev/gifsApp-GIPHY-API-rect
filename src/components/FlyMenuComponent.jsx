@@ -1,8 +1,7 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useGetCategories, useGetResposeBySearchTerm } from '../hooks';
 
-export const FlyOutMenu = () => {
+export const FlyMenuComponent = () => {
   const { startCleaningSearch } = useGetResposeBySearchTerm();
   const { startSettingSubCategory } = useGetCategories();
   const navigate = useNavigate();

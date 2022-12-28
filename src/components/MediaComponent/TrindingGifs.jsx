@@ -1,11 +1,11 @@
 import { useGetTrendingResponse } from "../../hooks";
-import { AddToFavorite } from '../';
+import { AddToFavoriteComponent } from '../';
 import Carousel from 'react-material-ui-carousel'
 export const TrindingGifs = () => {
     const { trending } = useGetTrendingResponse(); 
-    // FIXME: last heart don't send the data
 
-  return (
+
+    return (
     <>
         <Carousel>
             <div className="flex flex-cols-1 gap-y-0 gap-x-1 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-1 capitalize">

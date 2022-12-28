@@ -20,7 +20,7 @@ export const CategoriesComponent = () => {
                     />
                     <div className={' absolute flex top-0  z-10 w-full  h-full'}>
                         <div className="absolute flex self-center  z-20 h-10 w-full justify-center">
-                        <a className='text-white text-sm md:text-xl  font-bold md:hover:text-2xl uppercase'
+                        <a className='text-white text-sm md:text-xl  font-bold  uppercase'
                         onClick={() => {
                             startSettingSubCategory(category.name)
                             navigate(`${category.name}`);

@@ -2,9 +2,9 @@ import { Fragment, useRef, useState } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 import { Popover, Transition } from "@headlessui/react"
-import { FlyOutMenu } from "./FlyOutMenu"
+import { FlyMenuComponent } from "./"
 
-export const FlyOutButtonToggle = () => {
+export const FlyButtonToggleComponent = () => {
     const buttonRef = useRef(null)
     const [openState, setOpenState] = useState(false)
   
@@ -42,7 +42,7 @@ export const FlyOutButtonToggle = () => {
                 leaveTo="opacity-0 translate-y-1"
               >
                 <Popover.Panel  className="absolute z-40 left-0 w-full  h-auto my-2 ">
-                  <FlyOutMenu/>
+                  <FlyMenuComponent/>
                 </Popover.Panel>
               </Transition>
             </div>

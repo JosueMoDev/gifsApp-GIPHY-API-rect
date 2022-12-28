@@ -2,10 +2,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useGetResposeBySearchTerm } from '../hooks'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
-export const MainInputSeach = () => {
+export const InputSeachComponent = () => {
     const { startSearching, searchTerm, isSearching } = useGetResposeBySearchTerm();
     
     const [inputValue, setInputValue ] = useState(searchTerm);

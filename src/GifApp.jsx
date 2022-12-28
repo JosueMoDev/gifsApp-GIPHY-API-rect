@@ -1,4 +1,4 @@
-import { CopyAlertComponent, MainInputSeach, NavBarComponent } from "./components";
+import { CopyAlertComponent, InputSeachComponent, NavBarComponent } from "./components";
 import { AppRouter } from "./router/AppRouter";
 
 
@@ -10,7 +10,7 @@ export const GifApp = () => {
       <CopyAlertComponent />
       <div className="px-2 lg:px-5 xl:px-24 w-12/12">
         <NavBarComponent/>
-        <MainInputSeach  />       
+        <InputSeachComponent  />       
         <AppRouter />
         
       </div>

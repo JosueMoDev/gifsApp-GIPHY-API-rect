@@ -1,7 +1,7 @@
-import { useGetResposeBySearchTerm } from '../hooks'
+import { useGetResposeBySearchTerm } from '../../hooks'
 import 'animate.css';
 
-export const ButtonSwichGifsAndStickers = () => {
+export const SwitchButtonComponent = () => {
     const { startSwitchingButton, isSearchingByGifs } = useGetResposeBySearchTerm();
     
     const styleRight = "min-w-28 w-24 h-8 text-sm rounded-full  font-semiboldtext-gray-50  bg-gradient-to-l from-blue-700 via-violet-600 to-indigo-700 bg-indigo-500 text-white bg-indigo-500 text-white";

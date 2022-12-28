@@ -1,7 +1,7 @@
-import { useGetResposeBySearchTerm } from '../hooks';
-import { ButtonSwichGifsAndStickers } from './ButtonSwichGifsAndStickers';
+import { useGetResposeBySearchTerm } from '../../hooks';
+import { SwitchButtonComponent } from './';
 
-export const TagRelatedComponent = () => {
+export const TagsRelatedComponent = () => {
 
   const { tags, searchTerm, startSearching, total_gifs, total_stickers, isSearchingByGifs } = useGetResposeBySearchTerm();
   const onButtonClick = ({ target }) => startSearching(target.value);
@@ -33,7 +33,7 @@ export const TagRelatedComponent = () => {
         </div>
         <div className='flex'>
           {
-          (total_gifs || total_stickers > 0 )&&<ButtonSwichGifsAndStickers />
+          (total_gifs || total_stickers > 0 )&&<SwitchButtonComponent />
           }
         </div>
       </div>
@@ -58,7 +58,7 @@ export const TagRelatedComponent = () => {
               <div className='w-full flex items-center justify-between divide-x divide-slate-500 sm:divide-none'>    
                 <div className=' py-5 items-start pr-5 sm:px-2'>
                   {
-                  (total_gifs || total_stickers > 0 )&&<ButtonSwichGifsAndStickers />
+                  (total_gifs || total_stickers > 0 )&&<SwitchButtonComponent />
                   }
                 </div>
 

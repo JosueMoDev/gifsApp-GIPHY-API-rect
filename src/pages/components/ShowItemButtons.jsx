@@ -1,5 +1,5 @@
 
-import { AddToFavorite } from '../../components'
+import { AddToFavoriteComponent } from '../../components'
 import { CopyEmbedButton, ShareButton } from './'
 
 
@@ -8,7 +8,7 @@ export const ShowItemButtons = ({ item }) => {
     <div className="w-5/12">
         <div className='flex justify-end  md:justify-start md:grid w-full mt-2 my-4 '>
             <div className=" flex  space-x-2 items-center">
-                <AddToFavorite itemData={{ item, size: 1.8}}  />
+                <AddToFavoriteComponent itemData={{ item, size: 1.8}}  />
                 <p className="hidden md:block text-white text-sm font-semibold">Favorite</p>
             </div>
             <div className="flex  space-x-2 items-center">

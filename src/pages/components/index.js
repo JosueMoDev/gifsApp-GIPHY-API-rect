@@ -6,5 +6,8 @@ export * from './ShowItemButtons';
 export * from './ShareComponent';
 export * from './ShareButton';
 export * from './CopyEmbedButton';
+export * from './TagsRelatedComponent';
+export * from './SwitchButtonComponent'
+
 
 
