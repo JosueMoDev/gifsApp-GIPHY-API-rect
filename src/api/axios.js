@@ -1,12 +1,10 @@
 import axios from "axios";
-
+const { VITE_API_URL, VITE_API_KEY } = import.meta.env
 // Default config for the axios instance
 const axiosParams = {
-  // Set different base URL based on the environment
-  baseURL:
-    process.env.NODE_ENV === "development" ? "https://api.giphy.com/v1" : "/",
-  // Alternative if you have more environments
-  // baseURL: process.env.VUE_APP_API_BASE_URL
+  
+  baseURL: VITE_API_URL
+
 };
 
 // Create axios instance with default params
