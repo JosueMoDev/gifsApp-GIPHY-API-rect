@@ -1,15 +1,14 @@
 import api from './axios';
+const { VITE_API_KEY, VITE_API_URL} = import.meta.env
 
-const GIPHY_BASE_URL = "https://api.giphy.com/v1";
-const REACT_APP_GIPHY_API_KEY = "J9Y4XtJfVVNaoadCwYwAofFqkoaGjG8W";
 const DEFAUL_PARAMS = {
-    api_key: REACT_APP_GIPHY_API_KEY
+    api_key: VITE_API_KEY
   
 }
 //Get Item By ID
 export const fetchGetItemById = (id) => {
     return api.get(`gifs/${id}`,{
-        baseUrl: GIPHY_BASE_URL,
+        baseUrl: VITE_API_URL,
         params: { ...DEFAUL_PARAMS }
     });
 };
@@ -17,7 +16,7 @@ export const fetchGetItemById = (id) => {
 //Get Gifs By Search term
 export const fetchGetGifs = (q, limit) => {
     return api.get("gifs/search",{
-        baseUrl: GIPHY_BASE_URL,
+        baseUrl: VITE_API_URL,
         params: { ...DEFAUL_PARAMS, q, limit, offset:1 }
     });
 };
@@ -27,7 +26,7 @@ export const fetchGetGifs = (q, limit) => {
 //Get Stickers By Search term
 export const fetchGetStickers = (q) => {
     return api.get("stickers/search",{
-        baseUrl: GIPHY_BASE_URL,
+        baseUrl: VITE_API_URL,
         params: { ...DEFAUL_PARAMS, q }
     });
 };
@@ -35,14 +34,14 @@ export const fetchGetStickers = (q) => {
 //Get Tags Related By Search term
 export const fetchGetTagsRelated = (q, limit) => {
     return api.get(`tags/related/${q}`,{
-        baseUrl: GIPHY_BASE_URL,
+        baseUrl: VITE_API_URL,
         params: { ...DEFAUL_PARAMS, limit }
     });
 };
 
 export const fetchTendringResponse = () => {
     return api.get("gifs/trending", {
-        baseUrl: GIPHY_BASE_URL,
+        baseUrl: VITE_API_URL,
         params: { ...DEFAUL_PARAMS, limit:7 }
     });
 };
@@ -50,7 +49,7 @@ export const fetchTendringResponse = () => {
 
 export const fetchByArtisResponse = () => {
     return api.get("gifs/trending", {
-        baseUrl:GIPHY_BASE_URL,
+        baseUrl:VITE_API_URL,
         params: { ...DEFAUL_PARAMS, limit:3, offset:100 }
     });
 };
@@ -60,7 +59,7 @@ export const fetchByArtisResponse = () => {
 //Get Categories
 export const fetchGetCategories = () => {
     return api.get("gifs/categories",{
-        baseUrl: GIPHY_BASE_URL,
+        baseUrl: VITE_API_URL,
         params: { ...DEFAUL_PARAMS }
     });
 };
@@ -68,7 +67,7 @@ export const fetchGetCategories = () => {
 //Get a single gif by subcategory
 export const fetchGetASingleGifForSubCategory = (q) => {
     return api.get("gifs/search",{
-        baseUrl: GIPHY_BASE_URL,
+        baseUrl: VITE_API_URL,
         params: { ...DEFAUL_PARAMS, q, limit:1 }
     });
 };
