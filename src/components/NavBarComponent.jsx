@@ -93,7 +93,7 @@ export const NavBarComponent = () => {
                                 <FavoriteIcon sx={{ fontSize:24, color: pink[400] }} />
                             </IconButton>
                             
-{/* trabajar aqui */}
+
                             
                                 {
                                     (isFlyMenuOpen)
@@ -109,12 +109,7 @@ export const NavBarComponent = () => {
                         
                     </div>
                 </div>
-              {/* Mobile menu */}
-                {/* <div className={` bg-gradient-to-l from-violet-500 via-fuchsia-500 to-fuchsia-500`}>
-                    <div className="items-center">
-                       
-                    </div>        
-                </div> */}
+
                 <div className={`bg-gradient-to-l md:hidden from-violet-500 via-fuchsia-500 to-fuchsia-500  ${(isFlyMenuOpen) ? '' : 'hidden'}`}>
                     <div className=" h-full relative top-0 z-20 ">
                         <div className="  block self-stretch">

@@ -5,7 +5,9 @@ export const uiSlice = createSlice({
         isLinkCopid: false,
         isAlertOpen: false,
         isSharingItem: false,
-        isFlyMenuOpen: false
+        isFlyMenuOpen: false,
+        isAutoCompleteOpen: false, 
+       
     },
     reducers: {
         onCopyLink:(state)=> {
@@ -29,6 +31,12 @@ export const uiSlice = createSlice({
         },
         onCloseFlyMenu: ( state ) => { 
             state.isFlyMenuOpen = false; 
+        },
+        onOpenAutoComplete: (state) => { 
+            state.isAutoCompleteOpen = true; 
+        },
+        onCloseAutoComplete: (state) => { 
+            state.isAutoCompleteOpen = false; 
         }
 
    }
@@ -36,5 +44,5 @@ export const uiSlice = createSlice({
 export const {
     onCopyLink, onShowAlert, onCloseAlert,
     onShareItem, onCloseSharingWindow,
-    onOpenFlyMenu, onCloseFlyMenu
+    onOpenFlyMenu, onCloseFlyMenu, onOpenAutoComplete, onCloseAutoComplete
 } = uiSlice.actions;

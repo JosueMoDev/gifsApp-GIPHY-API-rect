@@ -1,16 +1,18 @@
-
 import { useDispatch, useSelector } from 'react-redux';
 import {
     onCopyLink, onShowAlert,
     onCloseAlert, onCloseSharingWindow,
     onShareItem, onOpenFlyMenu, onCloseFlyMenu,
-    onClearItem, onClearCategories, onClearSearch
+    onClearItem, onClearCategories, onClearSearch,
+    onOpenAutoComplete, onCloseAutoComplete
 } from '../store';
 
 export const useSetUi = () => {
-
+    
     const dispatch = useDispatch();
-    const { isLinkCopid, isAlertOpen, isSharingItem, isFlyMenuOpen,  } = useSelector(state => state.ui);
+    
+    const { isLinkCopid, isAlertOpen, isSharingItem, isFlyMenuOpen, isAutoCompleteOpen } = useSelector(state => state.ui);
+    
     
     const startCopyLink = () => { 
         
@@ -40,6 +42,13 @@ export const useSetUi = () => {
         dispatch(onClearItem());
         dispatch(onClearCategories());
     }
+    const startOpenAutoComplete = () => { 
+        dispatch(onOpenAutoComplete());
+    }
+    const startCloseAutoComplete = () => { 
+        dispatch(onCloseAutoComplete());
+    }
+  
     // * hay que trabajer abrir y cerrar flyout menu aqui, hay que mostrar spinner cuando se
     // * se esta buscando y setando images, limpiar el search tearm cuando se hace click en home
 
@@ -49,6 +58,7 @@ export const useSetUi = () => {
         isAlertOpen,
         isSharingItem,
         isFlyMenuOpen,
+        isAutoCompleteOpen,
      
         // * METHODS
         startCopyLink,
@@ -58,7 +68,10 @@ export const useSetUi = () => {
         startSharingItem,
         startOpenFlyMenu,
         startCloseFlyMenu,
-        startClear
+        startClear, 
+        startOpenAutoComplete,
+        startCloseAutoComplete,
+     
 
     }
   

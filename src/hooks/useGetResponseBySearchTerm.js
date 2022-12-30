@@ -15,7 +15,7 @@ export const useGetResposeBySearchTerm = () => {
     const startSearching = (searchTerm) => { 
         dispatch(onSearching(searchTerm));
     }
-    
+   
     const startSwitchingButton = () => {
         dispatch(onChangeView());
     }

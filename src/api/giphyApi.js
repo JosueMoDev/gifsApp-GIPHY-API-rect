@@ -38,6 +38,12 @@ export const fetchGetTagsRelated = (q, limit) => {
         params: { ...DEFAUL_PARAMS, limit }
     });
 };
+export const fetchGetSearchTags = (q) => {
+    return api.get(`/gifs/search/tags`,{
+        baseUrl: VITE_API_URL,
+        params: { ...DEFAUL_PARAMS, q,  limit:3, offset:0 }
+    });
+};
 
 export const fetchTendringResponse = () => {
     return api.get("gifs/trending", {
