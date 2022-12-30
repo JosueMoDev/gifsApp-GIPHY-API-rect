@@ -27,7 +27,7 @@ export const NavBarComponent = () => {
                                 }
                                     
                             >
-                                <img className="block w-auto sm:h-7 h-5  lg:hidden" src="logo.svg" alt="logo"/><span className="ml-0 font-black sm:text-3xl  text-xl block lg:hidden">GIPHY</span>
+                                <img className="block w-auto sm:h-7 h-5  lg:hidden" src="/logo.svg" alt="logo"/><span className="ml-0 font-black sm:text-3xl  text-xl block lg:hidden">GIPHY</span>
                             </a>
                             <a className='cursor-pointer no-underline text-white flex'
                                 onClick={() => {  
@@ -36,7 +36,7 @@ export const NavBarComponent = () => {
                                 }
                                     
                             >
-                                <img className="hidden  w-auto h-8 lg:block" src="logo.svg" alt="logo"/><span className="ml-0 font-black text-3xl hidden lg:block">GIPHY</span>
+                                <img className="hidden  w-auto h-8 lg:block" src="/logo.svg" alt="logo"/><span className="ml-0 font-black text-3xl hidden lg:block">GIPHY</span>
                             </a>
                         </div>
                         <div className="flex space-x-4 py-7">
