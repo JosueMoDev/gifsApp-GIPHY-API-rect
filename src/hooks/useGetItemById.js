@@ -24,7 +24,7 @@ export const useGetItemById = () => {
     const getItemById = async () => { 
         const { data } = await fetchGetItemById(item_id);
         const { id, images, title, slug, type } = data.data;
-        const { url } = images.original.webp
+        const { url } = images.original
         const item = {
             id, url, title, slug, type, user,
             isFavorite: allFavorites.some(item => (item.id === id ? true : false))
