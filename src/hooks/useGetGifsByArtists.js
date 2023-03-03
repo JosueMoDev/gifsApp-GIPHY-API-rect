@@ -10,7 +10,7 @@ export const useGetGifsByArtist = () => {
     const artistGifs = data.data.map(item => ({
       id: item.id,
       title: item.title,
-      url: item.images.downsized_medium.url,
+      url: item.images.original.webp,
       user:item.user
     }));
     setArtist(artistGifs);

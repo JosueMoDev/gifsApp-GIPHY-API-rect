@@ -9,7 +9,7 @@ export const useGetTrendingResponse = () => {
       const trending = data.map(item => ({
         id: item.id,
         title: item.title,
-        url: item.images.downsized.url,
+        url: item.images.original.webp,
       }));
       
       setTrending(trending);

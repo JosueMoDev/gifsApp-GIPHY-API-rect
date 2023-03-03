@@ -33,7 +33,7 @@ export const useGetResposeBySearchTerm = () => {
         const gifs = gifsResponse.data.data.map(gif => ({
             id: gif.id,
             title: gif.title,
-            url: gif.images.original.url,
+            url: gif.images.original.webp,
             type: gif.type,
             slug: gif.slug,
             user: gif.user
@@ -46,7 +46,7 @@ export const useGetResposeBySearchTerm = () => {
         const stickers = stickerResponse.data.data.map(sticker => ({
             id: sticker.id,
             title: sticker.title,
-            url: sticker.images.original.url,
+            url: sticker.images.original.webp,
             type: sticker.type,
             slug: sticker.slug,
             user:sticker.user

@@ -24,7 +24,7 @@ export const useGetItemById = () => {
     const getItemById = async () => { 
         const { data } = await fetchGetItemById(item_id);
         const { id, images, title, slug, type } = data.data;
-        const { url } = images.downsized
+        const { url } = images.original.webp
         const item = {
             id, url, title, slug, type, user,
             isFavorite: allFavorites.some(item => (item.id === id ? true : false))
@@ -34,7 +34,7 @@ export const useGetItemById = () => {
         const gifsRelated = gifsResponse.data.data.map(gif => ({
             id: gif.id,
             title: gif.title,
-            url: gif.images.original.url,
+            url: gif.images.original.webp,
             type: gif.type,
             slug: gif.slug,
             user: gif.user,
