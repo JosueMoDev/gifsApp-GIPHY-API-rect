@@ -26,7 +26,7 @@ export const LoginModalComponent = () => {
       <div>
         {["left"].map((anchor) => (
           <React.Fragment key={anchor}>
-            <div className="w-fit h-fit  flex">
+            <div className="w-40 h-fit  flex">
               <div className="bg-[#525252] w-fit h-fit rounded-sm p-1.5 flex justify-center align-middle">
                 <PersonIcon className="text-white  roundered-md" />
               </div>
@@ -36,7 +36,7 @@ export const LoginModalComponent = () => {
                 aria-haspopup="true"
                 aria-expanded={open ? "true" : undefined}
                 onClick={toggleDrawer(anchor, true)}
-                className="bg-[#3E3E3E] font-semibold w-full text-sm h-fit rounded-r-sm flex justify-items-center align-middle p-2 text-white px-6"
+                className="bg-[#3E3E3E] font-semibold pl-8 w-full text-center text-sm h-fit rounded-r-sm flex justify-items-center align-middle p-2 text-white px-6"
               >
                 Log in
               </button>
@@ -48,7 +48,7 @@ export const LoginModalComponent = () => {
               onOpen={toggleDrawer(anchor, true)}
               
             >
-              <Box className="bg-purple-900 bg-opacity-90 h-screen w-full" sx={{ width:'auto' }}>
+              <Box className="bg-purple-900/95  h-screen w-full" sx={{ width:'auto' }}>
                 <div className="pt-5 w-full flex justify-center">
                     <img src="https://giphy.com/static/img/be-animated.gif" className="w-auto h-32"></img>
                 </div>
