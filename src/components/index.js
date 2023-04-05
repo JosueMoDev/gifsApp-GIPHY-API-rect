@@ -9,8 +9,9 @@ export * from './CopyToClipBoardButtonComponent'
 export * from './FlyMenuMobileComponent'
 export * from './FlyMenuComponent'
 export * from './FlyButtonToggleComponent'
-
-
+export * from './AccountComponent'
+export * from './MenuAccountComponent'
+export * from './LoginModalComponent'
 
 
 
