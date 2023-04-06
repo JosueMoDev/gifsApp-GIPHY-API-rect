@@ -3,7 +3,7 @@ import { useAuth } from '../hooks';
 import { useDispatch } from 'react-redux';
 import { changeForm } from "../store/auth";
 
-export const SwitchFormCompent = () => {
+export const SwitchAuthFormCompent = () => {
 
   const { isLogginFormActive } = useAuth()
   const dispatch = useDispatch();
