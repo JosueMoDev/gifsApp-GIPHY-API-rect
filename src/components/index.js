@@ -12,7 +12,7 @@ export * from './FlyButtonToggleComponent'
 export * from './AccountComponent'
 export * from './MenuAccountComponent'
 export * from './AuthComponent'
-export * from './SwitchFormCompent'
+export * from './SwitchAuthFormCompent'
 export * from './LogInFormCompenent'
 export * from './SignUpFormComponent'
 

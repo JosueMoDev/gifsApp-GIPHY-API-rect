@@ -8,8 +8,8 @@ import Facebook from "@mui/icons-material/Facebook";
 import Google from "@mui/icons-material/Google";
 import Divider from "@mui/material/Divider";
 import { Box } from "@mui/material";
-import { startGoogleSignIn, startLoginWithEmailandPassword, startFacebookSignIn } from '../store/auth'
-import { LogInFormCompenent, SignUpFormCompenent, SwitchFormCompent } from "./";
+import { startGoogleSignIn, startFacebookSignIn } from '../store/auth'
+import { LogInFormCompenent, SignUpFormCompenent, SwitchAuthFormCompent } from "./";
 
 export const AuthComponent = () => {
   const { isLogginFormActive, status } = useAuth()
@@ -66,7 +66,7 @@ export const AuthComponent = () => {
                     <img src="https://giphy.com/static/img/be-animated.gif" className="w-auto h-32"></img>
                 </div>
                 <div className="flex-auto h-auto w-[400px] p-10 bg-purple-900/95">
-                  <SwitchFormCompent/>
+                  <SwitchAuthFormCompent/>
                   {(isLogginFormActive )?<LogInFormCompenent/>:<SignUpFormCompenent/>}
                   <Divider className="bg-white/50"/>
                   <div className="w-full space-y-2 mt-5">
