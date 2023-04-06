@@ -10,6 +10,7 @@ export const authSlice = createSlice({
         photoURL: null,
         errorMessage: null,
         isLogginFormActive: true,
+        passwordVisibility: false
     },
     reducers: {
         login: (state, { payload }) => { 
@@ -32,7 +33,10 @@ export const authSlice = createSlice({
         },
         changeForm: (state) => {
             state.isLogginFormActive = !state.isLogginFormActive;
+        },
+        changePasswordVisibility: (state) => {
+            state.passwordVisibility = !state.passwordVisibility;
         }
     }
 });
-export const { login, logout, checkingCrendentials, changeForm } = authSlice.actions;
+export const { login, logout, checkingCrendentials, changeForm, changePasswordVisibility } = authSlice.actions;

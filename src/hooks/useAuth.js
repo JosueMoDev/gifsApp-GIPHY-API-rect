@@ -6,16 +6,30 @@ import { login, logout } from "../store/auth";
 // import { startLoadingNotes } from "../store/journal";
 
 export const useAuth = () => {
-    const { status, displayName, uid, photoURL, isLogginFormActive } = useSelector(state => state.auth);
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-      onAuthStateChanged(FirebaseAuth, async (user) => {
-        if (!user) return dispatch(logout());
-        const { uid, photoURL, email, displayName} = user
-        dispatch(login({ uid, photoURL, email, displayName }))
-        // dispatch(startLoadingNotes());
-      });
-    }, [])
-    return { status, displayName, uid, photoURL, isLogginFormActive }
-}
+  const {
+    status,
+    displayName,
+    uid,
+    photoURL,
+    isLogginFormActive,
+    passwordVisibility,
+  } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    onAuthStateChanged(FirebaseAuth, async (user) => {
+      if (!user) return dispatch(logout());
+      const { uid, photoURL, email, displayName } = user;
+      dispatch(login({ uid, photoURL, email, displayName }));
+      // dispatch(startLoadingNotes());
+    });
+  }, []);
+  return {
+    status,
+    displayName,
+    uid,
+    photoURL,
+    isLogginFormActive,
+    passwordVisibility,
+  };
+};

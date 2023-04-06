@@ -65,7 +65,7 @@ export const AuthComponent = () => {
                 <div className="pt-5 w-full flex justify-center">
                     <img src="https://giphy.com/static/img/be-animated.gif" className="w-auto h-32"></img>
                 </div>
-                <div className="flex-auto w-[400px] p-10">
+                <div className="flex-auto h-auto w-[400px] p-10 bg-purple-900/95">
                   <SwitchFormCompent/>
                   {(isLogginFormActive )?<LogInFormCompenent/>:<SignUpFormCompenent/>}
                   <Divider className="bg-white/50"/>

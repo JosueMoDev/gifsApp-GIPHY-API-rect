@@ -36,6 +36,7 @@ export const startCreateUserWithEmailAndPassword = ({
   password,
   displayName,
 }) => {
+  console.log(email, password, displayName)
   return async (dispatch) => {
     dispatch(checkingCrendentials());
     const { ok, uid, photoURL, errorMessage } =

@@ -62,7 +62,7 @@ export const MenuAccountComponent = () => {
     <div>
       <div className="w-full h-12  flex justify-center align-middle">
         <div className="bg-[#525252] w-fit h-fit rounded-sm p-0.5 flex justify-center align-middle">
-          <img className="w-auto h-9 object-cover" src={photoURL} alt="profile_photo" />
+          <img className="w-12 h-9 object-cover" src={photoURL ||'../../public/no-photoUrl.gif' } alt="profile_photo" />
         </div>
         <button
           id="basic-button"
