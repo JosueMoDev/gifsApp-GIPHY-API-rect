@@ -1,13 +1,23 @@
 import React from "react";
+import { useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import PersonIcon from "@mui/icons-material/Person";
 import Facebook from "@mui/icons-material/Facebook";
 import Google from "@mui/icons-material/Google";
-
 import Divider from "@mui/material/Divider";
 import { Box } from "@mui/material";
-
-export const LoginModalComponent = () => {
+import { startGoogleSignIn, startLoginWithEmailandPassword, startFacebookSignIn } from '../store/auth'
+export const AuthComponent = () => {
+  const { status, errorMessage } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  const isAuthenticating = useMemo(() => status === 'checking', [status]); 
+  const onGoogleSignIn = () => { 
+    dispatch(startGoogleSignIn())
+  } 
+  const onFacebookSignIn = () => { 
+    dispatch(startFacebookSignIn())
+  } 
   const [state, setState] = React.useState({ left: false });
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -86,11 +96,11 @@ export const LoginModalComponent = () => {
                   </form>
                   <Divider className="bg-white/50"/>
                   <div className="w-full space-y-2 mt-5">
-                    <button className="bg-gradient-to-l flex justify-center align-middle rounded-sm text-white font-semibold bg-[#030407] w-full h-fit p-2 px-6">
+                    <button onClick={onGoogleSignIn} disabled={ isAuthenticating } className="bg-gradient-to-l flex justify-center align-middle rounded-sm text-white font-semibold bg-[#030407] w-full h-fit p-2 px-6">
                        <Google className="text-base mx-2"/>
                         Log in With Google
                     </button>
-                    <button className="bg-gradient-to-l flex justify-center align-middle rounded-sm text-white font-semibold bg-[#030407] w-full h-fit p-2 px-6">
+                    <button onClick={onFacebookSignIn} disabled={ isAuthenticating } className="bg-gradient-to-l flex justify-center align-middle rounded-sm text-white font-semibold bg-[#030407] w-full h-fit p-2 px-6">
                         <Facebook className="text-base mx-2"/>
                         Log in With Facebook
                     </button>

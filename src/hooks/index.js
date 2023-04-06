@@ -5,3 +5,4 @@ export * from './useAllFavorites';
 export * from './useGetItemById';
 export * from './useSetUi';
 export * from './useGetCategories';
+export * from './useAuth'

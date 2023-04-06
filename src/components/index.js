@@ -11,7 +11,7 @@ export * from './FlyMenuComponent'
 export * from './FlyButtonToggleComponent'
 export * from './AccountComponent'
 export * from './MenuAccountComponent'
-export * from './LoginModalComponent'
+export * from './AuthComponent'
 
 
 
