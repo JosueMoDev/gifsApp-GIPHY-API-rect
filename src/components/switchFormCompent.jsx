@@ -4,12 +4,14 @@ import { useDispatch } from 'react-redux';
 import { changeForm } from "../store/auth";
 
 export const SwitchFormCompent = () => {
+
   const { isLogginFormActive } = useAuth()
   const dispatch = useDispatch();
   const onChangeForm = () => {
     dispatch(changeForm());
   };
  
+  
   const styleRight = "min-w-[50%] w-[50%] h-12 rounded-full text-base  font-semibold text-gray-50  bg-gradient-to-l from-blue-700 via-violet-600 to-indigo-700 bg-indigo-500 text-white bg-indigo-500 text-white";
 
   const styleLeft = "min-w-[50%] w-[50%] h-12  rounded-full text-base font-semibold text-gray-50  bg-gradient-to-l from-teal-700 via-cyan-600 to-emerald-700 bg-emerald-500 text-white";
