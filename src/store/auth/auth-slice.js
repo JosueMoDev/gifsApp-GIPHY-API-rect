@@ -31,7 +31,7 @@ export const authSlice = createSlice({
             state.status = 'checking';
         },
         changeForm: (state) => {
-            state.isLogginFormActive = !isLogginFormActive;
+            state.isLogginFormActive = !state.isLogginFormActive;
         }
     }
 });

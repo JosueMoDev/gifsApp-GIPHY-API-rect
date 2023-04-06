@@ -37,7 +37,7 @@ export const singInWithGoogle = async () => {
 };
 export const signInWithFacebook = async () => {
   try {
-    const result = await signInWithPopup(auth, facebookProvider.setCustomParameters({ prompt: "select_account" }));
+    const result = await signInWithPopup(auth, facebookProvider);
     const { displayName, email, photoURL, uid } = result.user;
     return {
       ok: true,

@@ -6,7 +6,7 @@ import { login, logout } from "../store/auth";
 // import { startLoadingNotes } from "../store/journal";
 
 export const useAuth = () => {
-    const { status, displayName, uid, photoURL } = useSelector(state => state.auth);
+    const { status, displayName, uid, photoURL, isLogginFormActive } = useSelector(state => state.auth);
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -17,5 +17,5 @@ export const useAuth = () => {
         // dispatch(startLoadingNotes());
       });
     }, [])
-    return { status, displayName, uid, photoURL }
+    return { status, displayName, uid, photoURL, isLogginFormActive }
 }

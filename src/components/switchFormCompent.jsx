@@ -1,30 +1,35 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useAuth } from '../hooks';
+import { useDispatch } from 'react-redux';
+import { changeForm } from "../store/auth";
 
-export const switchFormCompent = () => {
-    const [isRegisterForm, setRegisterForm] = useState(false)
-     
-    const styleRight = "min-w-28 w-24 h-8 text-sm rounded-full  font-semiboldtext-gray-50  bg-gradient-to-l from-blue-700 via-violet-600 to-indigo-700 bg-indigo-500 text-white bg-indigo-500 text-white";
-    
-    const styleLeft = "min-w-28 w-24 h-8 text-sm rounded-full  font-semiboldtext-gray-50  bg-gradient-to-l from-teal-700 via-cyan-600 to-emerald-700 bg-emerald-500 text-white";
+export const SwitchFormCompent = () => {
+  const { isLogginFormActive } = useAuth()
+  const dispatch = useDispatch();
+  const onChangeForm = () => {
+    dispatch(changeForm());
+  };
+ 
+  const styleRight = "min-w-[50%] w-[50%] h-12 rounded-full text-base  font-semibold text-gray-50  bg-gradient-to-l from-blue-700 via-violet-600 to-indigo-700 bg-indigo-500 text-white bg-indigo-500 text-white";
+
+  const styleLeft = "min-w-[50%] w-[50%] h-12  rounded-full text-base font-semibold text-gray-50  bg-gradient-to-l from-teal-700 via-cyan-600 to-emerald-700 bg-emerald-500 text-white";
   return (
-    <div>
-          <div className="flex bg-transparent  w-fit  space-x-4">
-            <button
-                className={isRegisterForm ? `${styleRight} animate__animated animate__shakeX animate__headShake` : "text-gray-500  bg-transparent "}
-                value={'gifs'}
-                onClick={setRegisterForm}
-            >
-            Log In               
-            </button>
-        
-            <button
-                className={isRegisterForm ? "text-gray-500  bg-transparent" :`${styleLeft} animate__animated animate__headShake`}
-                value={'stickers'}
-                onClick={setRegisterForm}
-            >
-            Register
-            </button>
-        </div>
+
+    <div className="flex bg-[#525252] rounded-full w-full my-3">
+      <button
+        className={isLogginFormActive ? `${styleRight} animate__animated animate__shakeX animate__headShake` : "text-gray-100 text-base px-3 w-[50%] text-center bg-transparent"}
+        onClick={onChangeForm}
+      >
+        Log In
+      </button>
+
+      <button
+        className={isLogginFormActive ? "text-gray-100 text-base px-3 w-[50%] text-center bg-transparent" : `${styleLeft} animate__animated animate__headShake`}
+        onClick={onChangeForm}
+      >
+        Sign Up
+      </button>
     </div>
+
   )
 }
