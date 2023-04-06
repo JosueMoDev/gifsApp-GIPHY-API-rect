@@ -24,7 +24,6 @@ export const startFacebookSignIn = () => {
     return async (dispatch) => {
     dispatch(checkingCrendentials());
       const result = await signInWithFacebook();
-      console.log(result)
     if (!result.ok) return dispatch(logout(result.errorMessage));
     dispatch(login(result));
   };

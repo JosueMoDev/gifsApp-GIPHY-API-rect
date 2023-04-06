@@ -1,5 +1,5 @@
 import React from "react";
-import {  MenuAccountComponent, AuthComponent } from "./";
+import {  MenuAccountComponent, AuthComponent } from "./components";
 import { useAuth } from "../hooks";
 
 export const AccountComponent = () => {

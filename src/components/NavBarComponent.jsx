@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { useGetResposeBySearchTerm, useSetUi } from '../hooks'
 
-import { FlyButtonToggleComponent, FlyMenuMobileComponent, AccountComponent } from './'
+import { FlyButtonToggleComponent, FlyMenuMobileComponent } from './'
+import { AccountComponent } from '../auth/AccountComponent';
 
 import { IconButton } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';

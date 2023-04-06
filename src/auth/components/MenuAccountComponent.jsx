@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useAuth, useGetResposeBySearchTerm } from "../hooks";
-import { startLogOut } from "../store/auth";
+import { useAuth, useGetResposeBySearchTerm } from "../../hooks";
+import { startLogOut } from "../../store/auth";
 import { styled } from "@mui/material/styles";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";

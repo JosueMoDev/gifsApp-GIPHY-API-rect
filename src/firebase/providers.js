@@ -76,7 +76,6 @@ export const registerUserWithEmailAndPassword = async ({
       displayName,
     };
   } catch (error) {
-    console.log(error);
     return { ok: false, errorMessage: error.message };
   }
 };

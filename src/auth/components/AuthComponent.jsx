@@ -1,6 +1,6 @@
 import React from "react";
 import { useMemo } from 'react'
-import { useAuth } from "../hooks";
+import { useAuth } from "../../hooks";
 import { useDispatch } from 'react-redux'
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import PersonIcon from "@mui/icons-material/Person";
@@ -8,8 +8,8 @@ import Facebook from "@mui/icons-material/Facebook";
 import Google from "@mui/icons-material/Google";
 import Divider from "@mui/material/Divider";
 import { Box } from "@mui/material";
-import { startGoogleSignIn, startFacebookSignIn } from '../store/auth'
-import { LogInFormCompenent, SignUpFormCompenent, SwitchAuthFormCompent } from "./";
+import { startGoogleSignIn, startFacebookSignIn } from '../../store/auth'
+import { LogInFormCompenent, SignUpFormCompenent, SwitchAuthFormCompent } from "../components";
 
 export const AuthComponent = () => {
   const { isLogginFormActive, status } = useAuth()
