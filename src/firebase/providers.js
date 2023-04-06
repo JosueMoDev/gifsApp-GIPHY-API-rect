@@ -18,6 +18,7 @@ export const singInWithGoogle = async () => {
       FirebaseAuth,
       googleProvider.setCustomParameters({ prompt: "select_account" })
     );
+    
     const { displayName, email, photoURL, uid } = result.user;
     return {
       ok: true,
@@ -36,9 +37,7 @@ export const singInWithGoogle = async () => {
 };
 export const signInWithFacebook = async () => {
   try {
-    console.log("hellow");
-    const result = await signInWithPopup(auth, facebookProvider);
-    console.log(result);
+    const result = await signInWithPopup(auth, facebookProvider.setCustomParameters({ prompt: "select_account" }));
     const { displayName, email, photoURL, uid } = result.user;
     return {
       ok: true,

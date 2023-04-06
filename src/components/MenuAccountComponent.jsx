@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { useAuth, useGetResposeBySearchTerm } from "../hooks";
 import { startLogOut } from "../store/auth";
-import PersonIcon from "@mui/icons-material/Person";
 import { styled } from "@mui/material/styles";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -43,6 +43,8 @@ const StyledMenu = styled((props) => (
   },
 }));
 export const MenuAccountComponent = () => {
+  const { displayName, uid, photoURL } = useAuth();
+  const { startCleaningSearch } = useGetResposeBySearchTerm();
   const dispatch = useDispatch();
   const onLogOut = () => {
     dispatch(startLogOut());
@@ -58,9 +60,9 @@ export const MenuAccountComponent = () => {
   const navigate = useNavigate();
   return (
     <div>
-      <div className="w-fit h-fit  flex">
-        <div className="bg-[#525252] w-fit h-fit rounded-sm p-1.5 flex justify-center align-middle">
-          <PersonIcon className="text-white  roundered-md" />
+      <div className="w-full h-12  flex justify-center align-middle">
+        <div className="bg-[#525252] w-fit h-fit rounded-sm p-0.5 flex justify-center align-middle">
+          <img className="w-auto h-9 object-cover" src={photoURL} alt="profile_photo" />
         </div>
         <button
           id="basic-button"
@@ -68,9 +70,9 @@ export const MenuAccountComponent = () => {
           aria-haspopup="true"
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
-          className="bg-[#3E3E3E] font-semibold w-full text-sm h-fit rounded-r-sm flex justify-items-center align-middle p-2 text-white px-6"
+          className="bg-[#3E3E3E] font-semibold w-full text-sm h-10 rounded-r-sm flex justify-items-center align-middle p-2 text-white px-6"
         >
-          Log in
+         {displayName}
         </button>
       </div>
       <StyledMenu
