@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useAuth, useGetResposeBySearchTerm } from "../../hooks";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetResposeBySearchTerm } from "../../hooks";
 import { startLogOut } from "../../store/auth";
 import { styled } from "@mui/material/styles";
 import Menu from "@mui/material/Menu";
@@ -43,7 +43,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 export const MenuAccountComponent = () => {
-  const { displayName, uid, photoURL } = useAuth();
+  const { displayName,  photoURL } = useSelector((state) => state.auth);
   const { startCleaningSearch } = useGetResposeBySearchTerm();
   const dispatch = useDispatch();
   const onLogOut = () => {

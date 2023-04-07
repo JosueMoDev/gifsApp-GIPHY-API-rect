@@ -1,12 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { startLoginWithEmailandPassword } from "../../store/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
 import { SvgIcon } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { useAuth } from "../../hooks";
 import { changePasswordVisibility } from "../../store/auth";
 
 export const LogInFormCompenent = () => {
@@ -21,7 +20,7 @@ export const LogInFormCompenent = () => {
     const { email, password } = data;
     dispatch(startLoginWithEmailandPassword({ email, password }));
   }
-  const { passwordVisibility } = useAuth();
+  const { passwordVisibility } =  useSelector((state) => state.auth);;
   const onChangePasswordVisibility = () => {
     dispatch(changePasswordVisibility());
   };

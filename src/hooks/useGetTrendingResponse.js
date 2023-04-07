@@ -7,9 +7,9 @@ import { checkIfItemIsFavorite } from "./helpers/checkIfItemIsFavorite";
 
 export const useGetTrendingResponse = () => { 
   const dispatch = useDispatch();
-    const { allFavorites } = useAllFavorites();
+    const { allFavorites } = useSelector(state => state.favorites);
     const {  gifs  } = useSelector( state => state.search)
-    const getTrendingGiphys = async () => {
+  const getTrendingGiphys = async () => {
       const ApiResponse = await fetchTendringResponse();
       const data = ApiResponse.data.data.map(gifs => gifs);
       const trendingList = data.map(item => ({

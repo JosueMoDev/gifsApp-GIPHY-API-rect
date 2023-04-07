@@ -10,3 +10,8 @@ export const checkIfItemIsFavorite = (itemList, allFavorites) => {
 
     return favorites;
 }
+export const removeEquals = (itemList, allFavorites) => { 
+    if (!itemList) return;
+    const favorites = allFavorites.filter(favorite => !itemList.some(item => favorite.id === item.id))
+    return favorites;
+}

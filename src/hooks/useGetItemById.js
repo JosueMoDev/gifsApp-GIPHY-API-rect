@@ -8,12 +8,8 @@ import { useAllFavorites } from "./useAllFavorites";
 
 export const useGetItemById = () => {
     const dispatch = useDispatch();
-    
-    const { allFavorites } = useAllFavorites(); 
-
-    const { item, item_id, itemTags, tagsTerms, itemGifsRelated,  user } = useSelector(state => state.showItem);
- 
-    
+    const { allFavorites } = useSelector(state => state.favorites);
+    const { item, item_id, itemTags, tagsTerms, itemGifsRelated,  user } = useSelector(state => state.showItem);   
     const startShowingitem = (item) => { 
         dispatch(onSearchingItemById(item));
         dispatch(onClearSearch());

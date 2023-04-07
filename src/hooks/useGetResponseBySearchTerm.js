@@ -10,7 +10,7 @@ export const useGetResposeBySearchTerm = () => {
     const dispatch = useDispatch();
 
     const { searchTerm, gifs, stickers, tags, isSearchingByGifs, total_gifs, total_stickers, isSearching } = useSelector( state => state.search)
-    const { allFavorites } = useAllFavorites();
+    const { allFavorites } = useSelector(state => state.favorites);
 
     const startSearching = (searchTerm) => { 
         dispatch(onSearching(searchTerm));

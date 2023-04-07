@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FirebaseAuth } from "../firebase/config";
 import { login, logout } from "../store/auth";
-// import { startLoadingNotes } from "../store/journal";
+import { allFavoritesFirebase } from "../store/favorites"
 
 export const useAuth = () => {
   const {
@@ -17,11 +17,12 @@ export const useAuth = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    
     onAuthStateChanged(FirebaseAuth, async (user) => {
       if (!user) return dispatch(logout());
       const { uid, photoURL, email, displayName } = user;
       dispatch(login({ uid, photoURL, email, displayName }));
-      // dispatch(startLoadingNotes());
+      dispatch(allFavoritesFirebase());
     });
   }, []);
   return {

@@ -1,7 +1,6 @@
 import React from "react";
 import { useMemo } from 'react'
-import { useAuth } from "../../hooks";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import PersonIcon from "@mui/icons-material/Person";
 import Facebook from "@mui/icons-material/Facebook";
@@ -12,7 +11,7 @@ import { startGoogleSignIn, startFacebookSignIn } from '../../store/auth'
 import { LogInFormCompenent, SignUpFormCompenent, SwitchAuthFormCompent } from "../components";
 
 export const AuthComponent = () => {
-  const { isLogginFormActive, status } = useAuth()
+  const { isLogginFormActive, status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const isAuthenticating = useMemo(() => status === 'checking', [status]); 
   const onGoogleSignIn = () => { 

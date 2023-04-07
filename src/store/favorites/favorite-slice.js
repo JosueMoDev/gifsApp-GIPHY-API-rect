@@ -15,7 +15,11 @@ export const favoritesSlice = createSlice({
                 localStorage.setItem('allFavorites', JSON.stringify(state.allFavorites));
             }
         },
-     
+        
+        onAddFavoritesFromFirebase: (state, { payload }) => {
+            state.allFavorites = [...payload]
+            console.log( state.allFavorites )
+        },
  
         onDeleteToFavoties: (state, { payload }) => { 
             
@@ -25,4 +29,4 @@ export const favoritesSlice = createSlice({
         }
    }
 })
-export const { onAddToFavorites,  onDeleteToFavoties } = favoritesSlice.actions;
+export const { onAddToFavorites,  onDeleteToFavoties, onAddFavoritesFromFirebase } = favoritesSlice.actions;

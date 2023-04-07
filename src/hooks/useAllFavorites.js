@@ -4,16 +4,14 @@ import { useAuth } from './useAuth';
 
 export const useAllFavorites = () => {
 
-    const { status } = useAuth()
+    const { status } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
     const { allFavorites } = useSelector(state => state.favorites);
        
     const startingToAddFavorite = (item) => { 
-
         if (status === 'authenticated') {
             dispatch(onAddToFavoriteFibase(item));
         } else if (status === 'not-authenticated') {
-            
             dispatch(onAddToFavorites(item));
         }
     }
@@ -29,8 +27,6 @@ export const useAllFavorites = () => {
     return {
         // * PROPERTIES
         allFavorites,
-   
-     
         // * METHODS
         startingToAddFavorite,
         startingToDeleteFavorite,
