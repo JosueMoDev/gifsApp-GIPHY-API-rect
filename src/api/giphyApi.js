@@ -48,7 +48,7 @@ export const fetchGetSearchTags = (q) => {
 export const fetchTendringResponse = () => {
     return api.get("gifs/trending", {
         baseUrl: VITE_API_URL,
-        params: { ...DEFAUL_PARAMS, limit:7 }
+        params: { ...DEFAUL_PARAMS }
     });
 };
 

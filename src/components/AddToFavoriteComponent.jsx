@@ -8,7 +8,6 @@ import { useAllFavorites } from '../hooks';
 export const AddToFavoriteComponent = ({ itemData }) => {
 
     const { startingToAddFavorite, startingToDeleteFavorite } = useAllFavorites()
-    
     return (
         
         <div className=' hover:opacity-80 hover:animate-ping '>

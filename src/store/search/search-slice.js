@@ -59,7 +59,10 @@ export const searchSlice = createSlice({
             state.stickers = [];
             state.total_stickers = null;
             state.tags = [];
+        },
+        onSetTrending: (state, { payload }) => {
+            state.gifs = payload;
         }
    }
 });
-export const { onSearching, onSetData, onChangeView, onClearSearch, onReloadData } = searchSlice.actions;
+export const { onSearching, onSetData, onChangeView, onClearSearch, onReloadData, onSetTrending } = searchSlice.actions;

@@ -9,6 +9,7 @@ export const useAllFavorites = () => {
     const { allFavorites } = useSelector(state => state.favorites);
        
     const startingToAddFavorite = (item) => { 
+
         if (status === 'authenticated') {
             dispatch(onAddToFavoriteFibase(item));
         } else if (status === 'not-authenticated') {
