@@ -28,8 +28,14 @@ export const useGetTrendingResponse = () => {
   };
 
   useEffect(() => {
-    getTrendingGiphys();
+      getTrendingGiphys();
   }, [allFavorites]);
+  
+  useEffect(() => {
+    if (!gifs) {
+      getTrendingGiphys();
+    }
+  }, [gifs]);
 
   return { gifs };
 };
