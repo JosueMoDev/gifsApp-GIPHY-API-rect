@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { onAddToFavorites,  onDeleteToFavoties, onAddToFavoriteFibase, onDeleteToFavoriteFibase } from '../store';
-import { useAuth } from './useAuth';
+import {  onAddToFavoritesToLocalStorage, addToFavoriteToFirebase, deleteFavoriteToFirebase, onDeleteToFavotiesToLocalStorage} from '../store';
+
 
 export const useAllFavorites = () => {
 
@@ -10,16 +10,16 @@ export const useAllFavorites = () => {
        
     const startingToAddFavorite = (item) => { 
         if (status === 'authenticated') {
-            dispatch(onAddToFavoriteFibase(item));
+            dispatch(addToFavoriteToFirebase(item));
         } else if (status === 'not-authenticated') {
-            dispatch(onAddToFavorites(item));
+            dispatch(onAddToFavoritesToLocalStorage(item));
         }
     }
     const startingToDeleteFavorite = (item) => { 
         if (status === 'authenticated') {
-            dispatch(onDeleteToFavoriteFibase(item));
+            dispatch(deleteFavoriteToFirebase(item));
         } else if (status === 'not-authenticated') {    
-            dispatch(onDeleteToFavoties(item));
+            dispatch(onDeleteToFavotiesToLocalStorage(item));
         }
     }
 

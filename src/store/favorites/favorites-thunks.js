@@ -1,14 +1,12 @@
 import { collection, deleteDoc, doc, setDoc, getDocs  } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
 import { removeEquals } from "../../hooks/helpers/checkIfItemIsFavorite";
-import { onAddFavoritesFromFirebase } from "./favorite-slice";
+import { onGetAllFavoritesFromFirebase, onDeleteFavoritesToFirebase, onAddFavoritesToFirebase } from "./favorite-slice";
 
-const favoritesFromLocalStorage = () => {
-    const allFavoritesFromStorage = JSON.parse(localStorage.allFavorites);
-    return allFavoritesFromStorage
-}
 
-export const allFavoritesFirebase = () => { 
+
+export const addAllFavoritesFromLocalStorageToFirebase = () => {
+    const favoritesSavedOnLocalStorage = JSON.parse(localStorage.getItem('allFavorites'));
     return async (dispatch, getState) => {
         const { uid } = getState().auth;
         const collectionRef = collection(FirebaseDB, `${uid}/giphys/giphy`);
@@ -17,46 +15,53 @@ export const allFavoritesFirebase = () => {
         docs.forEach(doc => {
             allFavorites.push({ id: doc.id, ...doc.data() });
         });
-        if (localStorage.allFavorites) {
-            const favoritesSavedOnLocalStorage = favoritesFromLocalStorage()
-            const favoritesToSaveOnFirebase = removeEquals(allFavorites, favoritesSavedOnLocalStorage);
-            favoritesToSaveOnFirebase.forEach(async (item) => {
-                const newItem = { ...item, isFavorite: true }
-                const newDoc = doc(collection(FirebaseDB, `${uid}/giphys/giphy`), item.id);
-                await setDoc(newDoc, newItem)
-            });
-            localStorage.removeItem('allFavorites');
-            const docs = await getDocs(collectionRef);
-            const allFavorites = [];
-            docs.forEach(doc => {
-                allFavorites.push({ id: doc.id, ...doc.data() });
-            });
-        }
-
-        dispatch(onAddFavoritesFromFirebase(allFavorites))
+       
+        const favoritesToSaveOnFirebase = removeEquals(allFavorites, favoritesSavedOnLocalStorage);
+      
+        favoritesToSaveOnFirebase.forEach(async (item) => {
+            const newItem = { ...item, isFavorite: true }
+            const newDoc = doc(collection(FirebaseDB, `${uid}/giphys/giphy`), item.id);
+            await setDoc(newDoc, newItem)
+        });
+        localStorage.removeItem('allFavorites');
+        const newdocs = await getDocs(collectionRef);
+        const newallFavorites = [];
+        newdocs.forEach(doc => {
+            newallFavorites.push({ id: doc.id, ...doc.data() });
+        });
+        dispatch(onGetAllFavoritesFromFirebase(newallFavorites))
     }
 }
 
-export const onDeleteToFavoriteFibase  = (item) => {
+export const getAllFavoritesFromFirebase = () => { 
+    return async (dispatch, getState) => {
+        const { uid } = getState().auth;
+        const collectionRef = collection(FirebaseDB, `${uid}/giphys/giphy`);
+        const docs = await getDocs(collectionRef);
+        let allFavorites = [];
+        docs.forEach(doc => {
+            allFavorites.push({ id: doc.id, ...doc.data() });
+        });
+        dispatch(onGetAllFavoritesFromFirebase(allFavorites))
+    }
+}
+
+export const deleteFavoriteToFirebase  = (item) => {
     return async (dispatch, getState) => {
         const { uid } = getState().auth;
         const docRef = doc(FirebaseDB, `${uid}/giphys/giphy/${item}`);
-        const resp = await deleteDoc(docRef);
-        if (!resp) {
-            allFavoritesFirebase();
-        }
+        await deleteDoc(docRef);
+        dispatch(onDeleteFavoritesToFirebase(item));
     }
 }
 
-export const onAddToFavoriteFibase  = (item) => {
+export const addToFavoriteToFirebase  = (item) => {
     return async (dispatch, getState) => {
         const { uid } = getState().auth;
         const newItem = {...item, isFavorite: true}
-        const newDoc = doc(collection(FirebaseDB, `${uid}/giphys/giphy`), item.id);
-        const resp = await setDoc(newDoc, newItem);   
-        if (!resp) {
-            allFavoritesFirebase();
-        }
+        const newDoc = doc(collection(FirebaseDB, `${uid}/giphys/giphy`), newItem.id);
+        await setDoc(newDoc, newItem);
+        dispatch(onAddFavoritesToFirebase(newItem));
     }
 }
 

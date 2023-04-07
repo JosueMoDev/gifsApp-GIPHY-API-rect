@@ -6,7 +6,7 @@ import {
   signInWithFacebook
 } from "../../firebase/providers";
 import { checkingCrendentials, login, logout } from "./auth-slice";
-
+import { onCleanFavorites } from "../favorites/favorite-slice";
 export const checkingAuthentication = (email, password) => {
   return async (dispatch) => {
     dispatch(checkingCrendentials());
@@ -58,5 +58,6 @@ export const startLogOut = () => {
   return async (dispatch) => {
     await logoutFirebase();
     dispatch(logout());
+    dispatch(onCleanFavorites());
   };
 };
