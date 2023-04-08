@@ -12,12 +12,16 @@ import {
   onClearSearch,
   onOpenAutoComplete,
   onCloseAutoComplete,
+  onCloseAuthAlert
 } from "/src/store";
 
 export const useSetUi = () => {
   const dispatch = useDispatch();
 
   const {
+    authAlertOpen,
+    alertMessage,
+    statusAlert,
     isLinkCopid,
     isAlertOpen,
     isSharingItem,
@@ -33,6 +37,11 @@ export const useSetUi = () => {
   };
   const startClosingAlert = () => {
     dispatch(onCloseAlert());
+  };
+
+
+  const startClosingAuthAlert = () => {
+    dispatch(onCloseAuthAlert());
   };
 
   const startSharingItem = () => {
@@ -64,6 +73,9 @@ export const useSetUi = () => {
 
   return {
     // * PROPERTIES
+    authAlertOpen,
+    alertMessage,
+    statusAlert,
     isLinkCopid,
     isAlertOpen,
     isSharingItem,
@@ -81,5 +93,6 @@ export const useSetUi = () => {
     startClear,
     startOpenAutoComplete,
     startCloseAutoComplete,
+    startClosingAuthAlert
   };
 };

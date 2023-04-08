@@ -25,10 +25,8 @@ export const useAuth = () => {
       const { uid, photoURL, email, displayName } = user;
       dispatch(login({ uid, photoURL, email, displayName }));
       if ("allFavorites" in localStorage) {
-        console.log("add from local to firebase");
         dispatch(addAllFavoritesFromLocalStorageToFirebase());
       } else {
-        console.log("add to firebase");
         dispatch(getAllFavoritesFromFirebase());
       }
     });

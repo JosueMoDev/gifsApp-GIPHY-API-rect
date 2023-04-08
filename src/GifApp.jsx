@@ -1,3 +1,4 @@
+import { AuthAlertComponet } from "/src/auth/components/AuthAlertComponent";
 import {
   CopyAlertComponent,
   InputSeachComponent,
@@ -9,6 +10,7 @@ export const GifApp = () => {
   return (
     <>
       <CopyAlertComponent />
+      <AuthAlertComponet />
       <div className="px-2 lg:px-5 xl:px-24 w-12/12">
         <NavBarComponent />
         <InputSeachComponent />

@@ -79,7 +79,6 @@ export const addToFavoriteToFirebase = (item) => {
       collection(FirebaseDB, `${uid}/giphys/giphy`),
       newItem.id
     );
-    console.log(newItem);
     await setDoc(newDoc, newItem);
     dispatch(onAddFavoritesToFirebase(newItem));
   };
