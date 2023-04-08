@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { useGetResposeBySearchTerm, useSetUi } from '../hooks'
+import { useGetResposeBySearchTerm, useGetTrendingResponse, useSetUi } from '../hooks'
 
 import { FlyButtonToggleComponent, FlyMenuMobileComponent } from './'
 import { AccountComponent } from '../auth/AccountComponent';
@@ -12,6 +12,7 @@ import { pink } from '@mui/material/colors';
 
 export const NavBarComponent = () => {
     const { startCleaningSearch } = useGetResposeBySearchTerm();
+    const { startCleanigHome } = useGetTrendingResponse();
     const { isFlyMenuOpen, startOpenFlyMenu, startCloseFlyMenu, startClear } = useSetUi();
     const navigate = useNavigate();
     return (
@@ -23,7 +24,7 @@ export const NavBarComponent = () => {
                         <div className="flex items-center flex-shrink-0 text-white font-mono">
                             <a className='cursor-pointer no-underline text-white flex'
                                 onClick={() => {
-                                    startClear();
+                                    startCleanigHome()
                                     navigate('/')
                                 }
                                 }
@@ -33,7 +34,7 @@ export const NavBarComponent = () => {
                             </a>
                             <a className='cursor-pointer no-underline text-white flex'
                                 onClick={() => {
-                                    startClear();
+                                    startCleanigHome();
                                     navigate('/')
                                 }
                                 }

@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { fetchTendringResponse } from "../api";
-import { useAllFavorites } from "./useAllFavorites";
 import { useDispatch, useSelector } from "react-redux";
 import { onSetTrending } from "../store";
 import { checkIfItemIsFavorite } from "./helpers/checkIfItemIsFavorite";
+import { useSetUi } from "./useSetUi";
 
 export const useGetTrendingResponse = () => {
   const dispatch = useDispatch();
   const { allFavorites } = useSelector((state) => state.favorites);
   const { gifs } = useSelector((state) => state.search);
+  const { startClear } = useSetUi();
   const getTrendingGiphys = async () => {
     const ApiResponse = await fetchTendringResponse();
     const data = ApiResponse.data.data.map((gifs) => gifs);
@@ -26,16 +27,15 @@ export const useGetTrendingResponse = () => {
     const gifs_list = checkIfItemIsFavorite(trendingList, allFavorites);
     dispatch(onSetTrending(gifs_list));
   };
-
+  const startCleanigHome = () => {
+    startClear();
+    getTrendingGiphys();
+  }
   useEffect(() => {
-      getTrendingGiphys();
+    getTrendingGiphys();
   }, [allFavorites]);
-  
-  useEffect(() => {
-    if (!gifs) {
-      getTrendingGiphys();
-    }
-  }, [gifs]);
 
-  return { gifs };
+ 
+
+  return { gifs, startCleanigHome };
 };
