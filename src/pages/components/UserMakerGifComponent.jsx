@@ -17,7 +17,7 @@ export const UserMakerGifComponent = ({ item }) => {
                 
             <div className="hidden md:block items-center  py-6">
             <p className="text-white text-sm font-semibold">Source </p>
-            <a className="text-sm text-white lowercase cursor-pointer"> https://www.youtube.com/watch?v=0cCvB_PHEuc</a>
+                <a href={item?.user?.website_url} target="_blank" className="text-sm text-white lowercase cursor-pointer hover:underline">{ item?.user?.website_url }</a>
             </div>
         </div>
     )

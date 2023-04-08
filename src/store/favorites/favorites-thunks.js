@@ -19,7 +19,7 @@ export const addAllFavoritesFromLocalStorageToFirebase = () => {
         const favoritesToSaveOnFirebase = removeEquals(allFavorites, favoritesSavedOnLocalStorage);
       
         favoritesToSaveOnFirebase.forEach(async (item) => {
-            const newItem = { ...item, isFavorite: true }
+            const newItem = { ...item, isFavorite: true, user:item.user||{} }
             const newDoc = doc(collection(FirebaseDB, `${uid}/giphys/giphy`), item.id);
             await setDoc(newDoc, newItem)
         });
@@ -58,8 +58,9 @@ export const deleteFavoriteToFirebase  = (item) => {
 export const addToFavoriteToFirebase  = (item) => {
     return async (dispatch, getState) => {
         const { uid } = getState().auth;
-        const newItem = {...item, isFavorite: true}
+        const newItem = {...item, isFavorite: true, user:item.user||{}}
         const newDoc = doc(collection(FirebaseDB, `${uid}/giphys/giphy`), newItem.id);
+        console.log(newItem)
         await setDoc(newDoc, newItem);
         dispatch(onAddFavoritesToFirebase(newItem));
     }
