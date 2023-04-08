@@ -1,8 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useGetResposeBySearchTerm } from "../../hooks";
-import { startLogOut } from "../../store/auth";
+import { useGetResposeBySearchTerm, useSetUi } from "/src/hooks";
 import { styled } from "@mui/material/styles";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -37,13 +35,9 @@ const StyledMenu = styled((props) => (
     },
   },
 }));
-export const MenuAccountComponent = () => {
-  const { displayName,  photoURL } = useSelector((state) => state.auth);
+export const MenuAccountNoAuthenticatedComponent = () => {
+  const { toggleDrawer } = useSetUi();
   const { startCleaningSearch } = useGetResposeBySearchTerm();
-  const dispatch = useDispatch();
-  const onLogOut = () => {
-    dispatch(startLogOut());
-  };
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -57,7 +51,11 @@ export const MenuAccountComponent = () => {
     <div>
       <div className="w-full h-12  flex justify-center align-middle">
         <div className="bg-[#525252] w-fit h-fit rounded-sm p-0.5 flex justify-center align-middle">
-          <img className="w-12 h-9 object-cover" src={photoURL ||'../../public/no-photoUrl.gif' } alt="profile_photo" />
+          <img
+            className="w-12 h-9 object-cover"
+            src={"../../public/no-photoUrl.gif"}
+            alt="profile_photo"
+          />
         </div>
         <button
           id="basic-button"
@@ -67,7 +65,7 @@ export const MenuAccountComponent = () => {
           onClick={handleClick}
           className="bg-[#3E3E3E] font-semibold w-full text-sm h-10 rounded-r-sm flex justify-items-center align-middle p-2 text-white px-6"
         >
-         {displayName}
+          GIPHY User
         </button>
       </div>
       <StyledMenu
@@ -90,14 +88,8 @@ export const MenuAccountComponent = () => {
           Favorites
         </MenuItem>
         <Divider sx={{ my: 0.5 }} />
-        <MenuItem
-          onClick={() => {
-            handleClose();
-            onLogOut();
-          }}
-          disableRipple
-        >
-          Log Out
+        <MenuItem onClick={() => toggleDrawer()} disableRipple>
+          Log In
         </MenuItem>
       </StyledMenu>
     </div>

@@ -12,12 +12,12 @@ import {
   onClearSearch,
   onOpenAutoComplete,
   onCloseAutoComplete,
-  onCloseAuthAlert
+  onCloseAuthAlert,
+  onToggleSideNavAuth,
 } from "/src/store";
 
 export const useSetUi = () => {
   const dispatch = useDispatch();
-
   const {
     authAlertOpen,
     alertMessage,
@@ -39,6 +39,10 @@ export const useSetUi = () => {
     dispatch(onCloseAlert());
   };
 
+  const toggleDrawer = () => {
+    console.log("hola");
+    dispatch(onToggleSideNavAuth());
+  };
 
   const startClosingAuthAlert = () => {
     dispatch(onCloseAuthAlert());
@@ -93,6 +97,7 @@ export const useSetUi = () => {
     startClear,
     startOpenAutoComplete,
     startCloseAutoComplete,
-    startClosingAuthAlert
+    startClosingAuthAlert,
+    toggleDrawer,
   };
 };

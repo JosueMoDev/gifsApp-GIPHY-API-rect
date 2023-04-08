@@ -3,16 +3,34 @@ import React, { Fragment } from "react";
 export const NoSearchRosultFound = ({ searchTerm }) => {
   return (
     <Fragment>
-      <div className="bg-trasparent rounded-md shadow-lg capitalize">
-        <div className="mx-auto max-w-2xl py-16 items-center px-4 sm:py-15 sm:px-6 lg:max-w-7xl lg:px-8">
-          <p
-            className="ml-1 text-3xl font-black
+      <>
+        {searchTerm ? (
+          <div className="bg-trasparent rounded-md shadow-lg capitalize">
+            <div className="mx-auto w-full h-fit items-center">
+              <p
+                className="ml-1 text-md font-semibold
+                  text-white text-center"
+              >
+                🥲 No GIFs found for "{searchTerm}" Try searching for Stickers
+                instead?
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="bg-trasparent rounded-md shadow-lg capitalize">
+            <div className="mx-auto w-full h-fit items-center">
+              <p
+                className="ml-1 text-md font-semibold
                 text-white text-center"
-          >
-            🥲 Sorry we coul'dt found anything related to "{searchTerm}"
-          </p>
-        </div>
-      </div>
+              >
+                You don't have any{" "}
+                <span className="text-rose-400">favorites</span> yet! Add to
+                your favs by clicking the 🤍 around GIPHY.
+              </p>
+            </div>
+          </div>
+        )}
+      </>
     </Fragment>
   );
 };

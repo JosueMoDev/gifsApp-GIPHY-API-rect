@@ -10,7 +10,7 @@ import {
   login,
   logout,
 } from "/src/store/auth/auth-slice";
-import { onShowAuthAlert } from "/src/store/ui/ui-slice";
+import { onShowAuthAlert, onToggleSideNavAuth } from "/src/store/ui/ui-slice";
 import { onCleanFavorites } from "/src/store/favorites/favorite-slice";
 export const checkingAuthentication = (email, password) => {
   return async (dispatch) => {
@@ -20,8 +20,9 @@ export const checkingAuthentication = (email, password) => {
 export const startGoogleSignIn = () => {
   return async (dispatch) => {
     dispatch(checkingCrendentials());
+    dispatch(onToggleSideNavAuth());
     const result = await singInWithGoogle();
-    if (!ok) {
+    if (!result) {
       dispatch(logout({ errorMessage }));
       dispatch(
         onShowAuthAlert({
@@ -43,8 +44,9 @@ export const startGoogleSignIn = () => {
 export const startFacebookSignIn = () => {
   return async (dispatch) => {
     dispatch(checkingCrendentials());
+    dispatch(onToggleSideNavAuth());
     const result = await signInWithFacebook();
-    if (!ok) {
+    if (!result) {
       dispatch(logout({ errorMessage }));
       dispatch(
         onShowAuthAlert({
@@ -71,6 +73,7 @@ export const startCreateUserWithEmailAndPassword = ({
 }) => {
   return async (dispatch) => {
     dispatch(checkingCrendentials());
+    dispatch(onToggleSideNavAuth());
     const { ok, uid, photoURL, errorMessage } =
       await registerUserWithEmailAndPassword({ email, password, displayName });
     if (!ok) {
@@ -96,6 +99,7 @@ export const startCreateUserWithEmailAndPassword = ({
 export const startLoginWithEmailandPassword = ({ email, password }) => {
   return async (dispatch) => {
     dispatch(checkingCrendentials());
+    dispatch(onToggleSideNavAuth());
     const { ok, uid, photoURL, displayName, errorMessage } =
       await loginWithEmailAndPassword({ email, password });
     if (!ok) {

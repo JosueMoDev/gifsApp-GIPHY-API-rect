@@ -10,6 +10,7 @@ export const uiSlice = createSlice({
     isSharingItem: false,
     isFlyMenuOpen: false,
     isAutoCompleteOpen: false,
+    isDrawerAuthOpen: false,
   },
   reducers: {
     onCopyLink: (state) => {
@@ -49,6 +50,9 @@ export const uiSlice = createSlice({
       state.authAlertOpen = false;
       state.alertMessage = "";
     },
+    onToggleSideNavAuth: (state) => {
+      state.isDrawerAuthOpen = !state.isDrawerAuthOpen;
+    },
   },
 });
 export const {
@@ -63,4 +67,5 @@ export const {
   onCloseAutoComplete,
   onCloseAuthAlert,
   onShowAuthAlert,
+  onToggleSideNavAuth,
 } = uiSlice.actions;
