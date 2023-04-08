@@ -3,22 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeForm } from "../../store/auth";
 
 export const SwitchAuthFormCompent = () => {
-<<<<<<<< HEAD:src/components/SwitchAuthFormCompent.jsx
-
-  const { isLogginFormActive } = useAuth()
-========
   const { isLogginFormActive } = useSelector((state) => state.auth);
->>>>>>>> auth:src/auth/components/SwitchAuthFormCompent.jsx
   const dispatch = useDispatch();
   const onChangeForm = () => {
     dispatch(changeForm());
   };
-<<<<<<<< HEAD:src/components/SwitchAuthFormCompent.jsx
- 
-  
-========
-
->>>>>>>> auth:src/auth/components/SwitchAuthFormCompent.jsx
   const styleRight = "min-w-[50%] w-[50%] h-12 rounded-full text-base  font-semibold text-gray-50  bg-gradient-to-l from-blue-700 via-violet-600 to-indigo-700 bg-indigo-500 text-white bg-indigo-500 text-white";
 
   const styleLeft = "min-w-[50%] w-[50%] h-12  rounded-full text-base font-semibold text-gray-50  bg-gradient-to-l from-teal-700 via-cyan-600 to-emerald-700 bg-emerald-500 text-white";
