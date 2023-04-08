@@ -53,7 +53,7 @@ export const MenuAccountNoAuthenticatedComponent = () => {
         <div className="bg-[#525252] w-fit h-fit rounded-sm p-0.5 flex justify-center align-middle">
           <img
             className="w-12 h-9 object-cover"
-            src={"public/no-Auth.gif"}
+            src={"/no-Auth.gif"}
             alt="profile_photo"
           />
         </div>
