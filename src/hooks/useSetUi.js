@@ -40,7 +40,6 @@ export const useSetUi = () => {
   };
 
   const toggleDrawer = () => {
-    console.log("hola");
     dispatch(onToggleSideNavAuth());
   };
 

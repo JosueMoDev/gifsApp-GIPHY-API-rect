@@ -32,9 +32,8 @@ export const startGoogleSignIn = () => {
       );
       return;
     }
-    dispatch(
-      login(result),
-      onShowAuthAlert({
+    dispatch(login(result));
+    dispatch(onShowAuthAlert({
         alertMessage: "You are now logged in",
         statusAlert: true,
       })
