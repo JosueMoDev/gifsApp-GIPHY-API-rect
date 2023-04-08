@@ -10,7 +10,6 @@ export const searchSlice = createSlice({
     stickers: [],
     total_stickers: null,
     tags: [],
-    favorites: [],
     isSearchingByGifs: true,
   },
   reducers: {
@@ -60,7 +59,7 @@ export const searchSlice = createSlice({
       state.tags = [];
     },
     onSetTrending: (state, { payload }) => {
-      state.gifs = payload;
+      state.gifs = [...payload];
     },
   },
 });
