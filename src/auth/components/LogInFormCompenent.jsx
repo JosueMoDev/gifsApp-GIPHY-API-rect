@@ -20,7 +20,7 @@ export const LogInFormCompenent = () => {
     const { email, password } = data;
     dispatch(startLoginWithEmailandPassword({ email, password }));
   }
-  const { passwordVisibility } =  useSelector((state) => state.auth);;
+  const { passwordVisibility } = useSelector((state) => state.auth);;
   const onChangePasswordVisibility = () => {
     dispatch(changePasswordVisibility());
   };
@@ -80,7 +80,7 @@ export const LogInFormCompenent = () => {
           </p>
         )}
       </div>
-    
+
       <div className="mb-4">
         <button
           disabled={!isValid}

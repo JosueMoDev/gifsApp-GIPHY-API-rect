@@ -1,7 +1,7 @@
 import { useEffect } from "react";
-import { fetchTendringResponse } from "../api";
+import { fetchTendringResponse } from "/src/api";
 import { useDispatch, useSelector } from "react-redux";
-import { onSetTrending } from "../store";
+import { onSetTrending } from "/src/store";
 import { checkIfItemIsFavorite } from "./helpers/checkIfItemIsFavorite";
 import { useSetUi } from "./useSetUi";
 
@@ -30,12 +30,10 @@ export const useGetTrendingResponse = () => {
   const startCleanigHome = () => {
     startClear();
     getTrendingGiphys();
-  }
+  };
   useEffect(() => {
     getTrendingGiphys();
   }, [allFavorites]);
-
- 
 
   return { gifs, startCleanigHome };
 };

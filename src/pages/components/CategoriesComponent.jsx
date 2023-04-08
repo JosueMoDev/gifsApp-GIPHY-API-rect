@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useGetCategories } from "../../hooks";
+import { useGetCategories } from "/src/hooks";
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 
 export const CategoriesComponent = () => {
@@ -12,7 +12,18 @@ export const CategoriesComponent = () => {
         <p className="text-xl md:text-3xl text-white text-left my-5 font-black">
           Categories
         </p>
-        <ImageList cols={3} gap={12} sx={{ paddingBottom: 5, columnCount:{xs: '2 !important',  md: '2 !important', lg: '3 !important'}}}>
+        <ImageList
+          cols={3}
+          gap={12}
+          sx={{
+            paddingBottom: 5,
+            columnCount: {
+              xs: "2 !important",
+              md: "2 !important",
+              lg: "3 !important",
+            },
+          }}
+        >
           {categories.map((item) => (
             <ImageListItem key={item.name}>
               <div className="flex flex-wrap md:w-[300px] md:h-[175px] w-[200px] h-[75px]">

@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
-import { useGetTrendingResponse } from "../hooks";
-import { ListItemContainer } from "../components";
+import { useGetTrendingResponse } from "/src/hooks";
+import { ListItemContainer } from "/src/components";
 
 export const HomePage = () => {
   const { gifs } = useGetTrendingResponse();

@@ -1,23 +1,22 @@
 import { useState, useEffect } from "react";
-import { fetchByArtisResponse } from "../api";
+import { fetchByArtisResponse } from "/src/api";
 
-export const useGetGifsByArtist = () => { 
-  const [artist, setArtist] = useState([])
-  
-  const getGifsByArtist = async () => { 
-    
+export const useGetGifsByArtist = () => {
+  const [artist, setArtist] = useState([]);
+
+  const getGifsByArtist = async () => {
     const { data } = await fetchByArtisResponse();
-    const artistGifs = data.data.map(item => ({
+    const artistGifs = data.data.map((item) => ({
       id: item.id,
       title: item.title,
       url: item.images.original.webp,
-      user:item.user
+      user: item.user,
     }));
     setArtist(artistGifs);
-  }
-  
+  };
+
   useEffect(() => {
     getGifsByArtist();
-  }, [])
-  return { artist }
-}
+  }, []);
+  return { artist };
+};

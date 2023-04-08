@@ -1,2 +1,2 @@
-export * from './favorite-slice'
-export * from './favorites-thunks'
+export * from "./favorite-slice";
+export * from "./favorites-thunks";

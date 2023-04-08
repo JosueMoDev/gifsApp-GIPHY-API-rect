@@ -18,7 +18,7 @@ export const singInWithGoogle = async () => {
       FirebaseAuth,
       googleProvider.setCustomParameters({ prompt: "select_account" })
     );
-    
+
     const { displayName, email, photoURL, uid } = result.user;
     return {
       ok: true,

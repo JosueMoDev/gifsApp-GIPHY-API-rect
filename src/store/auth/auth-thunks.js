@@ -3,10 +3,10 @@ import {
   logoutFirebase,
   registerUserWithEmailAndPassword,
   singInWithGoogle,
-  signInWithFacebook
-} from "../../firebase/providers";
-import { checkingCrendentials, login, logout } from "./auth-slice";
-import { onCleanFavorites } from "../favorites/favorite-slice";
+  signInWithFacebook,
+} from "/src/firebase/providers";
+import { checkingCrendentials, login, logout } from "/src/store/auth/auth-slice";
+import { onCleanFavorites } from "/src/store/favorites/favorite-slice";
 export const checkingAuthentication = (email, password) => {
   return async (dispatch) => {
     dispatch(checkingCrendentials());
@@ -21,9 +21,9 @@ export const startGoogleSignIn = () => {
   };
 };
 export const startFacebookSignIn = () => {
-    return async (dispatch) => {
+  return async (dispatch) => {
     dispatch(checkingCrendentials());
-      const result = await signInWithFacebook();
+    const result = await signInWithFacebook();
     if (!result.ok) return dispatch(logout(result.errorMessage));
     dispatch(login(result));
   };
@@ -34,7 +34,7 @@ export const startCreateUserWithEmailAndPassword = ({
   password,
   displayName,
 }) => {
-  console.log(email, password, displayName)
+  console.log(email, password, displayName);
   return async (dispatch) => {
     dispatch(checkingCrendentials());
     const { ok, uid, photoURL, errorMessage } =

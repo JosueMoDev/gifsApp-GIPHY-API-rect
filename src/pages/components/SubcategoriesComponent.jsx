@@ -1,4 +1,4 @@
-import { useGetCategories, useGetResposeBySearchTerm } from "../../hooks";
+import { useGetCategories, useGetResposeBySearchTerm } from "/src/hooks";
 import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 export const SubcategoriesComponent = () => {
   const { subcategories, subcategorySelected } = useGetCategories();
@@ -9,7 +9,18 @@ export const SubcategoriesComponent = () => {
       <p className="text-xl md:text-3xl text-white text-left my-5 font-black">
         {subcategorySelected}
       </p>
-      <ImageList cols={3} gap={12} sx={{ paddingBottom: 5, ccolumnCount:{xs: '2 !important',  md: '2 !important', lg: '3 !important'}}}>
+      <ImageList
+        cols={3}
+        gap={12}
+        sx={{
+          paddingBottom: 5,
+          ccolumnCount: {
+            xs: "2 !important",
+            md: "2 !important",
+            lg: "3 !important",
+          },
+        }}
+      >
         {subcategories.map((item) => (
           <ImageListItem key={item.name}>
             <div className="flex flex-wrap md:w-[300px] md:h-[175px] w-[200px] h-[75px]  ">

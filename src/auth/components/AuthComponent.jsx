@@ -1,25 +1,29 @@
 import React from "react";
-import { useMemo } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useMemo } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import PersonIcon from "@mui/icons-material/Person";
 import Facebook from "@mui/icons-material/Facebook";
 import Google from "@mui/icons-material/Google";
 import Divider from "@mui/material/Divider";
 import { Box } from "@mui/material";
-import { startGoogleSignIn, startFacebookSignIn } from '../../store/auth'
-import { LogInFormCompenent, SignUpFormCompenent, SwitchAuthFormCompent } from "../components";
+import { startGoogleSignIn, startFacebookSignIn } from "../../store/auth";
+import {
+  LogInFormCompenent,
+  SignUpFormCompenent,
+  SwitchAuthFormCompent,
+} from "../components";
 
 export const AuthComponent = () => {
   const { isLogginFormActive, status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  const isAuthenticating = useMemo(() => status === 'checking', [status]); 
-  const onGoogleSignIn = () => { 
-    dispatch(startGoogleSignIn())
-  } 
-  const onFacebookSignIn = () => { 
-    dispatch(startFacebookSignIn())
-  } 
+  const isAuthenticating = useMemo(() => status === "checking", [status]);
+  const onGoogleSignIn = () => {
+    dispatch(startGoogleSignIn());
+  };
+  const onFacebookSignIn = () => {
+    dispatch(startFacebookSignIn());
+  };
   const [state, setState] = React.useState({ left: false });
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -58,24 +62,41 @@ export const AuthComponent = () => {
               open={state[anchor]}
               onClose={toggleDrawer(anchor, false)}
               onOpen={toggleDrawer(anchor, true)}
-              
             >
-              <Box className="bg-purple-900/95  h-full w-full" sx={{ width:'auto' }}>
+              <Box
+                className="bg-purple-900/95  h-full w-full"
+                sx={{ width: "auto" }}
+              >
                 <div className="pt-5 w-full flex justify-center">
-                    <img src="https://giphy.com/static/img/be-animated.gif" className="w-auto h-32"></img>
+                  <img
+                    src="https://giphy.com/static/img/be-animated.gif"
+                    className="w-auto h-32"
+                  ></img>
                 </div>
                 <div className="flex-auto h-auto w-[400px] p-10 bg-purple-900/95">
-                  <SwitchAuthFormCompent/>
-                  {(isLogginFormActive )?<LogInFormCompenent/>:<SignUpFormCompenent/>}
-                  <Divider className="bg-white/50"/>
+                  <SwitchAuthFormCompent />
+                  {isLogginFormActive ? (
+                    <LogInFormCompenent />
+                  ) : (
+                    <SignUpFormCompenent />
+                  )}
+                  <Divider className="bg-white/50" />
                   <div className="w-full space-y-2 mt-5">
-                    <button onClick={onGoogleSignIn} disabled={ isAuthenticating } className="bg-gradient-to-l flex justify-center align-middle rounded-sm text-white font-semibold bg-[#030407] w-full h-fit p-2 px-6">
-                       <Google className="text-base mx-2"/>
-                        Log in With Google
+                    <button
+                      onClick={onGoogleSignIn}
+                      disabled={isAuthenticating}
+                      className="bg-gradient-to-l flex justify-center align-middle rounded-sm text-white font-semibold bg-[#030407] w-full h-fit p-2 px-6"
+                    >
+                      <Google className="text-base mx-2" />
+                      Log in With Google
                     </button>
-                    <button onClick={onFacebookSignIn} disabled={ isAuthenticating } className="bg-gradient-to-l flex justify-center align-middle rounded-sm text-white font-semibold bg-[#030407] w-full h-fit p-2 px-6">
-                        <Facebook className="text-base mx-2"/>
-                        Log in With Facebook
+                    <button
+                      onClick={onFacebookSignIn}
+                      disabled={isAuthenticating}
+                      className="bg-gradient-to-l flex justify-center align-middle rounded-sm text-white font-semibold bg-[#030407] w-full h-fit p-2 px-6"
+                    >
+                      <Facebook className="text-base mx-2" />
+                      Log in With Facebook
                     </button>
                   </div>
                 </div>
