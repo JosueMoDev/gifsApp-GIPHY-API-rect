@@ -26,7 +26,7 @@ export const useGetCategories = () => {
         const resp = data.data.map(category => ({
             name: category.name,
             subcategories: category.subcategories,
-            gif: category.gif.images.webp
+            gif: category.gif.images.original.webp
 
         }));
 

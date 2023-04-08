@@ -1,40 +1,64 @@
-import { useNavigate } from 'react-router-dom';
-import { useGetCategories } from '../../hooks'
+import { useNavigate } from "react-router-dom";
+import { useGetCategories } from "../../hooks";
+import { ImageList, ImageListItem, ImageListItemBar } from "@mui/material";
 
 export const CategoriesComponent = () => {
   const navigate = useNavigate();
-  const { categories,  startSettingSubCategory } = useGetCategories();
+  const { categories, startSettingSubCategory } = useGetCategories();
 
   return (
-    <div className="bg-trasparent  capitalize py-5 ">
-      <div className=" md:max-w-2xl sm:py-15  lg:max-w-7xl ">
-          <h1 className='text-xl md:text-3xl text-white text-left my-5 font-black' >Categories</h1>
-          <div className="grid  gap-y-1 gap-x-1 md:gap-y-4 md:gap-x-4 grid-cols-2 lg:grid-cols-3 xl:gap-x-4 pb-10">
-          {categories.map( category => (
-              <div key={ category.name } className="group relative">
-                <div  className="min-h-36  cursor-pointer w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none h-36 ">
-                    <img
-                    src={category.gif}
-                    alt={category.name}
-                    className="h-36 w-full object-cover object-center "
-                    />
-                    <div className={' absolute flex top-0  z-10 w-full  h-full'}>
-                        <div className="absolute flex self-center  z-20 h-10 w-full justify-center">
-                        <a className='text-white text-sm md:text-xl  font-bold  uppercase'
-                        onClick={() => {
-                            startSettingSubCategory(category.name)
-                            navigate(`${category.name}`);
-                            }
-                        }
-                        >{category.name}</a>
-                        </div>
-                    </div>
-                  </div>
+    <>
+      <div>
+        <p className="text-xl md:text-3xl text-white text-left my-5 font-black">
+          Categories
+        </p>
+        <ImageList cols={3} gap={12} sx={{ paddingBottom: 5, columnCount:{xs: '2 !important',  md: '2 !important', lg: '3 !important'}}}>
+          {categories.map((item) => (
+            <ImageListItem key={item.name}>
+              <div className="flex flex-wrap md:w-[300px] md:h-[175px] w-[200px] h-[75px]">
+                <img
+                  src={`${item.gif}?w=248&fit=crop&auto=format`}
+                  alt={item.name}
+                  loading="lazy"
+                  style={{
+                    cursor: "pointer",
+                    borderBottomLeftRadius: 2,
+                    borderBottomRightRadius: 2,
+                    borderTopLeftRadius: 2,
+                    borderTopRightRadius: 2,
+                    display: "block",
+                    height: "100%",
+                    width: "100%",
+                    backgroundColor: "transparent",
+                    opacity: 0.8,
+                    backgroundPosition: "0 0, 35px 35px",
+                    backgroundSize: "70px 70px",
+                    objectFit: "cover",
+                  }}
+                />
+                <ImageListItemBar
+                  title={item.name}
+                  onClick={() => {
+                    startSettingSubCategory(item.name);
+                    navigate(`${item.name}`);
+                  }}
+                  style={{
+                    backgroundColor: "transparent",
+                    display: "flex",
+                    width: "100%",
+                    height: "100%",
+                    fontSize: "42px",
+                    cursor: "pointer",
+                    textAlign: "center",
+                    fontWeight: "bolder",
+                    textTransform: "uppercase",
+                  }}
+                />
               </div>
-               ))}
-          </div>
+            </ImageListItem>
+          ))}
+        </ImageList>
       </div>
-    </div>      
-  )
-}
-
+    </>
+  );
+};
