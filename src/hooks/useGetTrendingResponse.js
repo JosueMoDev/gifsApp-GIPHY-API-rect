@@ -8,7 +8,7 @@ import { useSetUi } from "./useSetUi";
 export const useGetTrendingResponse = () => {
   const dispatch = useDispatch();
   const { allFavorites } = useSelector((state) => state.favorites);
-  const { gifs } = useSelector((state) => state.search);
+  const { gifs, searchTerm } = useSelector((state) => state.search);
   const { startClear } = useSetUi();
   const getTrendingGiphys = async () => {
     const ApiResponse = await fetchTendringResponse();
@@ -32,7 +32,9 @@ export const useGetTrendingResponse = () => {
     getTrendingGiphys();
   };
   useEffect(() => {
-    getTrendingGiphys();
+    if (!searchTerm) {
+      getTrendingGiphys();
+    }
   }, [allFavorites]);
 
   return { gifs, startCleanigHome };
