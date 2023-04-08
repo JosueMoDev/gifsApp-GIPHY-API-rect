@@ -113,20 +113,13 @@ export const NavBarComponent = () => {
                 </div>
               </div>
             </div>
-            <div className="w-max px-4 py-5 pb-2 h-fit justify-items-end align-bottom">
+            <div className="w-max px-4 hidden md:block py-5 pb-2 h-fit justify-items-end align-bottom">
               <AccountComponent />
             </div>
           </div>
           <div className="absolute inset-y-0 right-0 flex items-center justify-end space-x-0 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
             <div className="flex items-center justify-end space-x-1 md:hidden">
-              <IconButton
-                onClick={() => {
-                  startCleaningSearch();
-                  navigate("/favorites");
-                }}
-              >
-                <FavoriteIcon sx={{ fontSize: 24, color: pink[400] }} />
-              </IconButton>
+              <AccountComponent/>
               {isFlyMenuOpen ? (
                 <IconButton
                   onClick={() => {

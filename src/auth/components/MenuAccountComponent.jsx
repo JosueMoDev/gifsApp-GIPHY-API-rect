@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { useGetResposeBySearchTerm } from "../../hooks";
-import { startLogOut } from "../../store/auth";
+import { useGetResposeBySearchTerm } from "/src/hooks";
+import { startLogOut } from "/src/store/auth";
 import { styled } from "@mui/material/styles";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -57,7 +57,7 @@ export const MenuAccountComponent = () => {
     <div>
       <div className="w-full h-12  flex justify-center align-middle">
         <div className="bg-[#525252] w-fit h-fit rounded-sm p-0.5 flex justify-center align-middle">
-          <img className="w-12 h-9 object-cover" src={photoURL ||'../../public/no-photoUrl.gif' } alt="profile_photo" />
+          <img className="w-12 h-9 object-cover" src={photoURL ||'/public/no-photoUrl.gif' } alt="profile_photo" />
         </div>
         <button
           id="basic-button"

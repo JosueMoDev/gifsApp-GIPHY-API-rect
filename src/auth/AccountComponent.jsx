@@ -29,6 +29,7 @@ export const AccountComponent = () => {
       </div>
     );
   }
+  
   return (
     <>
       {status === "authenticated" ? (
