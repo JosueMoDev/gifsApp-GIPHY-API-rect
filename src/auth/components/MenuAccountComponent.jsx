@@ -1,8 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { useAuth, useGetResposeBySearchTerm } from "../hooks";
-import { startLogOut } from "../store/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { useGetResposeBySearchTerm } from "/src/hooks";
+import { startLogOut } from "/src/store/auth";
 import { styled } from "@mui/material/styles";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -24,15 +24,10 @@ const StyledMenu = styled((props) => (
 ))(({ theme }) => ({
   "& .MuiPaper-root": {
     borderRadius: 0,
-    marginTop: theme.spacing(1),
-    minWidth: 180,
+    marginTop: theme.spacing(0.2),
+    minWidth: 160,
     color: "white",
     backgroundColor: "#3E3E3E",
-    boxShadow:
-      "rgb(rgb(55, 65, 81)) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px",
-    "& .MuiMenu-list": {
-      padding: "4px 0",
-    },
     "& .MuiMenuItem-root": {
       "& .MuiSvgIcon-root": {
         fontSize: 8,
@@ -43,7 +38,7 @@ const StyledMenu = styled((props) => (
   },
 }));
 export const MenuAccountComponent = () => {
-  const { displayName, uid, photoURL } = useAuth();
+  const { displayName,  photoURL } = useSelector((state) => state.auth);
   const { startCleaningSearch } = useGetResposeBySearchTerm();
   const dispatch = useDispatch();
   const onLogOut = () => {
@@ -62,7 +57,7 @@ export const MenuAccountComponent = () => {
     <div>
       <div className="w-full h-12  flex justify-center align-middle">
         <div className="bg-[#525252] w-fit h-fit rounded-sm p-0.5 flex justify-center align-middle">
-          <img className="w-12 h-9 object-cover" src={photoURL ||'../../public/no-photoUrl.gif' } alt="profile_photo" />
+          <img className="w-12 h-9 object-cover" src={photoURL ||'/public/no-photoUrl.gif' } alt="profile_photo" />
         </div>
         <button
           id="basic-button"

@@ -1,13 +1,12 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { startCreateUserWithEmailAndPassword, changeForm } from "../store/auth";
-import { useDispatch } from "react-redux";
+import { startCreateUserWithEmailAndPassword, changeForm } from "../../store/auth";
+import { useDispatch, useSelector } from "react-redux";
 import ReportProblemIcon from "@mui/icons-material/ReportProblem";
 import { SvgIcon } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { useAuth } from "../hooks";
-import { changePasswordVisibility } from "../store/auth";
+import { changePasswordVisibility } from "../../store/auth";
 
 export const SignUpFormCompenent = () => {
   const dispatch = useDispatch();
@@ -22,7 +21,7 @@ export const SignUpFormCompenent = () => {
     dispatch(startCreateUserWithEmailAndPassword(data));
     dispatch(changeForm());
   };
-  const { passwordVisibility } = useAuth();
+  const { passwordVisibility } = useSelector((state) => state.auth);
   const onChangePasswordVisibility = () => {
     dispatch(changePasswordVisibility());
   };

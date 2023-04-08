@@ -1,10 +1,8 @@
-
-import { ListItemContainer } from '../components';
-import { useAllFavorites } from '../hooks'
+import { ListItemContainer } from "/src/components";
+import { useAllFavorites } from "/src/hooks";
 
 export const FavoritesPage = () => {
-    const { allFavorites } = useAllFavorites();
+  const { allFavorites } = useAllFavorites();
 
-    
-    return ( <ListItemContainer itemList={allFavorites}/>)
-}
+  return <ListItemContainer itemList={allFavorites} />;
+};

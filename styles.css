@@ -1,13 +1,7 @@
 * {
-    font-family: Helvetica, Arial, sans-serif;
-   
-  }
+  font-family: interface, "Helvetica Neue", helvetica, sans-serif;
+}
 
-  body{
-    
-    background-color:#121212;
-
-  }
-
-
- 
+body {
+  background-color: #121212;
+}

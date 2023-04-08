@@ -1,10 +1,8 @@
 import axios from "axios";
-const { VITE_API_URL, VITE_API_KEY } = import.meta.env
+const { VITE_API_URL, VITE_API_KEY } = import.meta.env;
 // Default config for the axios instance
 const axiosParams = {
-  
-  baseURL: VITE_API_URL
-
+  baseURL: VITE_API_URL,
 };
 
 // Create axios instance with default params

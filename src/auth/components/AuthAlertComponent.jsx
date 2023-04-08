@@ -1,19 +1,19 @@
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import { useEffect } from "react";
-import { useSetUi } from "../hooks";
+import { useSetUi } from "/src/hooks";
 
-export const CopyAlertComponent = () => {
-  const { isLinkCopid, isAlertOpen, startShowingAlert, startClosingAlert } = useSetUi();
-
+export const AuthAlertComponet = () => {
+  
+  const { statusAlert, alertMessage, authAlertOpen, startClosingAuthAlert } = useSetUi();
+  const alertColor = (statusAlert) ? '#34d399' : '#f43f5e';
   useEffect(() => {
-    if (isLinkCopid) {
-      startShowingAlert();
+    if (authAlertOpen) {
       setTimeout(() => {
-        startClosingAlert();
+        startClosingAuthAlert();
       }, 2000);
     }
-  }, [isLinkCopid]);
+  }, [authAlertOpen]);
 
   return (
     <Stack
@@ -22,20 +22,20 @@ export const CopyAlertComponent = () => {
         position: "fixed",
         zIndex: 10,
         top: 0,
-        display: `${isAlertOpen ? "" : "none"}`,
+        display: `${authAlertOpen ? "" : "none"}`,
       }}
     >
       <Alert
         variant="filled"
         icon={false}
         style={{
-          backgroundColor: "#34d399",
+          backgroundColor:`${alertColor}`,
           width: "100%",
           justifyContent: "center",
         }}
       >
         <p className="text-slate-800 font-semibold">
-          Link copied to clipboard!
+          {alertMessage}
         </p>
       </Alert>
     </Stack>
