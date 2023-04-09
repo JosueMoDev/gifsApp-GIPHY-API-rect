@@ -6,7 +6,7 @@ import { useAllFavorites } from "../hooks";
 export const AddToFavoriteComponent = ({ itemData }) => {
   const { startingToAddFavorite, startingToDeleteFavorite } = useAllFavorites();
   return (
-    <div className=" hover:opacity-80 hover:animate-ping ">
+    <div className=" hover:opacity-80 md:hover:animate-ping ">
       {!itemData.item.isFavorite ? (
         <IconButton onClick={() => startingToAddFavorite(itemData.item)}>
           <FavoriteIcon
