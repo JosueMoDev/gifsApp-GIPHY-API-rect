@@ -23,7 +23,6 @@ export const startGoogleSignIn = () => {
     dispatch(checkingCrendentials());
     dispatch(onToggleSideNavAuth());
     const result = await singInWithGoogle();
-    console.log(result)
     if (!result) {
       dispatch(logout(result.errorMessage));
       dispatch(
@@ -51,7 +50,6 @@ export const startFacebookSignIn = () => {
   
     if (!result) {
       dispatch(logout({ errorMessage }));
-      console.log(result)
       dispatch(
         onShowAuthAlert({
           alertMessage: "Incorrect authentication credentials.",
