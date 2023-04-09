@@ -37,6 +37,14 @@ export const authSlice = createSlice({
     changePasswordVisibility: (state) => {
       state.passwordVisibility = !state.passwordVisibility;
     },
+    onSetNotAutheticated: (state) => {
+      state.status = 'not-authenticated',
+      state.uid = null,
+      state.email = null,
+      state.displayName = null,
+      state.photoURL = null,
+      state.errorMessage = null
+    }
   },
 });
 export const {
@@ -45,4 +53,5 @@ export const {
   checkingCrendentials,
   changeForm,
   changePasswordVisibility,
+  onSetNotAutheticated
 } = authSlice.actions;

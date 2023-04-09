@@ -7,6 +7,7 @@ import {
 } from "/src/firebase/providers";
 import {
   checkingCrendentials,
+  onSetNotAutheticated,
   login,
   logout,
 } from "/src/store/auth/auth-slice";
@@ -22,8 +23,9 @@ export const startGoogleSignIn = () => {
     dispatch(checkingCrendentials());
     dispatch(onToggleSideNavAuth());
     const result = await singInWithGoogle();
+    console.log(result)
     if (!result) {
-      dispatch(logout({ errorMessage }));
+      dispatch(logout(result.errorMessage));
       dispatch(
         onShowAuthAlert({
           alertMessage: "Incorrect authentication credentials.",
@@ -32,6 +34,7 @@ export const startGoogleSignIn = () => {
       );
       return;
     }
+    if (!result.ok) return dispatch(onSetNotAutheticated());
     dispatch(login(result));
     dispatch(onShowAuthAlert({
         alertMessage: "You are now logged in",
@@ -45,8 +48,10 @@ export const startFacebookSignIn = () => {
     dispatch(checkingCrendentials());
     dispatch(onToggleSideNavAuth());
     const result = await signInWithFacebook();
+  
     if (!result) {
       dispatch(logout({ errorMessage }));
+      console.log(result)
       dispatch(
         onShowAuthAlert({
           alertMessage: "Incorrect authentication credentials.",
@@ -55,6 +60,8 @@ export const startFacebookSignIn = () => {
       );
       return;
     }
+    if (!result.ok) return dispatch(onSetNotAutheticated());
+
     dispatch(login(result));
     dispatch(
       onShowAuthAlert({
