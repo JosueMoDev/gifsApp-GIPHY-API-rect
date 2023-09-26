@@ -1,17 +1,20 @@
-import {
-  AddToFavoriteComponent,
-  CopyToClipBoardButton,
-  NoSearchRosultFound,
-} from "./";
-import { useGetItemById, useGetResposeBySearchTerm } from "../hooks";
-import { useNavigate } from "react-router-dom";
+// import {
+//   AddToFavoriteComponent,
+//   CopyToClipBoardButton,
+//   NoSearchRosultFound,
+// } from "";
+// import { useGetItemById, useGetResposeBySearchTerm } from "../hooks";
+// import { useNavigate } from "react-router-dom";
 import { ImageList, ImageListItem } from "@mui/material";
+import { useGetTrendingGiphys } from "../hooks/useGetTrendingGiphys";
 
-export const ListItemContainer = ({ itemList }) => {
-  const { searchTerm, isSearching } = useGetResposeBySearchTerm();
-  const { startShowingitem } = useGetItemById();
-  const navigate = useNavigate();
+export const ListItemContainer = () => {
+  // const { searchTerm, isSearching } = useGetResposeBySearchTerm();
+  // const { startShowingitem } = useGetItemById();
+  // const navigate = useNavigate();
 
+  const { query } = useGetTrendingGiphys();
+  const itemList = query.data || [];
   return (
     <>
       {itemList.length > 0 ? (
@@ -29,21 +32,21 @@ export const ListItemContainer = ({ itemList }) => {
             },
           }}
         >
-          {itemList.map((item) => (
+          {itemList.map((item : any) => (
             <ImageListItem key={item.id}>
               <div className="flex flex-wrap">
                 <img
-                  src={`${item.url}?w=248&fit=crop&auto=format`}
+                  src={`${item.images.original.webp}?w=248&fit=crop&auto=format`}
                   alt={item.title}
                   loading="lazy"
-                  onClick={() => {
-                    startShowingitem({
-                      id: item.id,
-                      name: item.title,
-                      user: item.user,
-                    });
-                    navigate(`${item.slug}`);
-                  }}
+                  // onClick={() => {
+                  //   startShowingitem({
+                  //     id: item.id,
+                  //     name: item.title,
+                  //     user: item.user,
+                  //   });
+                  //   navigate(`${item.slug}`);
+                  // }}
                   style={{
                     cursor: "pointer",
                     borderBottomLeftRadius: 4,
@@ -61,19 +64,21 @@ export const ListItemContainer = ({ itemList }) => {
                     backgroundSize: "70px 70px",
                   }}
                 />
-                <div className="hidden absolute top-0 right-0 sm:right-2 sm:p-1 sm:flex ">
+                {/* <div className="hidden absolute top-0 right-0 sm:right-2 sm:p-1 sm:flex ">
                   <CopyToClipBoardButton itemData={item} />
                   <AddToFavoriteComponent
                     itemData={{ item: item, size: 1.1 }}
                   />
-                </div>
+                </div> */}
               </div>
             </ImageListItem>
           ))}
         </ImageList>
-      ) : (
-        !isSearching && <NoSearchRosultFound searchTerm={searchTerm} />
-      )}
+      ) :  null
+      // (
+      //   !isSearching && <NoSearchRosultFound searchTerm={searchTerm} />
+      // )
+      }
     </>
   );
 };

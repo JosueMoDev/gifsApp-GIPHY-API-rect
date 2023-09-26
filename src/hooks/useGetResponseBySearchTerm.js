@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGetStickers, fetchGetGifs, fetchGetTagsRelated } from "/src/api";
+import { fetchGetStickers, fetchGetGifs, fetchGetTagsRelated } from "/src/api/giphyApi";
 import {
   onSearching,
   onSetData,

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchByArtisResponse } from "/src/api";
+import { fetchByArtisResponse } from "/src/api/giphyApi";
 
 export const useGetGifsByArtist = () => {
   const [artist, setArtist] = useState([]);

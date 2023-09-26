@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { fetchGetCategories } from "/src/api";
+import { fetchGetCategories } from "../api/giphyApi";
 import { onLoadCategories, onSelectCategory } from "/src/store";
 import { setSubcategories } from "./helpers/setSubcategories.helper";
 

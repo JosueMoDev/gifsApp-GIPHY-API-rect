@@ -1,12 +1,9 @@
 import { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
-import { useGetTrendingResponse } from "/src/hooks";
-import { ListItemContainer } from "/src/components";
+import { ListItemContainer } from "../components/ListItemContainer";
 
 export const HomePage = () => {
-  const { gifs } = useGetTrendingResponse();
-
   return (
     <Fragment>
       {
@@ -19,7 +16,7 @@ export const HomePage = () => {
               />
               <span className="text-gray-200 font-bold text-2xl">Trending</span>
             </div>
-            <ListItemContainer itemList={gifs} />
+            <ListItemContainer />
           </div>
         </div>
       }

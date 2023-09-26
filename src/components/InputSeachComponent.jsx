@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useGetResposeBySearchTerm, useSetUi } from "../hooks";
 import { useState, useEffect } from "react";
-import { fetchGetSearchTags } from "../api";
+import { fetchGetSearchTags } from "../api/giphyApi";
 
 export const InputSeachComponent = () => {
   const { startSearching, searchTerm, isSearching } =

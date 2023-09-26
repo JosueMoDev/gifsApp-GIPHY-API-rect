@@ -3,7 +3,7 @@ import { MenuAccountComponent, AuthComponent } from "./components";
 import { useAuth } from "../hooks";
 
 export const AccountComponent = () => {
-  const { status } = useAuth();
+  // const { status } = useAuth();
   if (status === "checking") {
     return (
       <div className="flex w-full justify-center">

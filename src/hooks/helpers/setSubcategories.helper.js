@@ -1,4 +1,4 @@
-import { fetchGetASingleGifForSubCategory } from "/src/api";
+import { fetchGetASingleGifForSubCategory } from "/src/api/giphyApi";
 
 export const setSubcategories = async (resp) => {
   const categories = await Promise.all(

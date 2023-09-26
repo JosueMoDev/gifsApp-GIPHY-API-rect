@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import {
   useGetResposeBySearchTerm,
-  useGetTrendingResponse,
+  useGetTrendingGiphys,
   useSetUi,
 } from "../hooks";
 
@@ -16,7 +16,7 @@ import { pink } from "@mui/material/colors";
 
 export const NavBarComponent = () => {
   const { startCleaningSearch } = useGetResposeBySearchTerm();
-  const { startCleanigHome } = useGetTrendingResponse();
+  const { startCleanigHome } = useGetTrendingGiphys();
   const { isFlyMenuOpen, startOpenFlyMenu, startCloseFlyMenu, startClear } =
     useSetUi();
   const navigate = useNavigate();
