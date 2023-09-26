@@ -9,7 +9,6 @@
     "build": "vite build",
     "preview": "vite preview --port 8082",
     "prepare": "husky install"
-    
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
