@@ -2,8 +2,12 @@ import { Fragment } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTrendUp } from "@fortawesome/free-solid-svg-icons";
 import { ListItemContainer } from "../components/ListItemContainer";
+import { useGetTrendingGiphys } from "../hooks/useGetTrendingGiphys";
 
 export const HomePage = () => {
+  const { query } = useGetTrendingGiphys();
+
+  const giphyList = query.data || [];
   return (
     <Fragment>
       {
@@ -16,7 +20,7 @@ export const HomePage = () => {
               />
               <span className="text-gray-200 font-bold text-2xl">Trending</span>
             </div>
-            <ListItemContainer />
+            { query.isFetching? 'loading...' : <ListItemContainer giphyList = { giphyList } /> }
           </div>
         </div>
       }

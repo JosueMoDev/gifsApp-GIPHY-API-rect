@@ -6,18 +6,20 @@
 // import { useGetItemById, useGetResposeBySearchTerm } from "../hooks";
 // import { useNavigate } from "react-router-dom";
 import { ImageList, ImageListItem } from "@mui/material";
-import { useGetTrendingGiphys } from "../hooks/useGetTrendingGiphys";
+import { Giphy } from "../interfaces/gyphy";
 
-export const ListItemContainer = () => {
+interface props {
+  giphyList: Giphy []
+}
+export const ListItemContainer = ({ giphyList }: props) => {
   // const { searchTerm, isSearching } = useGetResposeBySearchTerm();
   // const { startShowingitem } = useGetItemById();
   // const navigate = useNavigate();
 
-  const { query } = useGetTrendingGiphys();
-  const itemList = query.data || [];
+  
   return (
     <>
-      {itemList.length > 0 ? (
+      {giphyList.length > 0 ? (
         <ImageList
           variant="masonry"
           cols={4}
@@ -32,7 +34,7 @@ export const ListItemContainer = () => {
             },
           }}
         >
-          {itemList.map((item : any) => (
+          {giphyList.map((item : any) => (
             <ImageListItem key={item.id}>
               <div className="flex flex-wrap">
                 <img

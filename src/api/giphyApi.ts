@@ -1,9 +1,19 @@
 import axios from 'axios';
 import { GiphyResponse } from '../interfaces/giphy-response';
+import { GyphyMapper } from '../mappers/giphyMapper';
 const { VITE_API_KEY, VITE_API_URL } = import.meta.env;
 
 const DEFAUL_PARAMS = {
   api_key: VITE_API_KEY,
+};
+
+// TRENDING GIPHYS
+export const fetchTendringGiphysResponse = async(): Promise<GiphyResponse> => {
+  const reps = await axios.get<GiphyResponse>("gifs/trending", {
+    baseURL: VITE_API_URL,
+    params: { ...DEFAUL_PARAMS},
+  });
+  return GyphyMapper({data: reps.data.data, pagination: reps.data.pagination});
 };
 
 //Get Item By ID
@@ -42,14 +52,6 @@ export const fetchGetSearchTags = (q: string) => {
     baseURL: VITE_API_URL,
     params: { ...DEFAUL_PARAMS, q, limit: 3, offset: 0 },
   });
-};
-
-export const fetchTendringGiphysResponse = async(): Promise<GiphyResponse> => {
-  const reps = await axios.get<GiphyResponse>("gifs/trending", {
-    baseURL: VITE_API_URL,
-    params: { ...DEFAUL_PARAMS},
-  });
-  return { data: reps.data.data, pagination: reps.data.pagination }
 };
 
 export const fetchByArtisResponse = () => {

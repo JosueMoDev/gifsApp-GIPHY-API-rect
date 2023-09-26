@@ -5,7 +5,7 @@ import {
   useSetUi,
 } from "../hooks";
 
-import { FlyButtonToggleComponent, FlyMenuMobileComponent } from "./";
+import { FlyButtonToggleComponent, FlyMenuMobileComponent } from ".";
 import { AccountComponent } from "../auth/AccountComponent";
 
 import { IconButton } from "@mui/material";
